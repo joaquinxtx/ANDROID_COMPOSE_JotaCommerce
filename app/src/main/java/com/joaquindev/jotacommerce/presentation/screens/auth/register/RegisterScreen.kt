@@ -1,0 +1,22 @@
+package com.joaquindev.jotacommerce.presentation.screens.auth.register
+
+
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+
+import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.presentation.screens.auth.register.components.RegisterContent
+import com.joaquindev.jotacommerce.presentation.ui.theme.CafeTrasparent
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun RegisterScreen(navController:NavHostController){
+    Scaffold() {
+
+        RegisterContent(navController = navController, paddingValues = it )
+    }
+}

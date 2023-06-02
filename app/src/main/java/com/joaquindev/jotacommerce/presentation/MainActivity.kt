@@ -13,8 +13,9 @@ import androidx.navigation.compose.rememberNavController
 import com.joaquindev.jotacommerce.presentation.navigation.graph.RootNavGraph
 import com.joaquindev.jotacommerce.presentation.screens.auth.LoginScreen
 import com.joaquindev.jotacommerce.presentation.ui.theme.*
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController

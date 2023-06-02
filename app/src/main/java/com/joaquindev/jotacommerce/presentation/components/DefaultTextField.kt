@@ -3,13 +3,13 @@ package com.joaquindev.jotacommerce.presentation.components
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe8
 import com.joaquindev.jotacommerce.presentation.ui.theme.CafeTrasparent
@@ -22,7 +22,9 @@ fun DefaultTextField(
     onValueChange:(value:String)->Unit,
     label:String,
     icon:ImageVector,
-    keyboardType: KeyboardType = KeyboardType.Text
+    keyboardType: KeyboardType = KeyboardType.Text,
+    hideText:Boolean = false,
+    maxLine:Int = 1
 
 
 ){
@@ -32,19 +34,22 @@ fun DefaultTextField(
             .padding(bottom = 5.dp),
         value = value,
         onValueChange = { onValueChange(it) },
+        maxLines = maxLine,
 
         label = {
             Text(text = label)
         },
         leadingIcon = {
             Icon(
-                imageVector = Icons.Default.Email,
+                imageVector = icon,
                 contentDescription = "",
                 tint = Cafe8
             )
         },
+
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
-        colors = TextFieldDefaults.textFieldColors(containerColor = CafeTrasparent)
+        colors = TextFieldDefaults.textFieldColors(containerColor = CafeTrasparent),
+        visualTransformation = if (hideText) PasswordVisualTransformation() else VisualTransformation.None
 
         )
 }

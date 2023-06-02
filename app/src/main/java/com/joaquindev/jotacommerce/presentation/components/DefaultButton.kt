@@ -16,7 +16,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe8
 fun DefaultButton(modifier: Modifier , text:String , onClick:()->Unit , color:Color = Cafe8 , icon:ImageVector= Icons.Default.ArrowForward ){
     Button(
         modifier = modifier,
-        onClick = {},
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(containerColor = color)) {
         Icon(imageVector = icon, contentDescription = "" )
         Spacer(modifier = Modifier.width(10.dp) )

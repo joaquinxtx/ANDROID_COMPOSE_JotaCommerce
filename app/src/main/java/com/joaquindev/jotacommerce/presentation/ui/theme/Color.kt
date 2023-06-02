@@ -13,7 +13,7 @@ val Pink40 = Color(0xFF7D5260)
 
 //Colores
 val Cafe1= Color(0xFFA6816D)
-val Cafe2= Color(0xFFF4E3D7)
+val Cafe2= Color(0xFFE6C1A8)
 val Cafe3 = Color(0xFF4A2C21)
 val Cafe4 = Color(0xFFD1A440)
 val Cafe5 = Color(0xFF8C583F)

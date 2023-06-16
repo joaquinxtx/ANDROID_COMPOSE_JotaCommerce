@@ -8,6 +8,7 @@ import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.LoginScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.register.RegisterScreen
+import com.joaquindev.jotacommerce.presentation.screens.home.HomeScreen
 
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
     navigation(
@@ -19,6 +20,9 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
         }
         composable(route = AuthScreen.Register.route){
             RegisterScreen(navController)
+        }
+        composable(route = AuthScreen.Home.route){
+           HomeScreen(navController)
         }
     }
 }

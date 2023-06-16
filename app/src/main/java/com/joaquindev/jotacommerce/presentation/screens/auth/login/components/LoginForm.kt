@@ -10,9 +10,11 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -21,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
@@ -34,13 +37,15 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
 
     val state = vm.stateForm
     val context = LocalContext.current
-    
-    LaunchedEffect(key1 = vm.errorMessage ){
-        if(vm.errorMessage != ""){
 
-            Toast.makeText(context,vm.errorMessage,Toast.LENGTH_LONG).show()
+    LaunchedEffect(key1 = vm.errorMessage) {
+        if (vm.errorMessage != "") {
+
+            Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
         }
     }
+
+
 
     Card(
         modifier = Modifier
@@ -84,7 +89,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
             DefaultButton(modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp), text = "LOGIN", onClick = {
-                    vm.validateForm()
+                vm.login()
             })
             Spacer(modifier = Modifier.height(10.dp))
             Row(
@@ -96,6 +101,28 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
                     text = " Registrate",
                     color = Cafe5,
                     modifier = Modifier.clickable { navController.navigate(route = AuthScreen.Register.route) })
+            }
+        }
+    }
+    when (val response = vm.loginResponse) {
+        Resource.Loading -> {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        }
+        is Resource.Success -> {
+            LaunchedEffect(Unit) {
+                navController.navigate(route = AuthScreen.Home.route)
+            }
+        }
+        is Resource.Failure -> {
+            Toast.makeText(LocalContext.current, response.exception.message ?: "error desconocido", Toast.LENGTH_SHORT)
+                .show()
+        }
+        else -> {
+            if (response != null) {
+                Toast.makeText(LocalContext.current, "Error Desconocido", Toast.LENGTH_SHORT).show()
+
             }
         }
     }

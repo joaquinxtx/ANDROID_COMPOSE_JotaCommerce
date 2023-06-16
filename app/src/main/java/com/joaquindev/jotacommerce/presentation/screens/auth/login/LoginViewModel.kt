@@ -5,15 +5,19 @@ import android.util.Patterns
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.joaquindev.jotacommerce.domain.Resource
+import com.joaquindev.jotacommerce.domain.model.AuthResponse
+import com.joaquindev.jotacommerce.domain.model.User
+import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
+
 import kotlinx.coroutines.launch
-import java.util.regex.Pattern
+
 import javax.inject.Inject
 
 
 @HiltViewModel
-class LoginViewModel @Inject constructor() : ViewModel() {
+class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
 
     var stateForm by mutableStateOf(LoginState())
         private set
@@ -22,7 +26,21 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         private set
 
     var errorMessage by mutableStateOf("")
-    private set
+        private set
+
+    //LOGIN RESPONSE
+    var loginResponse by mutableStateOf<Resource<AuthResponse>?>(value = null)
+        private set
+
+    fun login() = viewModelScope.launch {
+        if (isValidForm2()) {
+            loginResponse = Resource.Loading
+            val result = authUseCase.login(stateForm.email, stateForm.password)
+            loginResponse = result
+            Log.d("LoginViewModel", "Response : $loginResponse")
+
+        }
+    }
 
     fun onEmailInput(email: String) {
         stateForm = stateForm.copy(email = email)
@@ -32,18 +50,16 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         stateForm = stateForm.copy(password = password)
     }
 
-    fun validateForm()=viewModelScope.launch {
+
+    fun isValidForm2(): Boolean {
         if (!Patterns.EMAIL_ADDRESS.matcher(stateForm.email).matches()) {
             errorMessage = "El email no es valido"
-
-        }
-        else if (stateForm.password.length < 6){
+            return false
+        } else if (stateForm.password.length < 6) {
             errorMessage = "La contraseña debe tener al menos 6 caracterres"
+            return false
         }
-
-        delay(3000)
-        errorMessage=""
-
+        return true
 
     }
 

@@ -12,9 +12,11 @@ import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -22,14 +24,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
+import com.joaquindev.jotacommerce.presentation.components.ProgressBar
+import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.register.RegisterViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe5
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe6
 
 @Composable
-fun RegisterForm(vm:RegisterViewModel = hiltViewModel()) {
+fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltViewModel()) {
 
     val state = vm.stateForm
     val context = LocalContext.current
@@ -37,6 +43,7 @@ fun RegisterForm(vm:RegisterViewModel = hiltViewModel()) {
     LaunchedEffect(key1 = vm.errorMessage ){
         if(vm.errorMessage != ""){
             Toast.makeText(context,vm.errorMessage, Toast.LENGTH_LONG).show()
+            vm.errorMessage = ""
         }
     }
 
@@ -114,9 +121,30 @@ fun RegisterForm(vm:RegisterViewModel = hiltViewModel()) {
                     .fillMaxWidth()
                     .height(50.dp),
                 text = "Confirmar",
-                onClick = { vm.validateForm() })
+                onClick = { vm.register() })
             Spacer(modifier = Modifier.height(10.dp))
 
         }
+    }
+    when(val response = vm.registerResponse){
+        Resource.Loading -> {
+           ProgressBar()
+        }
+        is Resource.Success -> {
+            LaunchedEffect(Unit) {
+                navController.navigate(route = AuthScreen.Home.route)
+            }
+        }
+        is Resource.Failure -> {
+            Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_SHORT)
+                .show()
+        }
+        else -> {
+            if (response != null) {
+                Toast.makeText(LocalContext.current, "Error Desconocido", Toast.LENGTH_SHORT).show()
+
+            }
+        }
+
     }
 }

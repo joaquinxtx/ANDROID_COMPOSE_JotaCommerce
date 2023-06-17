@@ -26,7 +26,7 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
         private set
 
     var errorMessage by mutableStateOf("")
-        private set
+
 
     //LOGIN RESPONSE
     var loginResponse by mutableStateOf<Resource<AuthResponse>?>(value = null)
@@ -37,7 +37,6 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
             loginResponse = Resource.Loading
             val result = authUseCase.login(stateForm.email, stateForm.password)
             loginResponse = result
-            Log.d("LoginViewModel", "Response : $loginResponse")
 
         }
     }

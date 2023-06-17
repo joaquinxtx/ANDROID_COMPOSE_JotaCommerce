@@ -1,6 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.auth.login.components
 
-import android.util.Log
+
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -10,11 +10,10 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +25,7 @@ import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
+import com.joaquindev.jotacommerce.presentation.components.ProgressBar
 import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.login.LoginViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe10
@@ -42,6 +42,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
         if (vm.errorMessage != "") {
 
             Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
+            vm.errorMessage = ""
         }
     }
 
@@ -106,9 +107,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
     }
     when (val response = vm.loginResponse) {
         Resource.Loading -> {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
-            }
+            ProgressBar()
         }
         is Resource.Success -> {
             LaunchedEffect(Unit) {
@@ -116,7 +115,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
             }
         }
         is Resource.Failure -> {
-            Toast.makeText(LocalContext.current, response.exception.message ?: "error desconocido", Toast.LENGTH_SHORT)
+            Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_SHORT)
                 .show()
         }
         else -> {

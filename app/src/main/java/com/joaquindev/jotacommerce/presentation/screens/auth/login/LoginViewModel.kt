@@ -10,6 +10,7 @@ import com.joaquindev.jotacommerce.domain.model.AuthResponse
 import com.joaquindev.jotacommerce.domain.model.User
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
 
 import kotlinx.coroutines.launch
 
@@ -27,6 +28,22 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
 
     var errorMessage by mutableStateOf("")
 
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
+
+    fun getSessionData()= viewModelScope.launch {
+        authUseCase.getSessionData().collect(){data ->
+            if (!data.token.isNullOrBlank()){
+               loginResponse = Resource.Success(data)
+            }
+
+        }
+    }
+
+    init {
+        getSessionData()
+    }
 
     //LOGIN RESPONSE
     var loginResponse by mutableStateOf<Resource<AuthResponse>?>(value = null)

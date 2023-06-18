@@ -111,6 +111,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
         }
         is Resource.Success -> {
             LaunchedEffect(Unit) {
+                vm.saveSession(response.data)
                 navController.navigate(route = AuthScreen.Home.route)
             }
         }

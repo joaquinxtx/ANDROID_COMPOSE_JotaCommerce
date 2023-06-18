@@ -44,8 +44,8 @@ Dependencies{
 # Layout
 
 ## LOGIN/REGISTER
-![TODOAPP]( app/src/main/res/images/login.png)
-![TODOAPP]( app/src/main/res/images/register.png)
+![TODOAPP]( app/src/main/res/drawable/login.png)
+![TODOAPP]( app/src/main/res/drawable/register.png)
 
 
 

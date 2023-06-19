@@ -6,9 +6,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
+import com.joaquindev.jotacommerce.presentation.screens.admin.home.HomeAdminScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.LoginScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.register.RegisterScreen
-import com.joaquindev.jotacommerce.presentation.screens.home.HomeScreen
+import com.joaquindev.jotacommerce.presentation.screens.client.home.HomeClientScreen
+
 import com.joaquindev.jotacommerce.presentation.screens.roles.RolesScreen
 
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
@@ -22,11 +24,6 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
         composable(route = AuthScreen.Register.route){
             RegisterScreen(navController)
         }
-        composable(route = AuthScreen.Home.route){
-           HomeScreen(navController)
-        }
-        composable(route = AuthScreen.Roles.route){
-           RolesScreen(navController)
-        }
+
     }
 }

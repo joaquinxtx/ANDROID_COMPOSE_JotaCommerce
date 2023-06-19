@@ -29,6 +29,7 @@ import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
+import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.register.RegisterViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe5
@@ -40,9 +41,9 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
     val state = vm.stateForm
     val context = LocalContext.current
 
-    LaunchedEffect(key1 = vm.errorMessage ){
-        if(vm.errorMessage != ""){
-            Toast.makeText(context,vm.errorMessage, Toast.LENGTH_LONG).show()
+    LaunchedEffect(key1 = vm.errorMessage) {
+        if (vm.errorMessage != "") {
+            Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
             vm.errorMessage = ""
         }
     }
@@ -67,7 +68,7 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
             DefaultTextField(
                 modifier = Modifier,
                 value = state.name,
-                onValueChange = {vm.onNameInput(it)},
+                onValueChange = { vm.onNameInput(it) },
                 label = "Nombres",
                 icon = Icons.Default.Person,
                 keyboardType = KeyboardType.Text
@@ -75,7 +76,7 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
             DefaultTextField(
                 modifier = Modifier,
                 value = state.lastname,
-                onValueChange = {vm.onLastNameInput(it)},
+                onValueChange = { vm.onLastNameInput(it) },
                 label = "Apellidos",
                 icon = Icons.Outlined.Person,
                 keyboardType = KeyboardType.Text
@@ -83,7 +84,7 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
             DefaultTextField(
                 modifier = Modifier,
                 value = state.email,
-                onValueChange = {vm.onEmailInput(it)},
+                onValueChange = { vm.onEmailInput(it) },
                 label = "Correo electronico",
                 icon = Icons.Default.Email,
                 keyboardType = KeyboardType.Email
@@ -91,7 +92,7 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
             DefaultTextField(
                 modifier = Modifier,
                 value = state.phone,
-                onValueChange = {vm.onPhoneInput(it)},
+                onValueChange = { vm.onPhoneInput(it) },
                 label = "Telefono",
                 icon = Icons.Default.Phone,
                 keyboardType = KeyboardType.Number
@@ -99,7 +100,7 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
             DefaultTextField(
                 modifier = Modifier,
                 value = state.password,
-                onValueChange = {vm.onPasswordInput(it)},
+                onValueChange = { vm.onPasswordInput(it) },
                 label = "Contraseña",
                 icon = Icons.Default.Lock,
                 keyboardType = KeyboardType.Password,
@@ -108,7 +109,7 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
             DefaultTextField(
                 modifier = Modifier,
                 value = state.confirmPassword,
-                onValueChange = {vm.onConfirmPasswordInput(it)},
+                onValueChange = { vm.onConfirmPasswordInput(it) },
                 label = "Confirmar Contraseña",
                 icon = Icons.Outlined.Lock,
                 keyboardType = KeyboardType.Password,
@@ -126,14 +127,16 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
 
         }
     }
-    when(val response = vm.registerResponse){
+    when (val response = vm.registerResponse) {
         Resource.Loading -> {
-           ProgressBar()
+            ProgressBar()
         }
         is Resource.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                navController.navigate(route = AuthScreen.Home.route)
+                navController.navigate(route = Graph.CLIENT){
+                    popUpTo(Graph.AUTH){inclusive=true}
+                }
             }
         }
         is Resource.Failure -> {

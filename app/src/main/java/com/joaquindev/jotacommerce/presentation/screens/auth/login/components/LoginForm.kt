@@ -26,7 +26,9 @@ import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
+import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
+import com.joaquindev.jotacommerce.presentation.navigation.screen.RolesScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.login.LoginViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe10
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe5
@@ -112,7 +114,16 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
         is Resource.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                navController.navigate(route = AuthScreen.Home.route)
+                if (response.data.user?.roles!!.size > 1){
+                    navController.navigate(route = Graph.ROLES){
+                        popUpTo(Graph.AUTH){inclusive=true}
+                    }
+                }else{
+                    navController.navigate(route = Graph.CLIENT){
+                        popUpTo(Graph.AUTH){inclusive=true}
+                    }
+
+                }
             }
         }
         is Resource.Failure -> {

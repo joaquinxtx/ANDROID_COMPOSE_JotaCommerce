@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.RolesScreen
+import com.joaquindev.jotacommerce.presentation.screens.admin.home.HomeAdminScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.home.HomeClientScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.roles.RolesScreen
@@ -21,6 +22,9 @@ fun NavGraphBuilder.RolesNavGraph(navController: NavHostController){
         }
         composable(route = Graph.CLIENT) {
             HomeClientScreen()
+        }
+        composable(route = Graph.ADMIN) {
+            HomeAdminScreen()
         }
 
     }

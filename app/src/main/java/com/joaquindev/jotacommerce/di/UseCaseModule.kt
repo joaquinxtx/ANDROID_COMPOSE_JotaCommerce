@@ -18,6 +18,7 @@ object UseCaseModule {
         login = LoginUseCase(authRepository),
         register = RegisterUseCase(authRepository),
         saveSession = SaveSessionUseCase(authRepository),
-        getSessionData = GetSessionDataUseCase(authRepository)
+        getSessionData = GetSessionDataUseCase(authRepository),
+        logout = LogoutUseCase(authRepository)
     )
 }

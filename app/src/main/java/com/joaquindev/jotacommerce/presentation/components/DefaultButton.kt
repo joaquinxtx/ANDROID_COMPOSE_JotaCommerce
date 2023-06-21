@@ -10,16 +10,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe8
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_green
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_marron
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
+
 
 @Composable
-fun DefaultButton(modifier: Modifier , text:String , onClick:()->Unit , color:Color = Cafe8 , icon:ImageVector= Icons.Default.ArrowForward ){
+fun DefaultButton(
+    modifier: Modifier,
+    text: String,
+    onClick: () -> Unit,
+    color: Color = Cafe_blue,
+    icon: ImageVector = Icons.Default.ArrowForward
+) {
     Button(
         modifier = modifier,
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(containerColor = color)) {
-        Icon(imageVector = icon, contentDescription = "" )
-        Spacer(modifier = Modifier.width(10.dp) )
+        colors = ButtonDefaults.buttonColors(containerColor = color)
+    ) {
+        Icon(imageVector = icon, contentDescription = "")
+        Spacer(modifier = Modifier.width(10.dp))
         Text(text = text)
 
     }

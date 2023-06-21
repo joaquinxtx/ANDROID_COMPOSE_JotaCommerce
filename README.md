@@ -44,10 +44,11 @@ Dependencies{
 # Layout
 
 ## LOGIN/REGISTER
-![TODOAPP]( app/src/main/res/drawable/login.png)
-![TODOAPP]( app/src/main/res/drawable/register.png)
+![TODOAPP]( app/src/main/res/drawable/login1.png)
+![TODOAPP]( app/src/main/res/drawable/register2.png)
 
-
+## Client/Profile
+![TODOAPP]( app/src/main/res/drawable/profile2.png)
 
 
 

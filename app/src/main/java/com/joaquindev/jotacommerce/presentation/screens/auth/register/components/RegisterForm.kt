@@ -12,11 +12,11 @@ import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
+
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -30,10 +30,11 @@ import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
-import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
+
 import com.joaquindev.jotacommerce.presentation.screens.auth.register.RegisterViewModel
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe5
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe6
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
+
 
 @Composable
 fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltViewModel()) {
@@ -54,7 +55,7 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
         shape = RoundedCornerShape(
             topEnd = 35.dp,
             topStart = 35.dp
-        ), colors = CardDefaults.cardColors(Cafe6)
+        ), colors = CardDefaults.cardColors(Cafe_white.copy(alpha = 0.7f))
     ) {
         Column(modifier = Modifier.padding(top = 20.dp, start = 30.dp, end = 30.dp)) {
 
@@ -62,7 +63,7 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
                 text = "REGISTRARSE",
                 fontWeight = FontWeight.Bold,
                 fontSize = 15.sp,
-                color = Cafe5,
+                color = Cafe_blue,
                 modifier = Modifier.padding(bottom = 10.dp)
             )
             DefaultTextField(

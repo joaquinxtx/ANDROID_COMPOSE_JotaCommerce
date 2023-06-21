@@ -30,9 +30,7 @@ import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
 import com.joaquindev.jotacommerce.presentation.navigation.screen.RolesScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.login.LoginViewModel
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe10
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe5
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe6
+import com.joaquindev.jotacommerce.presentation.ui.theme.*
 
 @Composable
 fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewModel()) {
@@ -57,14 +55,14 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
         shape = RoundedCornerShape(
             topEnd = 40.dp,
             topStart = 40.dp
-        ), colors = CardDefaults.cardColors(Cafe6)
+        ), colors = CardDefaults.cardColors(Cafe_white.copy(alpha = 0.7f))
     ) {
         Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
             Text(
                 text = "INGRESAR",
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
-                color = Cafe5,
+                color = Cafe_blue,
                 modifier = Modifier.padding(bottom = 20.dp)
             )
             DefaultTextField(
@@ -99,10 +97,10 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
                 Modifier
                     .fillMaxWidth(), horizontalArrangement = Arrangement.Center
             ) {
-                Text(text = "No tienes cuenta?", color = Cafe10)
+                Text(text = "No tienes cuenta?", color = Cafe_blue)
                 Text(
                     text = " Registrate",
-                    color = Cafe5,
+                    color = Cafe_orange,
                     modifier = Modifier.clickable { navController.navigate(route = AuthScreen.Register.route) })
             }
         }
@@ -114,13 +112,13 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
         is Resource.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                if (response.data.user?.roles!!.size > 1){
-                    navController.navigate(route = Graph.ROLES){
-                        popUpTo(Graph.AUTH){inclusive=true}
+                if (response.data.user?.roles!!.size > 1) {
+                    navController.navigate(route = Graph.ROLES) {
+                        popUpTo(Graph.AUTH) { inclusive = true }
                     }
-                }else{
-                    navController.navigate(route = Graph.CLIENT){
-                        popUpTo(Graph.AUTH){inclusive=true}
+                } else {
+                    navController.navigate(route = Graph.CLIENT) {
+                        popUpTo(Graph.AUTH) { inclusive = true }
                     }
 
                 }

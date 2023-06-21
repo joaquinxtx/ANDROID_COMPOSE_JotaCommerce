@@ -16,7 +16,7 @@ import com.joaquindev.jotacommerce.R
 @Composable
 fun LoginBanner(){
     Image(
-        painter = painterResource(id = R.drawable.iconlogin),
+        painter = painterResource(id = R.drawable.latte),
         contentDescription = "",
         modifier = Modifier
             .height(85.dp)

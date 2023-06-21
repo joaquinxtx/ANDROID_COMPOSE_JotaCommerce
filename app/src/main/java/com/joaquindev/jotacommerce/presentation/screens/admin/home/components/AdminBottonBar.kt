@@ -1,11 +1,16 @@
 package com.joaquindev.jotacommerce.presentation.screens.admin.home.components
 
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.BottomAppBarDefaults
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.joaquindev.jotacommerce.presentation.navigation.screen.AdminScreen
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
 
 
 @Composable
@@ -21,7 +26,10 @@ fun AdminBottomBar(navController: NavHostController) {
     val bottomBarDestination = screen.any { it.route == currentDestination?.route }
 
     if (bottomBarDestination) {
-        BottomAppBar() {
+        BottomAppBar(
+
+
+        ) {
             screen.forEach { screen->
                 if (currentDestination != null) {
                     AdminBottomBarItem(

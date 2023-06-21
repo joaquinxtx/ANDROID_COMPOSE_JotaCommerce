@@ -11,8 +11,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe8
-import com.joaquindev.jotacommerce.presentation.ui.theme.CafeTrasparent
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_black
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_green
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,12 +45,12 @@ fun DefaultTextField(
             Icon(
                 imageVector = icon,
                 contentDescription = "",
-                tint = Cafe8
+                tint = Cafe_orange
             )
         },
 
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
-        colors = TextFieldDefaults.textFieldColors(containerColor = CafeTrasparent),
+        colors = TextFieldDefaults.textFieldColors(containerColor = Cafe_black.copy(alpha = 0f)),
         visualTransformation = if (hideText) PasswordVisualTransformation() else VisualTransformation.None
 
         )

@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.joaquindev.jotacommerce.presentation.navigation.screen.ClientScreen
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientScreen
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_beige
 
 @Composable

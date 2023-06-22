@@ -1,16 +1,11 @@
 package com.joaquindev.jotacommerce.presentation.screens.admin.home.components
 
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.BottomAppBarDefaults
-import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.joaquindev.jotacommerce.presentation.navigation.screen.AdminScreen
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
+import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminScreen
 
 
 @Composable

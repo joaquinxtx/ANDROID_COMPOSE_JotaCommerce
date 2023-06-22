@@ -15,7 +15,6 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.domain.model.Rol
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
-import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
 
 @Composable
 fun RolesItems(rol: Rol , navController: NavHostController){

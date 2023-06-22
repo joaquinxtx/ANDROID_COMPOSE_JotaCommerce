@@ -10,10 +10,8 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.joaquindev.jotacommerce.presentation.navigation.screen.ClientScreen
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientScreen
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_beige
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_black
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
 
 @Composable

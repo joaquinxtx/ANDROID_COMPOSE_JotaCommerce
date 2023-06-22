@@ -6,7 +6,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.joaquindev.jotacommerce.presentation.navigation.graph.AdminNavGraph
+import com.joaquindev.jotacommerce.presentation.navigation.graph.admin.AdminNavGraph
+
 import com.joaquindev.jotacommerce.presentation.screens.admin.home.components.AdminBottomBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

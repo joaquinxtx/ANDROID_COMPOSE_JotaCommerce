@@ -1,11 +1,11 @@
-package com.joaquindev.jotacommerce.presentation.navigation.graph
+package com.joaquindev.jotacommerce.presentation.navigation.graph.roles
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
-import com.joaquindev.jotacommerce.presentation.navigation.screen.RolesScreen
+import com.joaquindev.jotacommerce.presentation.navigation.screen.roles.RolesScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.home.HomeAdminScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.home.HomeClientScreen
 

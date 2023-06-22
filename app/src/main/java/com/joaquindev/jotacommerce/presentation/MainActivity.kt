@@ -10,8 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.joaquindev.jotacommerce.presentation.navigation.graph.RootNavGraph
-import com.joaquindev.jotacommerce.presentation.screens.auth.LoginScreen
+import com.joaquindev.jotacommerce.presentation.navigation.graph.root.RootNavGraph
+
+
 import com.joaquindev.jotacommerce.presentation.ui.theme.*
 import dagger.hilt.android.AndroidEntryPoint
 

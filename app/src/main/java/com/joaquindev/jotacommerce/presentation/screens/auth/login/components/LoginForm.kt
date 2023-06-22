@@ -27,8 +27,7 @@ import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
-import com.joaquindev.jotacommerce.presentation.navigation.screen.AuthScreen
-import com.joaquindev.jotacommerce.presentation.navigation.screen.RolesScreen
+import com.joaquindev.jotacommerce.presentation.navigation.screen.auth.AuthScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.login.LoginViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.*
 

@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.presentation.navigation.graph
+package com.joaquindev.jotacommerce.presentation.navigation.graph.client
 
 import androidx.compose.runtime.Composable
 
@@ -6,10 +6,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
-import com.joaquindev.jotacommerce.presentation.navigation.screen.ClientScreen
+import com.joaquindev.jotacommerce.presentation.navigation.graph.profile.ProfileNavGraph
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.category.list.ClientCategoryListScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.product.ClientProductListScreen
-import com.joaquindev.jotacommerce.presentation.screens.profile.ProfileScreen
+import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileScreen
 
 @Composable
 fun ClientNavGraph(navController: NavHostController) {
@@ -28,7 +29,9 @@ fun ClientNavGraph(navController: NavHostController) {
 
         }
         composable(route = ClientScreen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(navController)
         }
+
+        ProfileNavGraph(navController)
     }
 }

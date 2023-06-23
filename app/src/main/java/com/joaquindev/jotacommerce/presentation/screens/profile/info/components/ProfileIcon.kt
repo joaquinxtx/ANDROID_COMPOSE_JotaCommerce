@@ -26,6 +26,7 @@ import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileView
 
 @Composable
 fun ProfileIcon(vm: ProfileViewModel, activity: Activity?) {
+
     Column(Modifier.fillMaxWidth()) {
         IconButton(modifier = Modifier.align(Alignment.End), onClick = {
             vm.logout()

@@ -6,7 +6,5 @@ object Graph {
     const val ROLES ="roles_graph"
     const val CLIENT ="client_graph"
     const val ADMIN ="admin_graph"
-    const val PROFILE ="profile_graph/{user}"
-
-
+    const val PROFILE ="profile_graph"
 }

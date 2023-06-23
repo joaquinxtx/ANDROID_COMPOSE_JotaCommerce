@@ -108,7 +108,7 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
             DefaultButton(
                 modifier = Modifier.fillMaxWidth(),
                 text = "Actualizar informacion",
-                onClick = { navController.navigate(Graph.PROFILE) })
+                onClick = { navController.navigate(route= "${Graph.PROFILE}/${vm.user?.toJson()}") })
         }
     }
 }

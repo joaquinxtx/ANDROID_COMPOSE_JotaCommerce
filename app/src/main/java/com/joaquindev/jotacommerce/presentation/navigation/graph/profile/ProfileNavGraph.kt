@@ -9,7 +9,7 @@ import com.joaquindev.jotacommerce.presentation.screens.profile.update.ProfileUp
 
 fun NavGraphBuilder.ProfileNavGraph(navController: NavHostController) {
     navigation(
-        route = Graph.PROFILE,
+        route = Graph.PROFILE+"/{user}",
         startDestination = ProfileScreen.ProfileUpdate.route
     ) {
 

@@ -22,6 +22,7 @@ import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileView
 fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewModel() , navController: NavHostController) {
     val activity: Activity? = LocalContext.current as? Activity
 
+
     Box(
         modifier = Modifier
             .padding(paddingValues)

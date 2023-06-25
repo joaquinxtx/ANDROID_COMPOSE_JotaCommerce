@@ -44,7 +44,11 @@ fun ProfileUpdateContent(
         mutableStateOf(false)
     }
 
-    DialogCapturePicture(state = stateDialog, takePhoto = { /*TODO*/ }, pickImage = {})
+    vm.resultingActivityHandler.handle()
+
+    DialogCapturePicture(state = stateDialog, takePhoto = { vm.takePhoto() }, pickImage = {
+        vm.pickImage()
+    })
     Box(
         modifier = Modifier
             .padding(paddingValues)
@@ -69,7 +73,7 @@ fun ProfileUpdateContent(
                             .size(120.dp)
                             .clip(CircleShape)
                             .align(Alignment.CenterHorizontally)
-                            .clickable {stateDialog.value=true },
+                            .clickable { stateDialog.value = true },
                         model = state.image,
                         contentDescription = "",
                         contentScale = ContentScale.Crop
@@ -80,7 +84,7 @@ fun ProfileUpdateContent(
                             .size(120.dp)
                             .clip(CircleShape)
                             .align(Alignment.CenterHorizontally)
-                            .clickable {stateDialog.value=true },
+                            .clickable { stateDialog.value = true },
                         painter = painterResource(id = R.drawable.camara),
                         contentDescription = "",
 
@@ -97,7 +101,7 @@ fun ProfileUpdateContent(
                 )
             }
             Spacer(modifier = Modifier.weight(0.5f))
-            ProfileUpdateUserData(vm = vm)
+            ProfileUpdateUserData(vm = vm, state = state)
         }
 
     }

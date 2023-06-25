@@ -16,13 +16,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
+import com.joaquindev.jotacommerce.presentation.screens.profile.update.ProfileUpdateState
 import com.joaquindev.jotacommerce.presentation.screens.profile.update.ProfileUpdateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 @Composable
-fun ProfileUpdateUserData(vm: ProfileUpdateViewModel) {
-    val state = vm.state
+fun ProfileUpdateUserData(vm: ProfileUpdateViewModel, state : ProfileUpdateState) {
+
     Card(
         modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(
             topStart = 40.dp,

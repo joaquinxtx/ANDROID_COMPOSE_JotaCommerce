@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.profile.update
 
+import android.content.Context
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
 import androidx.lifecycle.SavedStateHandle
@@ -7,14 +8,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.model.User
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
+import com.joaquindev.jotacommerce.presentation.utils.ComposeFileProvider
+import com.joaquindev.jotacommerce.presentation.utils.ResultingActivityHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
+import java.io.File
 import javax.inject.Inject
+
 
 @HiltViewModel
 class ProfileUpdateViewModel @Inject constructor(
     private val authUseCase: AuthUseCase,
     private val  savedStateHandle: SavedStateHandle,
+    @ApplicationContext private val context: Context
     ) :
     ViewModel() {
 
@@ -26,6 +33,10 @@ class ProfileUpdateViewModel @Inject constructor(
     val data = savedStateHandle.get<String>("user")
     val user = User.fromJson(data!!)
 
+    //IMAGENES
+    var file : File? = null
+    val resultingActivityHandler = ResultingActivityHandler()
+
 
     init {
         state = state.copy(
@@ -35,6 +46,22 @@ class ProfileUpdateViewModel @Inject constructor(
             phone = user.phone,
             image = user.image ?: ""
         )
+    }
+
+    fun pickImage()= viewModelScope.launch {
+        val result = resultingActivityHandler.getContent("image/*")
+        if (result != null){
+            file= ComposeFileProvider.createFileFromUri(context,result)
+            state.copy(image=result.toString())
+        }
+    }
+
+    fun takePhoto()=viewModelScope.launch {
+        val result=resultingActivityHandler.takePicturePreview()
+        if(result != null){
+            state = state.copy(image=ComposeFileProvider.getPathFromBitmap(context,result))
+            file= File(state.image)
+        }
     }
 
     fun onNameInput(name: String) {

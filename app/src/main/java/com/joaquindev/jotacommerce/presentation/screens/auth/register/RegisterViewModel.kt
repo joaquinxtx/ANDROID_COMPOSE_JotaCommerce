@@ -8,6 +8,7 @@ import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.AuthResponse
 import com.joaquindev.jotacommerce.domain.model.User
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
+import com.joaquindev.jotacommerce.presentation.screens.auth.register.mapper.toUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -33,16 +34,9 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
 
     fun register() = viewModelScope.launch {
         if (isValidForm()){
-            val user = User(
-                name = stateForm.name,
-                lastname = stateForm.lastname,
-                phone = stateForm.phone,
-                email = stateForm.email,
-                password = stateForm.password,
 
-                )
             registerResponse = Resource.Loading
-            val result = authUseCase.register(user)
+            val result = authUseCase.register(stateForm.toUser())
             registerResponse = result
 
         }

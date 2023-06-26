@@ -128,28 +128,5 @@ fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltV
 
         }
     }
-    when (val response = vm.registerResponse) {
-        Resource.Loading -> {
-            ProgressBar()
-        }
-        is Resource.Success -> {
-            LaunchedEffect(Unit) {
-                vm.saveSession(response.data)
-                navController.navigate(route = Graph.CLIENT){
-                    popUpTo(Graph.AUTH){inclusive=true}
-                }
-            }
-        }
-        is Resource.Failure -> {
-            Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_SHORT)
-                .show()
-        }
-        else -> {
-            if (response != null) {
-                Toast.makeText(LocalContext.current, "Error Desconocido", Toast.LENGTH_SHORT).show()
 
-            }
-        }
-
-    }
 }

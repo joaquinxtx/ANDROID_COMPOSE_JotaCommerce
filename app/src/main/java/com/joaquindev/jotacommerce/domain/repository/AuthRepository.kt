@@ -13,6 +13,7 @@ interface AuthRepository {
     suspend fun  logout()
 
     suspend fun saveSession(authResponse: AuthResponse)
+    suspend fun updateSession(user:User)
     fun getSessionData(): Flow<AuthResponse>
 
 }

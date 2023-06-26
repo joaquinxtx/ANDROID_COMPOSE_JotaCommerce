@@ -5,6 +5,6 @@ data class ProfileUpdateState(
     val lastname : String = "",
     val email:String = "",
     val phone : String = "",
-    val image: String = ""
+    val image: String? = null ,
 
 )

@@ -7,13 +7,13 @@ import java.nio.charset.StandardCharsets
 
 data class User(
     @SerializedName("id") val id: String? = null,
-    @SerializedName("name") val name: String,
-    @SerializedName("lastname") val lastname: String,
-    @SerializedName("email") val email: String,
-    @SerializedName("phone") val phone: String,
-    @SerializedName("password") val password: String? = null,
-    @SerializedName("image") val image: String? = null,
-    @SerializedName("notification_token") val notificationToken: String? = null,
+    @SerializedName("name") var name: String,
+    @SerializedName("lastname") var lastname: String,
+    @SerializedName("email") val email: String? = null,
+    @SerializedName("phone") var phone: String,
+    @SerializedName("password") var password: String? = null,
+    @SerializedName("image") var image: String? = null,
+    @SerializedName("notification_token") var notificationToken: String? = null,
     @SerializedName("roles") val roles: List<Rol>? = null,
 ) {
     fun toJson(): String = Gson().toJson(

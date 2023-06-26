@@ -67,7 +67,7 @@ fun ProfileUpdateContent(
                     )
                 }
 
-                if (!state.image.isBlank()) {
+                if (state.image != "") {
                     AsyncImage(
                         modifier = Modifier
                             .size(120.dp)

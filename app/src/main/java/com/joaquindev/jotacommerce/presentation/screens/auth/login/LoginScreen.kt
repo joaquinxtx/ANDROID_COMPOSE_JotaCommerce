@@ -3,6 +3,7 @@ package com.joaquindev.jotacommerce.presentation.screens.auth
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.presentation.screens.auth.login.components.Login
 import com.joaquindev.jotacommerce.presentation.screens.auth.login.components.LoginContent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -12,5 +13,6 @@ fun LoginScreen(navController: NavHostController){
    ){ paddingValues ->
         LoginContent(navController = navController,  paddingValues)
     }
+    Login(navController = navController)
 }
 

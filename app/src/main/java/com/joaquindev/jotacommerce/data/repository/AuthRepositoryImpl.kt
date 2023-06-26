@@ -25,6 +25,7 @@ class AuthRepositoryImpl(
     override suspend fun logout() = authLocalDataSource.logout()
 
     override suspend fun saveSession(authResponse: AuthResponse) = authLocalDataSource.saveSession(authResponse)
+    override suspend fun updateSession(user: User) = authLocalDataSource.updateSession(user)
 
     override fun getSessionData(): Flow<AuthResponse> = authLocalDataSource.getSessionData()
 }

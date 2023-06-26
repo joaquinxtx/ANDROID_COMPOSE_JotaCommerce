@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.screens.auth.register.components.RegisterContent
+import com.joaquindev.jotacommerce.presentation.screens.auth.register.components.RegisterResponse
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -18,4 +19,5 @@ fun RegisterScreen(navController:NavHostController){
 
         RegisterContent(navController = navController, paddingValues = it )
     }
+    RegisterResponse(navController = navController)
 }

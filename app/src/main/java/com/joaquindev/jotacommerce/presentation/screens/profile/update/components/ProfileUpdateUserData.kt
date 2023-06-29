@@ -75,7 +75,7 @@ fun ProfileUpdateUserData(vm: ProfileUpdateViewModel, state : ProfileUpdateState
         DefaultButton(
             modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp),
             text = "Confirmar",
-            onClick = {vm.update() })
+            onClick = {vm.onUpdate() })
     }
 
 

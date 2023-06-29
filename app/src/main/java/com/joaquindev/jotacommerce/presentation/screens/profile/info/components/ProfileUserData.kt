@@ -21,6 +21,7 @@ import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileViewModel
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
@@ -34,7 +35,13 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
         colors = CardDefaults.cardColors(Cafe_white.copy(alpha = 0.8f))
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
-
+            Text(
+                text = "Perfil",
+                fontWeight = FontWeight.Bold,
+                fontSize = 15.sp,
+                color = Cafe_blue,
+                modifier = Modifier.padding(bottom = 10.dp)
+            )
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

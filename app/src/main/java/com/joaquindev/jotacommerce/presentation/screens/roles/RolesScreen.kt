@@ -9,7 +9,7 @@ import com.joaquindev.jotacommerce.presentation.screens.roles.components.RolesCo
 @Composable
 fun RolesScreen(navController: NavHostController){
     Scaffold(
-        topBar = { MediumTopAppBar(title = { Text(text = "Selecciona un rol")} )}
+
     ) {
         RolesContent(it , navController = navController)
 

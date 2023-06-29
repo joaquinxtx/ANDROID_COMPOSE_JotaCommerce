@@ -92,7 +92,7 @@ fun ProfileUpdateContent(
                 }
                 Text(
                     modifier = Modifier
-                        .padding(bottom = 15.dp)
+                        .padding(vertical = 25.dp)
                         .align(Alignment.CenterHorizontally),
                     text = "Actualizar Perfil",
                     color = Cafe_white,

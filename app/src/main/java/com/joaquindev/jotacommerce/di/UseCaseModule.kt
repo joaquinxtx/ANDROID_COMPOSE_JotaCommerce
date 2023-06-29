@@ -4,6 +4,7 @@ import com.joaquindev.jotacommerce.domain.repository.AuthRepository
 import com.joaquindev.jotacommerce.domain.repository.UserRepository
 import com.joaquindev.jotacommerce.domain.useCase.auth.*
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserUseCase
+import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserWithImageUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UsersUseCase
 import dagger.Module
 import dagger.Provides
@@ -28,6 +29,7 @@ object UseCaseModule {
 
     @Provides
     fun provideUsersUseCase(usersRepository:UserRepository)= UsersUseCase(
-        updateUser = UpdateUserUseCase(usersRepository)
+        updateUser = UpdateUserUseCase(usersRepository),
+        updateUserWithImage = UpdateUserWithImageUseCase(usersRepository)
     )
 }

@@ -21,6 +21,7 @@ fun Login(navController: NavHostController, vm: LoginViewModel = hiltViewModel()
         is Resource.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
+
                 if (response.data.user?.roles!!.size > 1) {
                     navController.navigate(route = Graph.ROLES) {
                         popUpTo(Graph.AUTH) { inclusive = true }

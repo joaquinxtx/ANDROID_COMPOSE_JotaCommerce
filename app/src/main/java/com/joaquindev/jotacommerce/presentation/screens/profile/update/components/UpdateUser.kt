@@ -19,7 +19,7 @@ fun UpdateUser(vm: ProfileUpdateViewModel = hiltViewModel()) {
         }
 
         is Resource.Success -> {
-            vm.updateUserSession()
+            vm.updateUserSession(response.data)
             Toast.makeText(LocalContext.current, "Los datos fueron actualizados", Toast.LENGTH_LONG)
                 .show()
 

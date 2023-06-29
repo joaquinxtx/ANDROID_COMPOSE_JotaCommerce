@@ -7,10 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.AuthResponse
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
+@HiltViewModel
 class RolesViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
+
 
 
     var authResponse by mutableStateOf(AuthResponse())
@@ -24,7 +26,7 @@ class RolesViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
             if (!data.token.isNullOrBlank()) {
                 authResponse = data
             }
-
         }
     }
+
 }

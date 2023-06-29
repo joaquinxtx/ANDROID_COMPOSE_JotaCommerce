@@ -44,6 +44,7 @@ class ProfileUpdateViewModel @Inject constructor(
     val resultingActivityHandler = ResultingActivityHandler()
 
     var updateResponse by mutableStateOf<Resource<User>?>(null)
+        private set
 
     init {
         state = state.copy(
@@ -55,25 +56,39 @@ class ProfileUpdateViewModel @Inject constructor(
         )
     }
 
-    fun updateUserSession() = viewModelScope.launch {
-        authUseCase.updateSession(state.toUser())
+
+    fun updateUserSession(userResponse: User) = viewModelScope.launch {
+        authUseCase.updateSession(userResponse)
+    }
+
+    fun onUpdate() {
+        if (file != null) { // SI SELECCIONO UNA IMAGEN
+            updateWithImage()
+        }
+        else {
+            update()
+        }
+    }
+
+    fun updateWithImage() = viewModelScope.launch {
+        updateResponse = Resource.Loading
+        val result = usersUseCase.updateUserWithImage(user.id ?: "", state.toUser(), file!!)
+        updateResponse = result
     }
 
     fun update() = viewModelScope.launch {
-
         updateResponse = Resource.Loading
         val result = usersUseCase.updateUser(user.id ?: "", state.toUser())
         updateResponse = result
     }
 
     fun pickImage() = viewModelScope.launch {
-        val result = resultingActivityHandler.getContent("image/*")
+        val result = resultingActivityHandler.getContent("image/*") // URI
         if (result != null) {
             file = ComposeFileProvider.createFileFromUri(context, result)
-            state.copy(image = result.toString())
+            state = state.copy(image = result.toString())
         }
     }
-
     fun takePhoto() = viewModelScope.launch {
         val result = resultingActivityHandler.takePicturePreview()
         if (result != null) {

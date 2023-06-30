@@ -44,7 +44,7 @@ fun ProfileIcon(vm: ProfileViewModel, activity: Activity?) {
         if (!vm.user?.image.isNullOrBlank()) {
             AsyncImage(
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(150.dp)
                     .clip(CircleShape)
                     .align(Alignment.CenterHorizontally),
                 model = vm.user?.image,
@@ -54,7 +54,7 @@ fun ProfileIcon(vm: ProfileViewModel, activity: Activity?) {
         }else{
             Image(
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(150.dp)
                     .clip(CircleShape)
                     .align(Alignment.CenterHorizontally),
                 painter = painterResource(id = R.drawable.camara),

@@ -29,15 +29,15 @@ fun RolesContent(
     val data = vm.authResponse.user
     Box(Modifier.fillMaxSize()){
         Image(
-            painter = painterResource(id = R.drawable.fondoroles),
+            painter = painterResource(id = R.drawable.gatofondo),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
-                    0.6f,
-                    0.6f,
-                    0.6f,
+                    0.4f,
+                    0.4f,
+                    0.4f,
                     1f
                 )
 

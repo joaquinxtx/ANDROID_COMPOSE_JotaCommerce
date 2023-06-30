@@ -70,7 +70,7 @@ fun ProfileUpdateContent(
                 if (state.image != "") {
                     AsyncImage(
                         modifier = Modifier
-                            .size(120.dp)
+                            .size(150.dp)
                             .clip(CircleShape)
                             .align(Alignment.CenterHorizontally)
                             .clickable { stateDialog.value = true },
@@ -81,7 +81,7 @@ fun ProfileUpdateContent(
                 } else {
                     Image(
                         modifier = Modifier
-                            .size(120.dp)
+                            .size(150.dp)
                             .clip(CircleShape)
                             .align(Alignment.CenterHorizontally)
                             .clickable { stateDialog.value = true },

@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -20,20 +21,19 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 @Composable
 fun RolesItems(rol: Rol , navController: NavHostController){
-    Column(modifier = Modifier.fillMaxWidth().clickable {
-        Log.d("RolesItem", "Ruta: ${rol.route}")
-        navController.navigate(route = rol.route) {
-            popUpTo(route = Graph.ROLES) { inclusive = true }
-        }
-    }) {
+    Column(modifier = Modifier.fillMaxWidth()) {
         Spacer(modifier = Modifier.height(30.dp))
         AsyncImage(
             modifier = Modifier
                 .height(200.dp)
-                .width(200.dp).align(CenterHorizontally),
+                .width(200.dp).align(CenterHorizontally).clickable {
+                    Log.d("RolesItem", "Ruta: ${rol.route}")
+                    navController.navigate(route = rol.route) {
+                        popUpTo(route = Graph.ROLES) { inclusive = true }
+                    }
+                },
             model = rol.image,
             contentDescription = "",
-
         )
         Spacer(modifier = Modifier.height(10.dp))
         Text(

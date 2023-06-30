@@ -36,9 +36,7 @@ fun RegisterBanner(navController:NavHostController , modifier : Modifier){
     Image(
         painter = painterResource(id = R.drawable.latte),
         contentDescription = "",
-        modifier = Modifier
-            .height(85.dp)
-            .width(85.dp)
+        modifier = Modifier.size(150.dp)
     )
     Text(
         modifier = Modifier.padding(bottom = 15.dp),

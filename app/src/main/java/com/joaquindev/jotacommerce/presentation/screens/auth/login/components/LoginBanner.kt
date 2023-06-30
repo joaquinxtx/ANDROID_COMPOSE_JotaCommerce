@@ -2,6 +2,7 @@ package com.joaquindev.jotacommerce.presentation.screens.auth.login.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,9 +19,7 @@ fun LoginBanner(){
     Image(
         painter = painterResource(id = R.drawable.latte),
         contentDescription = "",
-        modifier = Modifier
-            .height(85.dp)
-            .width(85.dp)
+        modifier = Modifier.size(150.dp)
     )
     Text(
         text = "Coffee +",

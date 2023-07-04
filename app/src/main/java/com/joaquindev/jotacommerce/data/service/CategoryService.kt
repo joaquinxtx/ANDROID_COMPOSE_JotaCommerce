@@ -17,9 +17,13 @@ interface CategoryService {
     @GET("categories")
     suspend fun getCategories(): Response<List<Category>>
 
+    @Multipart
     @POST("categories")
     suspend fun create(
-        @Body category: Category
+        @Part file: MultipartBody.Part,
+
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
     ): Response<Category>
 
     @PUT("categories/{id}")

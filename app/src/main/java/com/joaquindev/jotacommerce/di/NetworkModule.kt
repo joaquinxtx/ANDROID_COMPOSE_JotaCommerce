@@ -4,6 +4,7 @@ package com.joaquindev.jotacommerce.di
 import com.joaquindev.jotacommerce.core.Config
 import com.joaquindev.jotacommerce.data.datastore.AuthDataStore
 import com.joaquindev.jotacommerce.data.service.AuthService
+import com.joaquindev.jotacommerce.data.service.CategoryService
 import com.joaquindev.jotacommerce.data.service.UsersService
 import dagger.Module
 import dagger.Provides
@@ -55,6 +56,12 @@ object NetworkModule {
     @Singleton
     fun provideUsersService(retrofit: Retrofit): UsersService {
         return retrofit.create(UsersService::class.java)
+    }
+
+ @Provides
+    @Singleton
+    fun provideCategoriesService(retrofit: Retrofit): CategoryService {
+        return retrofit.create(CategoryService::class.java)
     }
 
 }

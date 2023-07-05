@@ -1,7 +1,6 @@
-package com.joaquindev.jotacommerce.presentation.screens.admin.category.create.components
+package com.joaquindev.jotacommerce.presentation.screens.admin.category.update.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -17,9 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,14 +29,15 @@ import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.AdminCategoryCreateViewModel
+import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.AdminCategoryUpdateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 @Composable
-fun AdminCategoryCreateContent(
+fun AdminCategoryUpdateContent(
     paddingValues: PaddingValues,
     navController: NavHostController,
-    vm: AdminCategoryCreateViewModel = hiltViewModel()
+    vm: AdminCategoryUpdateViewModel = hiltViewModel()
 ) {
     val state = vm.state
     vm.resultingActivityHandler.handle()
@@ -111,7 +108,7 @@ fun AdminCategoryCreateContent(
         ) {
             Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
                 Text(
-                    text = "Nueva Categoria",
+                    text = "Actualizar Categoria",
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Cafe_blue,

@@ -20,6 +20,6 @@ data class Category(
         if (!image.isNullOrBlank()) URLEncoder.encode(image, StandardCharsets.UTF_8.toString()) else "",
     ))
     companion object {
-        fun fromJson(data: String): Rol = Gson().fromJson(data, Rol::class.java)
+        fun fromJson(data: String): Category = Gson().fromJson(data, Category::class.java)
     }
 }

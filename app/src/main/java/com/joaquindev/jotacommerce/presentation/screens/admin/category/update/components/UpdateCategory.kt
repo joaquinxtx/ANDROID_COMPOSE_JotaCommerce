@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.presentation.screens.admin.category.create.components
+package com.joaquindev.jotacommerce.presentation.screens.admin.category.update.components
 
 
 import android.widget.Toast
@@ -9,10 +9,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.AdminCategoryCreateViewModel
-import com.joaquindev.jotacommerce.presentation.screens.profile.update.ProfileUpdateViewModel
 
 @Composable
-fun CreateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
+fun UpdateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
     when (val response = vm.categoryResponse) {
         Resource.Loading -> {
 

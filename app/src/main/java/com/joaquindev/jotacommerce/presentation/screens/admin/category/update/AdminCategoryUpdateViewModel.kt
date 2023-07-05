@@ -1,14 +1,15 @@
-package com.joaquindev.jotacommerce.presentation.screens.admin.category.create
+package com.joaquindev.jotacommerce.presentation.screens.admin.category.update
 
 import android.content.Context
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.CategoriesUseCase
-import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.mapper.toCategory
+import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.mapper.toCategory
 import com.joaquindev.jotacommerce.presentation.utils.ComposeFileProvider
 import com.joaquindev.jotacommerce.presentation.utils.ResultingActivityHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,16 +21,29 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AdminCategoryCreateViewModel @Inject constructor(
+class AdminCategoryUpdateViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
     private val categoryUseCase: CategoriesUseCase,
     @ApplicationContext val context:Context
 ) : ViewModel() {
 
-    var state by mutableStateOf(AdminCategoryCreateState())
+    var state by mutableStateOf(AdminCategoryUpdateState())
     private set
 //images
     var file: File? =null
     val resultingActivityHandler = ResultingActivityHandler()
+
+    val data = savedStateHandle.get<String>("category")
+
+    val category = Category.fromJson(data!!)
+
+    init {
+        state=state.copy(
+            name = category.name,
+            image = category.image!!,
+            description = category.description
+        )
+    }
 
     var categoryResponse by mutableStateOf<Resource<Category>?>(null)
 
@@ -64,8 +78,5 @@ class AdminCategoryCreateViewModel @Inject constructor(
         state = state.copy(description = description)
     }
 
-    fun clearForm(){
-        state= state.copy(name = "", description = "" ,image="")
-        categoryResponse = null
-    }
+
 }

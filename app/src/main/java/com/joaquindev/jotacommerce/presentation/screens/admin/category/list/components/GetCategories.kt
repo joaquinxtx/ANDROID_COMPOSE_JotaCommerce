@@ -1,28 +1,34 @@
-package com.joaquindev.jotacommerce.presentation.screens.admin.category.create.components
+package com.joaquindev.jotacommerce.presentation.screens.admin.category.list.components
 
-
+import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
-
+import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
-import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.AdminCategoryCreateViewModel
-import com.joaquindev.jotacommerce.presentation.screens.profile.update.ProfileUpdateViewModel
+import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun CreateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
-    when (val response = vm.categoryResponse) {
+fun GetCategory(
+    navController: NavHostController,
+    vm: AdminCategoryListViewModel = hiltViewModel(),
+    paddingValues: PaddingValues
+) {
+    when (val response = vm.categoriesResponse) {
         Resource.Loading -> {
 
             ProgressBar()
         }
 
         is Resource.Success -> {
-            vm.clearForm()
-            Toast.makeText(LocalContext.current, "Los datos fueron actualizados", Toast.LENGTH_LONG)
-                .show()
+            AdminCategoryListContent(
+                categories = response.data,
+                paddingValues = paddingValues,
+                navController = navController
+            )
 
         }
         is Resource.Failure -> {

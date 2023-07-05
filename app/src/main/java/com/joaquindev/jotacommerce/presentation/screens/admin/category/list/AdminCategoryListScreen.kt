@@ -12,8 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
-import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.components.AdminCategoryListContent
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_green
+import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.components.GetCategory
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
@@ -32,6 +31,7 @@ fun AdminCategoryListScreen(navController: NavHostController) {
             Icon(imageVector = Icons.Default.Add, contentDescription = "")
         }
     }) {
-        AdminCategoryListContent(paddingValues = it)
+        GetCategory(paddingValues = it, navController = navController)
     }
+
 }

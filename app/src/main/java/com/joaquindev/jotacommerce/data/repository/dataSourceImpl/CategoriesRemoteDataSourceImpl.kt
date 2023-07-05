@@ -12,7 +12,8 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Response
 import java.io.File
 
-class CategoriesRemoteDataSourceImpl(private val categoryService: CategoryService):CategoriesRemoteDataSource {
+class CategoriesRemoteDataSourceImpl(private val categoryService: CategoryService) :
+    CategoriesRemoteDataSource {
     override suspend fun create(category: Category, file: File): Response<Category> {
         val connection = withContext(Dispatchers.IO) {
             file.toURI().toURL().openConnection()
@@ -21,16 +22,14 @@ class CategoriesRemoteDataSourceImpl(private val categoryService: CategoryServic
         val contentType = "text/plain"
         val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
         val fileFormData = MultipartBody.Part.createFormData("file", file.name, requestFile)
-        val nameData =category.name.toRequestBody(contentType.toMediaTypeOrNull())
-        val descriptionData =category.description.toRequestBody(contentType.toMediaTypeOrNull())
+        val nameData = category.name.toRequestBody(contentType.toMediaTypeOrNull())
+        val descriptionData = category.description.toRequestBody(contentType.toMediaTypeOrNull())
 
 
-        return  categoryService.create(fileFormData,nameData,descriptionData)
+        return categoryService.create(fileFormData, nameData, descriptionData)
     }
 
-    override suspend fun getCategories(): Response<Category> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getCategories(): Response<List<Category>> = categoryService.getCategories()
 
     override suspend fun update(id: String, category: Category): Response<Category> {
         TODO("Not yet implemented")

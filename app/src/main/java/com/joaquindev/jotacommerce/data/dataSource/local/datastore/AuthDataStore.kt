@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.data.datastore
+package com.joaquindev.jotacommerce.data.dataSource.local.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

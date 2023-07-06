@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.data.service
+package com.joaquindev.jotacommerce.data.dataSource.remote.service
 
 import com.joaquindev.jotacommerce.domain.model.Category
 import okhttp3.MultipartBody
@@ -33,7 +33,7 @@ interface CategoryService {
     ): Response<Category>
 
     @Multipart
-    @PUT("categories/{id}")
+    @PUT("categories/upload/{id}")
     suspend fun updateWithImage(
         @Part file: MultipartBody.Part,
         @Path("id") id: String,

@@ -2,10 +2,10 @@ package com.joaquindev.jotacommerce.di
 
 
 import com.joaquindev.jotacommerce.core.Config
-import com.joaquindev.jotacommerce.data.datastore.AuthDataStore
-import com.joaquindev.jotacommerce.data.service.AuthService
-import com.joaquindev.jotacommerce.data.service.CategoryService
-import com.joaquindev.jotacommerce.data.service.UsersService
+import com.joaquindev.jotacommerce.data.dataSource.local.datastore.AuthDataStore
+import com.joaquindev.jotacommerce.data.dataSource.remote.service.AuthService
+import com.joaquindev.jotacommerce.data.dataSource.remote.service.CategoryService
+import com.joaquindev.jotacommerce.data.dataSource.remote.service.UsersService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

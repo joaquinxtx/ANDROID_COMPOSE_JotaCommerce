@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.data.service
+package com.joaquindev.jotacommerce.data.dataSource.remote.service
 
 import com.joaquindev.jotacommerce.domain.model.AuthResponse
 import com.joaquindev.jotacommerce.domain.model.User

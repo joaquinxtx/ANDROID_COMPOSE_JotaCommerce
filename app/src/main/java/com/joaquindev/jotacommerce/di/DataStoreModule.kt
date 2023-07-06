@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.joaquindev.jotacommerce.core.Config.AUTH_PREFERENCE
-import com.joaquindev.jotacommerce.data.datastore.AuthDataStore
+import com.joaquindev.jotacommerce.data.dataSource.local.datastore.AuthDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

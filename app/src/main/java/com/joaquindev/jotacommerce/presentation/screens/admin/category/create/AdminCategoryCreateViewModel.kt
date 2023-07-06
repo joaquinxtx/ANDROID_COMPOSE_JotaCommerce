@@ -22,22 +22,23 @@ import javax.inject.Inject
 @HiltViewModel
 class AdminCategoryCreateViewModel @Inject constructor(
     private val categoryUseCase: CategoriesUseCase,
-    @ApplicationContext val context:Context
+    @ApplicationContext val context: Context
 ) : ViewModel() {
 
     var state by mutableStateOf(AdminCategoryCreateState())
-    private set
-//images
-    var file: File? =null
+        private set
+
+    //images
+    var file: File? = null
     val resultingActivityHandler = ResultingActivityHandler()
 
     var categoryResponse by mutableStateOf<Resource<Category>?>(null)
 
-    fun createCategory()= viewModelScope.launch {
-        if(file != null){
-        categoryResponse = Resource.Loading
-        val result = categoryUseCase.createCategory(state.toCategory(), file!!)
-            categoryResponse =result
+    fun createCategory() = viewModelScope.launch {
+        if (file != null) {
+            categoryResponse = Resource.Loading
+            val result = categoryUseCase.createCategory(state.toCategory(), file!!)
+            categoryResponse = result
 
         }
     }
@@ -49,6 +50,7 @@ class AdminCategoryCreateViewModel @Inject constructor(
             state = state.copy(image = result.toString())
         }
     }
+
     fun takePhoto() = viewModelScope.launch {
         val result = resultingActivityHandler.takePicturePreview()
         if (result != null) {
@@ -60,12 +62,13 @@ class AdminCategoryCreateViewModel @Inject constructor(
     fun onNameInput(name: String) {
         state = state.copy(name = name)
     }
+
     fun onDescriptionInput(description: String) {
         state = state.copy(description = description)
     }
 
-    fun clearForm(){
-        state= state.copy(name = "", description = "" ,image="")
+    fun clearForm() {
+        state = state.copy(name = "", description = "", image = "")
         categoryResponse = null
     }
 }

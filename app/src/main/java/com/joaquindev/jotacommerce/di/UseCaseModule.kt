@@ -4,9 +4,7 @@ import com.joaquindev.jotacommerce.domain.repository.AuthRepository
 import com.joaquindev.jotacommerce.domain.repository.CategoriesRepository
 import com.joaquindev.jotacommerce.domain.repository.UserRepository
 import com.joaquindev.jotacommerce.domain.useCase.auth.*
-import com.joaquindev.jotacommerce.domain.useCase.catgeories.CategoriesUseCase
-import com.joaquindev.jotacommerce.domain.useCase.catgeories.CreateCategoryUseCase
-import com.joaquindev.jotacommerce.domain.useCase.catgeories.GetCategoriesUseCase
+import com.joaquindev.jotacommerce.domain.useCase.catgeories.*
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserWithImageUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UsersUseCase
@@ -39,6 +37,8 @@ object UseCaseModule {
     @Provides
     fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository)= CategoriesUseCase(
         createCategory= CreateCategoryUseCase(categoriesRepository),
-        getCategories = GetCategoriesUseCase(categoriesRepository)
+        getCategories = GetCategoriesUseCase(categoriesRepository),
+        updateCategory = UpdateCategoryUseCase(categoriesRepository),
+        updateCategoryWidthImage = UpdateCategoryWidthImageUseCase(categoriesRepository)
     )
 }

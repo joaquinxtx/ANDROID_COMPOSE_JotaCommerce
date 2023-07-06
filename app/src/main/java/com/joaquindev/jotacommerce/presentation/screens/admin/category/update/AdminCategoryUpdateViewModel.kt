@@ -45,15 +45,32 @@ class AdminCategoryUpdateViewModel @Inject constructor(
         )
     }
 
+    fun onUpdate(){
+        if (file!=null){
+            updateCategoryWidthImage()
+        }else{
+            updateCategory()
+        }
+    }
+
     var categoryResponse by mutableStateOf<Resource<Category>?>(null)
 
-    fun createCategory()= viewModelScope.launch {
-        if(file != null){
+    private fun updateCategory() = viewModelScope.launch {
+
         categoryResponse = Resource.Loading
-        val result = categoryUseCase.createCategory(state.toCategory(), file!!)
+        val result = categoryUseCase.updateCategory( id = category.id ?: "",state.toCategory())
             categoryResponse =result
 
-        }
+
+    }
+
+    private fun updateCategoryWidthImage() = viewModelScope.launch {
+
+        categoryResponse = Resource.Loading
+        val result = categoryUseCase.updateCategoryWidthImage( id = category.id ?: "",state.toCategory(), file!!)
+            categoryResponse =result
+
+
     }
 
     fun pickImage() = viewModelScope.launch {

@@ -8,10 +8,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
-import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.AdminCategoryCreateViewModel
+import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.AdminCategoryUpdateViewModel
 
 @Composable
-fun UpdateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
+fun UpdateCategory(vm: AdminCategoryUpdateViewModel = hiltViewModel()) {
     when (val response = vm.categoryResponse) {
         Resource.Loading -> {
 
@@ -19,7 +19,7 @@ fun UpdateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
         }
 
         is Resource.Success -> {
-            vm.clearForm()
+
             Toast.makeText(LocalContext.current, "Los datos fueron actualizados", Toast.LENGTH_LONG)
                 .show()
 

@@ -1,7 +1,7 @@
-package com.joaquindev.jotacommerce.data.repository.dataSourceImpl
+package com.joaquindev.jotacommerce.data.dataSource.remote
 
-import com.joaquindev.jotacommerce.data.repository.dataSource.AuthRemoteDataSource
-import com.joaquindev.jotacommerce.data.service.AuthService
+import com.joaquindev.jotacommerce.data.dataSource.remote.AuthRemoteDataSource
+import com.joaquindev.jotacommerce.data.dataSource.remote.service.AuthService
 import com.joaquindev.jotacommerce.domain.model.AuthResponse
 import com.joaquindev.jotacommerce.domain.model.User
 

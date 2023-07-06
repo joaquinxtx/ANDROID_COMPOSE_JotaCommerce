@@ -138,9 +138,9 @@ fun AdminCategoryUpdateContent(
                 Spacer(modifier = Modifier.height(10.dp))
                 DefaultButton(modifier = Modifier
                     .fillMaxWidth()
-                    .height(50.dp), text = "CREAR CATEGORIA",
+                    .height(50.dp), text = "ACTUALIZAR CATEGORIA",
                     onClick = {
-                    vm.createCategory()
+                    vm.onUpdate()
                 })
 
             }

@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.data.repository.dataSource
+package com.joaquindev.jotacommerce.data.dataSource.remote
 
 
 import com.joaquindev.jotacommerce.domain.model.User

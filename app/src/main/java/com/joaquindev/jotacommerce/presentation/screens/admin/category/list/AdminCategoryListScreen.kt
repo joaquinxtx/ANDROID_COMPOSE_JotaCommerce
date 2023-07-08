@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
+import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.components.DeleteCategory
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.components.GetCategory
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
@@ -33,5 +34,6 @@ fun AdminCategoryListScreen(navController: NavHostController) {
     }) {
         GetCategory(paddingValues = it, navController = navController)
     }
+    DeleteCategory()
 
 }

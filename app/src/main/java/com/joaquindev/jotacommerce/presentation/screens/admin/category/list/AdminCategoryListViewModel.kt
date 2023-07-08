@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.admin.category.list
 
+import android.util.Log
 import androidx.compose.runtime.*
 
 import androidx.lifecycle.ViewModel
@@ -18,8 +19,12 @@ class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCa
     ViewModel() {
 
     var categoriesResponse by mutableStateOf<Resource<List<Category>>?>(value = null)
+        private set
 
-    init{
+    var deleteCategoryResponse by mutableStateOf<Resource<Unit>?>(value = null)
+        private set
+
+    init {
         getCategories()
     }
 
@@ -27,8 +32,15 @@ class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCa
     fun getCategories() = viewModelScope.launch {
         categoriesResponse = Resource.Loading
         categoriesUseCase.getCategories().collect() {
-                categoriesResponse = it
+            Log.d("getCategories", "data : $it")
+            categoriesResponse = it
         }
+    }
+
+    fun deleteCategory(id: String) = viewModelScope.launch {
+        deleteCategoryResponse = Resource.Loading
+        val result = categoriesUseCase.deleteCategory(id)
+        deleteCategoryResponse = result
     }
 
 }

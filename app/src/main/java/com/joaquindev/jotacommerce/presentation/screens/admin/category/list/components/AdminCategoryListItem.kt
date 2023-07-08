@@ -15,13 +15,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCategoryScreen
+import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun AdminCategoryListItem(navController: NavHostController, category: Category) {
+fun AdminCategoryListItem(navController: NavHostController, category: Category , vm:AdminCategoryListViewModel = hiltViewModel()) {
     Column(
         Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
@@ -57,7 +59,12 @@ fun AdminCategoryListItem(navController: NavHostController, category: Category) 
 
                 }
                 Spacer(modifier = Modifier.height(5.dp))
-                Icon(imageVector = Icons.Outlined.Delete, contentDescription = "")
+                IconButton(onClick = {
+                    vm.deleteCategory(category.id!!)
+                }) {
+                    Icon(imageVector = Icons.Outlined.Delete, contentDescription = "")
+
+                }
             }
 
         }

@@ -4,5 +4,6 @@ data class CategoriesUseCase(
     val createCategory: CreateCategoryUseCase,
     val getCategories: GetCategoriesUseCase,
     val updateCategory: UpdateCategoryUseCase,
-    val updateCategoryWidthImage: UpdateCategoryWidthImageUseCase
+    val updateCategoryWidthImage: UpdateCategoryWidthImageUseCase,
+    val deleteCategory: DeleteCategoryUseCase
 )

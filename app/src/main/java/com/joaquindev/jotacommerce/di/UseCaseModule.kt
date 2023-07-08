@@ -39,6 +39,8 @@ object UseCaseModule {
         createCategory= CreateCategoryUseCase(categoriesRepository),
         getCategories = GetCategoriesUseCase(categoriesRepository),
         updateCategory = UpdateCategoryUseCase(categoriesRepository),
-        updateCategoryWidthImage = UpdateCategoryWidthImageUseCase(categoriesRepository)
+        updateCategoryWidthImage = UpdateCategoryWidthImageUseCase(categoriesRepository),
+        deleteCategory = DeleteCategoryUseCase(categoriesRepository)
+
     )
 }

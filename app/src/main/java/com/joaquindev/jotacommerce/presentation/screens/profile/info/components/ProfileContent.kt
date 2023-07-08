@@ -25,7 +25,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 @Composable
 fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewModel(), navController: NavHostController) {
-    val activity: Activity? = LocalContext.current as? Activity
+
 
 
     Box(
@@ -36,7 +36,7 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
         BackgroundImageProfile()
 
         Column {
-            ProfileIcon(vm = vm, activity = activity)
+            ProfileIcon(vm = vm)
             Text(
                 modifier = Modifier
                     .padding(vertical = 25.dp)

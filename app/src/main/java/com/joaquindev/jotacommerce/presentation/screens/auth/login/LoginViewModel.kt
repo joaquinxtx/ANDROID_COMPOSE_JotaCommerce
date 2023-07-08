@@ -1,6 +1,7 @@
 package com.joaquindev.jotacommerce.presentation.screens.auth.login
 
 
+import android.util.Log
 import android.util.Patterns
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
@@ -18,65 +19,62 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
+class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
 
-    var stateForm by mutableStateOf(LoginState())
-        private set
-
-    var isValidForm by mutableStateOf(false)
+    var state by mutableStateOf(LoginState())
         private set
 
     var errorMessage by mutableStateOf("")
 
-    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
-        authUseCase.saveSession(authResponse)
-    }
-
-    fun getSessionData()= viewModelScope.launch {
-        authUseCase.getSessionData().collect(){data ->
-            if (!data.token.isNullOrBlank()){
-               loginResponse = Resource.Success(data)
-            }
-
-        }
-    }
+    // LOGIN RESPONSE
+    var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
+        private set
 
     init {
         getSessionData()
     }
 
-    //LOGIN RESPONSE
-    var loginResponse by mutableStateOf<Resource<AuthResponse>?>(value = null)
-        private set
+    fun getSessionData() = viewModelScope.launch {
+        authUseCase.getSessionData().collect() { data ->
+            Log.d("LoginViewModel", "Data: ${data.toJson()}")
+            if (!data.token.isNullOrBlank()) {
+                loginResponse = Resource.Success(data)
+            }
+        }
+    }
+
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
 
     fun login() = viewModelScope.launch {
-        if (isValidForm2()) {
-            loginResponse = Resource.Loading
-            val result = authUseCase.login(stateForm.email, stateForm.password)
-            loginResponse = result
 
+        if (isValidForm()) {
+            loginResponse = Resource.Loading // ESPERANDO
+            val result = authUseCase.login(state.email, state.password) // RETORNA UNA RESPUESTA
+            loginResponse = result // EXITOSA / ERROR
         }
     }
 
     fun onEmailInput(email: String) {
-        stateForm = stateForm.copy(email = email)
+        state = state.copy(email = email)
     }
 
     fun onPasswordInput(password: String) {
-        stateForm = stateForm.copy(password = password)
+        state = state.copy(password = password)
     }
 
 
-    fun isValidForm2(): Boolean {
-        if (!Patterns.EMAIL_ADDRESS.matcher(stateForm.email).matches()) {
+    fun isValidForm(): Boolean  {
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
             errorMessage = "El email no es valido"
             return false
-        } else if (stateForm.password.length < 6) {
-            errorMessage = "La contraseña debe tener al menos 6 caracterres"
+        }
+        else if (state.password.length < 6) {
+            errorMessage = "La contraseña debe tener al menos 6 caracteres"
             return false
         }
         return true
-
     }
-
 }

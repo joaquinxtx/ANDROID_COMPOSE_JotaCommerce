@@ -34,7 +34,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.*
 @Composable
 fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewModel()) {
 
-    val state = vm.stateForm
+    val state = vm.state
     val context = LocalContext.current
 
     LaunchedEffect(key1 = vm.errorMessage) {

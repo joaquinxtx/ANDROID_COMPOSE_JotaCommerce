@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.admin.category.list.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -23,11 +24,20 @@ import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCat
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun AdminCategoryListItem(navController: NavHostController, category: Category , vm:AdminCategoryListViewModel = hiltViewModel()) {
+fun AdminCategoryListItem(
+    navController: NavHostController,
+    category: Category,
+    vm: AdminCategoryListViewModel = hiltViewModel()
+) {
     Column(
         Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
             .height(90.dp)
+            .clickable {
+                navController.navigate(
+                    route = AdminCategoryScreen.ProductList.passCategory(category.toJson())
+                )
+            }
     ) {
 
         Row() {
@@ -50,10 +60,12 @@ fun AdminCategoryListItem(navController: NavHostController, category: Category ,
             Spacer(modifier = Modifier.width(15.dp))
             Column() {
                 IconButton(onClick = {
-                    navController.navigate(route =
-                    AdminCategoryScreen
-                        .CategoryUpdate
-                        .passCategory(category.toJson()))
+                    navController.navigate(
+                        route =
+                        AdminCategoryScreen
+                            .CategoryUpdate
+                            .passCategory(category.toJson())
+                    )
                 }) {
                     Icon(imageVector = Icons.Outlined.Edit, contentDescription = "")
 

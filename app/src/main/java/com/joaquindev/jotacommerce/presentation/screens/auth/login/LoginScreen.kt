@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.presentation.screens.auth
+package com.joaquindev.jotacommerce.presentation.screens.auth.login
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable

@@ -1,13 +1,9 @@
 package com.joaquindev.jotacommerce.di
 
-import com.joaquindev.jotacommerce.data.dataSource.remote.AuthRemoteDataSource
-import com.joaquindev.jotacommerce.data.dataSource.remote.CategoriesRemoteDataSource
-import com.joaquindev.jotacommerce.data.dataSource.remote.UsersRemoteDataSource
-import com.joaquindev.jotacommerce.data.dataSource.remote.AuthRemoteDataSourceImpl
-import com.joaquindev.jotacommerce.data.dataSource.remote.CategoriesRemoteDataSourceImpl
-import com.joaquindev.jotacommerce.data.dataSource.remote.UsersRemoteDataSourceImpl
+import com.joaquindev.jotacommerce.data.dataSource.remote.*
 import com.joaquindev.jotacommerce.data.dataSource.remote.service.AuthService
 import com.joaquindev.jotacommerce.data.dataSource.remote.service.CategoryService
+import com.joaquindev.jotacommerce.data.dataSource.remote.service.ProductService
 import com.joaquindev.jotacommerce.data.dataSource.remote.service.UsersService
 import dagger.Module
 import dagger.Provides
@@ -29,5 +25,8 @@ object RemoteDataModule {
     @Provides
     fun provideCategoriesRemoteDataSource(categoryService: CategoryService): CategoriesRemoteDataSource =
         CategoriesRemoteDataSourceImpl(categoryService)
+    @Provides
+    fun provideProductRemoteDataSource(productService: ProductService): ProductRemoteDataSource =
+        ProductRemoteDataSourceImpl(productService)
 
 }

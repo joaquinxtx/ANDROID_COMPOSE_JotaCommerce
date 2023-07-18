@@ -12,7 +12,7 @@ import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminScr
 fun AdminBottomBar(navController: NavHostController) {
 
     val screen = listOf(
-        AdminScreen.ProductList,
+//        AdminScreen.ProductList,
         AdminScreen.Profile,
         AdminScreen.CategoryList,
     )

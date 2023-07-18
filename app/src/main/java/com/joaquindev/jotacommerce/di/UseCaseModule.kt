@@ -2,9 +2,12 @@ package com.joaquindev.jotacommerce.di
 
 import com.joaquindev.jotacommerce.domain.repository.AuthRepository
 import com.joaquindev.jotacommerce.domain.repository.CategoriesRepository
+import com.joaquindev.jotacommerce.domain.repository.ProductRepository
 import com.joaquindev.jotacommerce.domain.repository.UserRepository
 import com.joaquindev.jotacommerce.domain.useCase.auth.*
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.*
+import com.joaquindev.jotacommerce.domain.useCase.product.CreateProductUseCase
+import com.joaquindev.jotacommerce.domain.useCase.product.ProductUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserWithImageUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UsersUseCase
@@ -42,5 +45,9 @@ object UseCaseModule {
         updateCategoryWidthImage = UpdateCategoryWidthImageUseCase(categoriesRepository),
         deleteCategory = DeleteCategoryUseCase(categoriesRepository)
 
+    )
+    @Provides
+    fun provideProductUseCase(productRepository: ProductRepository)= ProductUseCase(
+        createProduct = CreateProductUseCase(productRepository)
     )
 }

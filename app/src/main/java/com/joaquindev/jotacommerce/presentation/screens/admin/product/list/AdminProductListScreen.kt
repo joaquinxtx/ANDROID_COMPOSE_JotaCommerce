@@ -15,6 +15,7 @@ import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components.AdminProductListContent
+import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components.GetProducts
 import com.joaquindev.jotacommerce.presentation.screens.client.product.list.components.ClientProductListContent
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
@@ -42,6 +43,6 @@ fun AdminProductListScreen(navController: NavHostController, categoryParam: Stri
             }
         }
     ) {
-        AdminProductListContent(paddingValues = it)
+        GetProducts(navController = navController, paddingValues =it )
     }
 }

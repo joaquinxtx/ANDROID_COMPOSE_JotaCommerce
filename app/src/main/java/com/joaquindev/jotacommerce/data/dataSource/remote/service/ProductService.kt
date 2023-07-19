@@ -15,8 +15,10 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ProductService {
-    @GET("products")
-    suspend fun getProducts(): Response<List<Product>>
+    @GET("products/category/{id_category}")
+    suspend fun findByCategory(
+        @Path("id_category")idCategory:String
+    ): Response<List<Product>>
 
     @Multipart
     @POST("products")

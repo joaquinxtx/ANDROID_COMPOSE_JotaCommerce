@@ -11,20 +11,20 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Response
 import java.io.File
 
-class ProductRemoteDataSourceImpl(private val productService: ProductService): ProductRemoteDataSource {
-    override fun findAll(): Response<List<Product>> {
+class ProductRemoteDataSourceImpl(private val productService: ProductService) :
+    ProductRemoteDataSource {
+    override suspend fun findAll(): Response<List<Product>> {
         TODO("Not yet implemented")
     }
 
-    override fun findAllByCategory(idCategory: String): Response<List<Product>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun findAllByCategory(idCategory: String): Response<List<Product>> =
+        productService.findByCategory(idCategory)
 
     override suspend fun create(product: Product, files: List<File>): Response<Product> {
         val images = arrayOfNulls<MultipartBody.Part>(files.size)
-            val contentType = "text/plain"
+        val contentType = "text/plain"
 
-        files.forEachIndexed{index, file ->
+        files.forEachIndexed { index, file ->
             val connection = withContext(Dispatchers.IO) {
                 file.toURI().toURL().openConnection()
             }
@@ -40,7 +40,7 @@ class ProductRemoteDataSourceImpl(private val productService: ProductService): P
         val priceData = product.price.toString().toRequestBody(contentType.toMediaTypeOrNull())
 
 
-        return productService.create(images, nameData, descriptionData,idCategoryData,priceData)
+        return productService.create(images, nameData, descriptionData, idCategoryData, priceData)
     }
 
     override suspend fun update(

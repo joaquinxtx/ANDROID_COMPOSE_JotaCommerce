@@ -6,21 +6,26 @@ import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.domain.repository.ProductRepository
 import com.joaquindev.jotacommerce.domain.util.ResponseToRequest
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.io.File
 
-class ProductRepositoryImpl(private val productRemoteDataSource: ProductRemoteDataSource) :
+class ProductRepositoryImpl(private val remoteDataSource: ProductRemoteDataSource) :
     ProductRepository {
     override fun findAll(): Flow<Resource<List<Product>>> {
         TODO("Not yet implemented")
     }
 
-    override fun findAllByCategory(idCategory: String): Flow<Resource<List<Product>>> {
-        TODO("Not yet implemented")
+    override fun findAllByCategory(idCategory: String): Flow<Resource<List<Product>>> = flow {
+        emit(
+            ResponseToRequest.send(
+                remoteDataSource.findAllByCategory(idCategory = idCategory)
+            )
+        )
     }
 
     override suspend fun create(product: Product, files: List<File>): Resource<Product> =
         ResponseToRequest.send(
-            productRemoteDataSource.create(product, files)
+            remoteDataSource.create(product, files)
         )
 
     override suspend fun update(

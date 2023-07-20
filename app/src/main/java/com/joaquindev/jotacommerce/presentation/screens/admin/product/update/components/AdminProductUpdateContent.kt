@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.presentation.screens.admin.product.create.components
+package com.joaquindev.jotacommerce.presentation.screens.admin.product.update.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -31,14 +31,15 @@ import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.AdminProductCreateViewModel
+import com.joaquindev.jotacommerce.presentation.screens.admin.product.update.AdminProductUpdateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 
 @Composable
-fun AdminProductCreateContent(
+fun AdminProductUpdateContent(
     paddingValues: PaddingValues,
-    vm: AdminProductCreateViewModel = hiltViewModel(),
+    vm: AdminProductUpdateViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
     val state = vm.state
@@ -114,8 +115,7 @@ fun AdminProductCreateContent(
 
                         .clickable {
                             stateDialogImageNumber.value = 2
-                            stateDialog.value = true
-                                   },
+                            stateDialog.value = true },
                     model = state.image2,
                     contentDescription = "",
                     contentScale = ContentScale.Crop
@@ -151,7 +151,7 @@ fun AdminProductCreateContent(
         ) {
             Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
                 Text(
-                    text = vm.category.name,
+                    text = vm.product.name,
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Cafe_blue,
@@ -192,9 +192,9 @@ fun AdminProductCreateContent(
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 DefaultButton(modifier = Modifier
-                    .fillMaxWidth(), text = "CREAR PRODUCTO",
+                    .fillMaxWidth(), text = "ACTUALIZAR PRODUCTO",
                     onClick = {
-                        vm.createProduct()
+                        vm.updateProduct()
                     })
 
             }

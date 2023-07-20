@@ -10,6 +10,7 @@ import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.Ad
 import com.joaquindev.jotacommerce.presentation.screens.admin.home.HomeAdminScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.AdminProductCreateScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.AdminProductListScreen
+import com.joaquindev.jotacommerce.presentation.screens.admin.product.update.AdminProductUpdateScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.home.HomeClientScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.roles.RolesScreen
@@ -49,14 +50,14 @@ composable(
 
     }
     composable(
-            route = AdminCategoryScreen.ProductCreate.route,
-            arguments = listOf(navArgument("category") {
+            route = AdminCategoryScreen.ProductUpdate.route,
+            arguments = listOf(navArgument("product") {
                 type = NavType.StringType
             })
         ) {
-            it.arguments?.getString("category")?.let {
+            it.arguments?.getString("product")?.let {
 
-                AdminProductCreateScreen(navController, categoryParam = it )
+                AdminProductUpdateScreen(navController, productParam = it )
             }
         }
 

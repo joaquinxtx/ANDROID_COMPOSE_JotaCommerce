@@ -14,6 +14,7 @@ data class Product(
     @SerializedName("price") val price:Double,
     @SerializedName("image1") val image1:String?= null,
     @SerializedName("image2") val image2:String? = null,
+    @SerializedName("images_to_update") val imageToUpdate:List<Int>? = listOf(),
 ): Serializable{
     fun toJson():String = Gson().toJson(Product(
         id,
@@ -23,6 +24,7 @@ data class Product(
         price,
         if (!image1.isNullOrBlank()) URLEncoder.encode(image1, StandardCharsets.UTF_8.toString()) else "",
         if (!image2.isNullOrBlank()) URLEncoder.encode(image2, StandardCharsets.UTF_8.toString()) else "",
+        imageToUpdate
     ))
     companion object {
         fun fromJson(data: String): Product = Gson().fromJson(data, Product::class.java)

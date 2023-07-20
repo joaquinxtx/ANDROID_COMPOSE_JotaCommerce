@@ -1,12 +1,11 @@
 package com.joaquindev.jotacommerce.presentation.screens.admin.product.list
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -25,6 +24,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 fun AdminProductListScreen(navController: NavHostController, categoryParam: String) {
     val categoryParse = Category.fromJson(categoryParam).toJson()
     Scaffold(
+
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
@@ -43,6 +43,6 @@ fun AdminProductListScreen(navController: NavHostController, categoryParam: Stri
             }
         }
     ) {
-        GetProducts(navController = navController, paddingValues =it )
+        GetProducts(navController = navController, paddingValues = it)
     }
 }

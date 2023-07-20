@@ -6,9 +6,7 @@ import com.joaquindev.jotacommerce.domain.repository.ProductRepository
 import com.joaquindev.jotacommerce.domain.repository.UserRepository
 import com.joaquindev.jotacommerce.domain.useCase.auth.*
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.*
-import com.joaquindev.jotacommerce.domain.useCase.product.CreateProductUseCase
-import com.joaquindev.jotacommerce.domain.useCase.product.FindByCategoryUseCase
-import com.joaquindev.jotacommerce.domain.useCase.product.ProductUseCase
+import com.joaquindev.jotacommerce.domain.useCase.product.*
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserWithImageUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UsersUseCase
@@ -50,6 +48,8 @@ object UseCaseModule {
     @Provides
     fun provideProductUseCase(productRepository: ProductRepository)= ProductUseCase(
         createProduct = CreateProductUseCase(productRepository),
-        findByCategory = FindByCategoryUseCase(productRepository)
+        findByCategory = FindByCategoryUseCase(productRepository),
+        updateProduct = UpdateProductUseCase(productRepository),
+        updateProductWithImage = UpdateProductWithImageUseCase(productRepository)
     )
 }

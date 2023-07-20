@@ -27,7 +27,7 @@ import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.Admin
 
 @Composable
 fun AdminProductListItem(
-    navController:NavHostController,
+    navController: NavHostController,
     product: Product,
     vm: AdminProductListViewModel = hiltViewModel()
 ) {
@@ -59,12 +59,7 @@ fun AdminProductListItem(
             Spacer(modifier = Modifier.width(15.dp))
             Column() {
                 IconButton(onClick = {
-                    navController.navigate(
-                        route =
-                        AdminCategoryScreen
-                            .CategoryUpdate
-                            .passCategory(product.toJson())
-                    )
+                    navController.navigate(route = AdminCategoryScreen.ProductUpdate.passProduct(product.toJson()))
                 }) {
                     Icon(imageVector = Icons.Outlined.Edit, contentDescription = "")
 

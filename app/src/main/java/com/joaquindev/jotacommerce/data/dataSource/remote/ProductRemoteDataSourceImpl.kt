@@ -14,9 +14,7 @@ import java.io.File
 
 class ProductRemoteDataSourceImpl(private val productService: ProductService) :
     ProductRemoteDataSource {
-    override suspend fun findAll(): Response<List<Product>> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun findAll(): Response<List<Product>> = productService.findAll()
 
     override suspend fun findAllByCategory(idCategory: String): Response<List<Product>> =
         productService.findByCategory(idCategory)
@@ -76,7 +74,5 @@ class ProductRemoteDataSourceImpl(private val productService: ProductService) :
         return productService.updateWithImage(images,id, nameData, descriptionData, idCategoryData, priceData , imagesToUpdate)
     }
 
-    override suspend fun delete(id: String): Response<Unit> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun delete(id: String): Response<Unit>  = productService.delete(id)
 }

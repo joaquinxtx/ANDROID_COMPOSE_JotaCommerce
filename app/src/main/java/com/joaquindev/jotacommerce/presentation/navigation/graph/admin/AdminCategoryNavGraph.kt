@@ -32,10 +32,10 @@ fun NavGraphBuilder.AdminCategoryNavGraph(navController: NavHostController) {
         ) {
             it.arguments?.getString("category")?.let {
 
-                AdminCategoryUpdateScreen(navController, categoryParam = it )
+                AdminCategoryUpdateScreen(navController, categoryParam = it)
             }
         }
-composable(
+        composable(
             route = AdminCategoryScreen.ProductList.route,
             arguments = listOf(navArgument("category") {
                 type = NavType.StringType
@@ -43,23 +43,34 @@ composable(
         ) {
             it.arguments?.getString("category")?.let {
 
-                AdminProductListScreen(navController, categoryParam = it )
+                AdminProductListScreen(navController, categoryParam = it)
+            }
+        }
+        composable(
+            route = AdminCategoryScreen.ProductCreate.route,
+            arguments = listOf(navArgument("category") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("category")?.let {
+
+                AdminProductCreateScreen(navController, categoryParam = it)
             }
         }
 
 
     }
     composable(
-            route = AdminCategoryScreen.ProductUpdate.route,
-            arguments = listOf(navArgument("product") {
-                type = NavType.StringType
-            })
-        ) {
-            it.arguments?.getString("product")?.let {
+        route = AdminCategoryScreen.ProductUpdate.route,
+        arguments = listOf(navArgument("product") {
+            type = NavType.StringType
+        })
+    ) {
+        it.arguments?.getString("product")?.let {
 
-                AdminProductUpdateScreen(navController, productParam = it )
-            }
+            AdminProductUpdateScreen(navController, productParam = it)
         }
-
-
     }
+
+
+}

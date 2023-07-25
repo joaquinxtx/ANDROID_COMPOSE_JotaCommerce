@@ -45,10 +45,9 @@ class AdminProductUpdateViewModel @Inject constructor(
 
     init {
         state = state.copy(
-            id = product.id ?: "",
+
             name = product.name,
             description = product.description,
-
             idCategory = product.idCategory,
             image1 = product.image1 ?: "",
             image2 = product.image2 ?: "",
@@ -75,6 +74,10 @@ class AdminProductUpdateViewModel @Inject constructor(
             val result = productUseCase.updateProductWithImage(product.id!!, state.toProduct(), files.toList())
             productResponse = result
         }
+        files.clear()
+        file1 = null
+        file2 = null
+        state.imagesToUpdate.clear()
 
     }
 

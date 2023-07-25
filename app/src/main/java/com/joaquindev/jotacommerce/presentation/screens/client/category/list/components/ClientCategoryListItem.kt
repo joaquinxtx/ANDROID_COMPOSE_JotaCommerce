@@ -1,5 +1,7 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.category.list.components
 
+import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,11 +20,21 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.domain.model.Category
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientCategoryScreen
 
 @Composable
 fun ClientCategoryListItem(navController: NavHostController, category: Category) {
     Card(
-        modifier = Modifier.padding(bottom = 15.dp),
+        modifier = Modifier
+            .padding(bottom = 15.dp)
+            .clickable {
+                Log.d("client", "${category.toJson()}")
+                navController.navigate(
+                    route = ClientCategoryScreen.ProductList.passCategory(
+                        category.toJson()
+                    )
+                )
+            },
         elevation = CardDefaults.cardElevation(8.dp),
         shape = RoundedCornerShape(20.dp)
     ) {
@@ -34,7 +46,7 @@ fun ClientCategoryListItem(navController: NavHostController, category: Category)
                 model = category.image,
                 contentDescription = "",
 
-            )
+                )
             Text(
                 modifier = Modifier.padding(10.dp), text = category.name,
                 fontWeight = FontWeight.Bold

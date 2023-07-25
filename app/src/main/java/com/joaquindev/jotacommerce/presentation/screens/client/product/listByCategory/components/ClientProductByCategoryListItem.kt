@@ -1,6 +1,5 @@
-package com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components
+package com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -19,17 +18,16 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCategoryScreen
-import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.AdminCategoryListViewModel
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.AdminProductListViewModel
+import com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory.ClientProductByCategoryListViewModel
 
 @Composable
-fun AdminProductListItem(
+fun ClientProductByCategoryListItem(
     navController: NavHostController,
     product: Product,
-    vm: AdminProductListViewModel = hiltViewModel()
+    vm: ClientProductByCategoryListViewModel = hiltViewModel()
 ) {
     Column(
         Modifier
@@ -57,30 +55,10 @@ fun AdminProductListItem(
                 Text(text = product.price.toString(), fontSize = 17.sp)
             }
             Spacer(modifier = Modifier.width(15.dp))
-            Column() {
-                IconButton(onClick = {
-                    navController.navigate(
-                        route = AdminCategoryScreen.ProductUpdate.passProduct(
-                            product.toJson()
-                        )
-                    )
-                }) {
-                    Icon(imageVector = Icons.Outlined.Edit, contentDescription = "")
 
-                }
-                Spacer(modifier = Modifier.height(5.dp))
-                IconButton(onClick = {
-                    vm.deleteProduct(product.id ?: "")
-                }) {
-                    Icon(imageVector = Icons.Outlined.Delete, contentDescription = "")
-
-                }
-            }
 
         }
         Spacer(modifier = Modifier.height(10.dp))
         Divider(color = Color.LightGray, startIndent = 30.dp)
     }
-
-
 }

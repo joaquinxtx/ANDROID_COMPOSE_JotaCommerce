@@ -14,6 +14,7 @@ import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components.AdminProductListContent
+import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components.DeleteProduct
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components.GetProducts
 import com.joaquindev.jotacommerce.presentation.screens.client.product.list.components.ClientProductListContent
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
@@ -29,9 +30,7 @@ fun AdminProductListScreen(navController: NavHostController, categoryParam: Stri
             FloatingActionButton(
                 onClick = {
                     navController.navigate(
-                        route = AdminCategoryScreen.ProductCreate.passCategory(
-                            categoryParse
-                        )
+                        route = AdminCategoryScreen.ProductCreate.passCategory(categoryParse)
                     )
                 },
                 modifier = Modifier.padding(bottom = 10.dp),
@@ -44,5 +43,6 @@ fun AdminProductListScreen(navController: NavHostController, categoryParam: Stri
         }
     ) {
         GetProducts(navController = navController, paddingValues = it)
+        DeleteProduct()
     }
 }

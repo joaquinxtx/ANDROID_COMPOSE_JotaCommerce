@@ -1,15 +1,15 @@
-package com.joaquindev.jotacommerce.presentation.screens.client.product
+package com.joaquindev.jotacommerce.presentation.screens.client.product.list
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import com.joaquindev.jotacommerce.presentation.screens.client.category.list.components.ClientCategoryListContent
-import com.joaquindev.jotacommerce.presentation.screens.client.product.list.components.ClientProductListContent
+import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.presentation.screens.client.product.list.components.GetProducts
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ClientProductListScreen(){
+fun ClientProductListScreen(navController:NavHostController){
     Scaffold() {
-        ClientProductListContent(paddingValues = it)
+        GetProducts(navController = navController , paddingValues =it )
     }
 }

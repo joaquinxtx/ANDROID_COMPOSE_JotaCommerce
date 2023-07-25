@@ -5,6 +5,7 @@ import com.joaquindev.jotacommerce.data.repository.CategoriesRepositoryImpl
 import com.joaquindev.jotacommerce.data.repository.UsersRepositoryImpl
 import com.joaquindev.jotacommerce.data.dataSource.local.AuthLocalDataSource
 import com.joaquindev.jotacommerce.data.dataSource.local.CategoriesLocalDataSource
+import com.joaquindev.jotacommerce.data.dataSource.local.ProductsLocalDataSource
 import com.joaquindev.jotacommerce.data.dataSource.remote.AuthRemoteDataSource
 import com.joaquindev.jotacommerce.data.dataSource.remote.CategoriesRemoteDataSource
 import com.joaquindev.jotacommerce.data.dataSource.remote.ProductRemoteDataSource
@@ -46,8 +47,9 @@ object RepositoryModule {
 
     @Provides
     fun provideProductRepository(
-        productRemoteDataSource: ProductRemoteDataSource
+        productRemoteDataSource: ProductRemoteDataSource,
+        productsLocalDataSource: ProductsLocalDataSource
 
-    ): ProductRepository = ProductRepositoryImpl(productRemoteDataSource)
+    ): ProductRepository = ProductRepositoryImpl(productRemoteDataSource,productsLocalDataSource)
 
 }

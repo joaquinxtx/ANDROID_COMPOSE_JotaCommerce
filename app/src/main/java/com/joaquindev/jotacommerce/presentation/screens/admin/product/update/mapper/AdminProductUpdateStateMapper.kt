@@ -6,7 +6,7 @@ import com.joaquindev.jotacommerce.presentation.screens.admin.product.update.Adm
 
 fun AdminProductUpdateState.toProduct(): Product {
     return Product(
-        id = id,
+
         name = name,
         description = description,
         idCategory = idCategory,

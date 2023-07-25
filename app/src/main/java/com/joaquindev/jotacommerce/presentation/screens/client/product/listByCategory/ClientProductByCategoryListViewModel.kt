@@ -1,6 +1,7 @@
-package com.joaquindev.jotacommerce.presentation.screens.admin.product.list
+package com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory
 
 
+import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -10,12 +11,11 @@ import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.domain.useCase.product.ProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AdminProductListViewModel @Inject constructor(
+class ClientProductByCategoryListViewModel @Inject constructor(
     private val productUseCase: ProductUseCase,
     private val savedStateHandle: SavedStateHandle
 ) :
@@ -27,8 +27,6 @@ class AdminProductListViewModel @Inject constructor(
     var productsResponse by mutableStateOf<Resource<List<Product>>?>(null)
         private set
 
-    var productsDeleteResponse by mutableStateOf<Resource<Unit>?>(null)
-        private set
 
     init {
         getProducts()
@@ -36,14 +34,20 @@ class AdminProductListViewModel @Inject constructor(
 
     private fun getProducts() = viewModelScope.launch {
         productsResponse = Resource.Loading
-        productUseCase.findByCategory(category.id!!).collect() {
-            productsResponse = it
+        productUseCase.findByCategory(category.id!!).collect { resource ->
+            productsResponse = resource // Actualizar productsResponse con el resultado de la llamada
+            when (resource) {
+                is Resource.Loading -> {
+                    Log.d("ClientProductByCatefory", "Data: Loading")
+                }
+                is Resource.Success -> {
+                    Log.d("ClientProductByCatefory", "Data: ${resource.data}")
+                }
+                is Resource.Failure-> {
+                    Log.d("ClientProductByCatefory", "Error: ${resource.message}")
+                }
+            }
         }
     }
 
-    fun deleteProduct(id: String) = viewModelScope.launch {
-        productsDeleteResponse = Resource.Loading
-        val result = productUseCase.deleteProduct(id)
-        productsDeleteResponse = result
-    }
 }

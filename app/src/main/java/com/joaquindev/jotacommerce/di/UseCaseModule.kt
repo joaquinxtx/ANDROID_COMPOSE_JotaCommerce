@@ -50,6 +50,8 @@ object UseCaseModule {
         createProduct = CreateProductUseCase(productRepository),
         findByCategory = FindByCategoryUseCase(productRepository),
         updateProduct = UpdateProductUseCase(productRepository),
-        updateProductWithImage = UpdateProductWithImageUseCase(productRepository)
+        updateProductWithImage = UpdateProductWithImageUseCase(productRepository),
+        deleteProduct = DeleteProductUseCase(productRepository),
+        findAll = FindAllUseCase(productRepository)
     )
 }

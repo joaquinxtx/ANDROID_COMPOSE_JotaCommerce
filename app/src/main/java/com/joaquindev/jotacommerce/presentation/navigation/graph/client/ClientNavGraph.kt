@@ -9,7 +9,8 @@ import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.graph.profile.ProfileNavGraph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.category.list.ClientCategoryListScreen
-import com.joaquindev.jotacommerce.presentation.screens.client.product.ClientProductListScreen
+
+import com.joaquindev.jotacommerce.presentation.screens.client.product.list.ClientProductListScreen
 import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileScreen
 
 @Composable
@@ -21,7 +22,7 @@ fun ClientNavGraph(navController: NavHostController) {
     ) {
         composable(route = ClientScreen.ProductList.route) {
 
-            ClientProductListScreen()
+            ClientProductListScreen(navController)
 
         }
         composable(route = ClientScreen.CategoryList.route) {
@@ -33,5 +34,6 @@ fun ClientNavGraph(navController: NavHostController) {
         }
 
         ProfileNavGraph(navController)
+        ClientCategoryNavGraph(navController)
     }
 }

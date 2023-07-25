@@ -20,6 +20,10 @@ interface ProductService {
         @Path("id_category")idCategory:String
     ): Response<List<Product>>
 
+
+    @GET("products")
+    suspend fun findAll(): Response<List<Product>>
+
     @Multipart
     @POST("products")
     suspend fun create(
@@ -47,6 +51,11 @@ interface ProductService {
         @Path("id")id:String,
         @Body product: Product
     ): Response<Product>
+
+@DELETE("products/{id}")
+    suspend fun delete(
+        @Path("id")id:String
+    ): Response<Unit>
 
 
 }

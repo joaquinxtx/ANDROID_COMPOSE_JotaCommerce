@@ -95,6 +95,13 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
     implementation("androidx.room:room-ktx:2.5.0")
+
+    //Accompanist
+    implementation "com.google.accompanist:accompanist-pager:0.22.0-rc"
+
+    // If using indicators, also depend on
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.22.0-rc"
+
 }
 
 kapt {

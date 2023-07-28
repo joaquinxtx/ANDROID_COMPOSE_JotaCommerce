@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -20,6 +21,7 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCategoryScreen
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientProductScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.AdminProductListViewModel
 import com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory.ClientProductByCategoryListViewModel
 
@@ -33,6 +35,7 @@ fun ClientProductByCategoryListItem(
         Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
             .height(90.dp)
+            .clickable { navController.navigate(route = ClientProductScreen.ProductDetail.passProduct(product.toJson()) ) }
 
     ) {
 

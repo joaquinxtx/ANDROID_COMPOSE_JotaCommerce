@@ -7,10 +7,10 @@ import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
 data class ShoppingBagProduct(
-    @SerializedName("id") val id:String? = null,
+    @SerializedName("id") val id:String,
     @SerializedName("name") val name:String,
     @SerializedName("id_category") val idCategory:String,
-    @SerializedName("image1") val image1:String?= null,
+    @SerializedName("image1") val image1:String,
     @SerializedName("price") val price:Double,
     @SerializedName("quantity") val quantity:Int
 

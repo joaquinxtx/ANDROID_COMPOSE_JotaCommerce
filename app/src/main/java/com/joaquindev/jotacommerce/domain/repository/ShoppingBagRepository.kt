@@ -5,9 +5,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface ShoppingBagRepository {
 
-    suspend fun add(product:ShoppingBagProduct)
-    suspend fun delete(product:ShoppingBagProduct)
-    suspend fun findAll(product:ShoppingBagProduct):Flow<List<ShoppingBagProduct>>
+    suspend fun add(product: ShoppingBagProduct)
+    suspend fun delete(id: String)
+    fun findAll(): Flow<List<ShoppingBagProduct>>
+    suspend fun findById(id: String): ShoppingBagProduct?
 
 
 }

@@ -21,6 +21,9 @@ interface ShoppingBagDao {
     @Query("SELECT * FROM shopping_bag")
     fun findAll(): Flow<List<ShoppingBagProductEntity>>
 
+    @Query("SELECT * FROM shopping_bag WHERE id = :id")
+    fun findById(id:String): ShoppingBagProductEntity
+
 
 
     @Query("UPDATE shopping_bag SET  quantity = :quantity WHERE id = :id")

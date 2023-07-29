@@ -20,6 +20,4 @@ abstract class EcommerceDB : RoomDatabase() {
     abstract fun ProductsDao():ProductsDao
     abstract fun ShoppingBagDao():ShoppingBagDao
 
-
-
 }

@@ -5,6 +5,7 @@ import com.joaquindev.jotacommerce.data.dataSource.local.datastore.AuthDataStore
 
 import com.joaquindev.jotacommerce.data.dataSource.local.dao.CategoriesDao
 import com.joaquindev.jotacommerce.data.dataSource.local.dao.ProductsDao
+import com.joaquindev.jotacommerce.data.dataSource.local.dao.ShoppingBagDao
 
 
 import dagger.Module
@@ -26,4 +27,7 @@ object LocalDataModule {
     @Provides
     fun providesProductsLocalDataSource(productsDao: ProductsDao): ProductsLocalDataSource =
         ProductsLocalDataSourceImpl(productsDao)
+    @Provides
+    fun providesShoppingBagLocalDataSource(shoppingBagDao: ShoppingBagDao): ShoppingBagLocalDataSource =
+        ShoppingBagLocalDataSourceImpl(shoppingBagDao)
 }

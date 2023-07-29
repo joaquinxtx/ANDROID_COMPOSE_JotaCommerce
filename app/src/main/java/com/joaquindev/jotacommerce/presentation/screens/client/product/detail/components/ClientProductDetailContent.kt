@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.product.detail.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -101,15 +102,18 @@ fun ClientProductDetailContent(
                         ) {
                             Text(
                                 text = "-", fontSize = 18.sp,
-                                color = Color.White
+
+                                color = Color.White,
+                                modifier = Modifier.clickable { vm.remove() }
                             )
                             Text(
-                                text = "0", fontSize = 20.sp,
+                                text = vm.quantity.toString(), fontSize = 20.sp,
                                 color = Color.White
                             )
                             Text(
                                 text = "+", fontSize = 18.sp,
-                                color = Color.White
+                                color = Color.White,
+                                modifier = Modifier.clickable { vm.add() }
                             )
                         }
                     }
@@ -117,7 +121,7 @@ fun ClientProductDetailContent(
                     DefaultButton(
                         modifier = Modifier.width(200.dp),
                         text = "Agregar al carrito",
-                        onClick = { })
+                        onClick = { vm.saveItem()})
 
 
                 }

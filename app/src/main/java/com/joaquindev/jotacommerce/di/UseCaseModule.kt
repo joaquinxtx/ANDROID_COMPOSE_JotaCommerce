@@ -1,12 +1,12 @@
 package com.joaquindev.jotacommerce.di
 
-import com.joaquindev.jotacommerce.domain.repository.AuthRepository
-import com.joaquindev.jotacommerce.domain.repository.CategoriesRepository
-import com.joaquindev.jotacommerce.domain.repository.ProductRepository
-import com.joaquindev.jotacommerce.domain.repository.UserRepository
+import com.joaquindev.jotacommerce.domain.repository.*
 import com.joaquindev.jotacommerce.domain.useCase.auth.*
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.*
 import com.joaquindev.jotacommerce.domain.useCase.product.*
+import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.AddUseCase
+import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.DeleteUseCase
+import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.ShoppingBagUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserWithImageUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UsersUseCase
@@ -22,7 +22,7 @@ object UseCaseModule {
 
 
     @Provides
-    fun provideAuthUseCase(authRepository: AuthRepository)= AuthUseCase(
+    fun provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(
         login = LoginUseCase(authRepository),
         register = RegisterUseCase(authRepository),
         saveSession = SaveSessionUseCase(authRepository),
@@ -32,21 +32,23 @@ object UseCaseModule {
     )
 
     @Provides
-    fun provideUsersUseCase(usersRepository:UserRepository)= UsersUseCase(
+    fun provideUsersUseCase(usersRepository: UserRepository) = UsersUseCase(
         updateUser = UpdateUserUseCase(usersRepository),
         updateUserWithImage = UpdateUserWithImageUseCase(usersRepository)
     )
+
     @Provides
-    fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository)= CategoriesUseCase(
-        createCategory= CreateCategoryUseCase(categoriesRepository),
+    fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(
+        createCategory = CreateCategoryUseCase(categoriesRepository),
         getCategories = GetCategoriesUseCase(categoriesRepository),
         updateCategory = UpdateCategoryUseCase(categoriesRepository),
         updateCategoryWidthImage = UpdateCategoryWidthImageUseCase(categoriesRepository),
         deleteCategory = DeleteCategoryUseCase(categoriesRepository)
 
     )
+
     @Provides
-    fun provideProductUseCase(productRepository: ProductRepository)= ProductUseCase(
+    fun provideProductUseCase(productRepository: ProductRepository) = ProductUseCase(
         createProduct = CreateProductUseCase(productRepository),
         findByCategory = FindByCategoryUseCase(productRepository),
         updateProduct = UpdateProductUseCase(productRepository),
@@ -54,4 +56,14 @@ object UseCaseModule {
         deleteProduct = DeleteProductUseCase(productRepository),
         findAll = FindAllUseCase(productRepository)
     )
+
+    @Provides
+    fun provideShoppingBagUseCase(shoppingBagRepository: ShoppingBagRepository) =
+        ShoppingBagUseCase(
+            add = AddUseCase(shoppingBagRepository),
+            delete = DeleteUseCase(shoppingBagRepository),
+            findAll = com.joaquindev.jotacommerce.domain.useCase.shopping_bag.FindAllShoppingBagUseCase(
+                shoppingBagRepository
+            )
+        )
 }

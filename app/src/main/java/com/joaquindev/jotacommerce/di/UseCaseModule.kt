@@ -4,9 +4,7 @@ import com.joaquindev.jotacommerce.domain.repository.*
 import com.joaquindev.jotacommerce.domain.useCase.auth.*
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.*
 import com.joaquindev.jotacommerce.domain.useCase.product.*
-import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.AddUseCase
-import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.DeleteUseCase
-import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.ShoppingBagUseCase
+import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.*
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserWithImageUseCase
 import com.joaquindev.jotacommerce.domain.useCase.users.UsersUseCase
@@ -62,8 +60,9 @@ object UseCaseModule {
         ShoppingBagUseCase(
             add = AddUseCase(shoppingBagRepository),
             delete = DeleteUseCase(shoppingBagRepository),
-            findAll = com.joaquindev.jotacommerce.domain.useCase.shopping_bag.FindAllShoppingBagUseCase(
+            findAll = FindAllShoppingBagUseCase(
                 shoppingBagRepository
-            )
+            ),
+            findById = FindByIdShoppingBagUseCase(shoppingBagRepository)
         )
 }

@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.Flow
 
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDataSource) :
@@ -29,8 +30,7 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
                 localDataSource.update(product.id, product.quantity)
             }
         }
-        }
-
+    }
 
 
     override suspend fun delete(id: String) {
@@ -43,8 +43,11 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
         }
     }
 
-    override suspend fun findById(id: String): ShoppingBagProduct? {
-        TODO("Not yet implemented")
+    override suspend fun findById(id: String): ShoppingBagProduct {
+        val data = runBlocking(context = Dispatchers.IO) {
+            localDataSource.findById(id).toShoppingBagProduct()
+        }
+        return  data
     }
 }
 

@@ -5,6 +5,7 @@ import androidx.navigation.compose.composable
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientCategoryScreen
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientProductScreen
 import com.joaquindev.jotacommerce.presentation.navigation.screen.roles.RolesScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.AdminCategoryCreateScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.AdminCategoryUpdateScreen
@@ -13,6 +14,7 @@ import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.Adm
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.AdminProductListScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.update.AdminProductUpdateScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.home.HomeClientScreen
+import com.joaquindev.jotacommerce.presentation.screens.client.product.detail.ClientProductDetailScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory.ClientProductByCategoryListScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.roles.RolesScreen
@@ -34,6 +36,19 @@ fun NavGraphBuilder.ClientCategoryNavGraph(navController: NavHostController) {
                 ClientProductByCategoryListScreen(navController, categoryParam = it)
             }
         }
+
+        composable(
+            route = ClientCategoryScreen.ProductDetail.route,
+            arguments = listOf(navArgument("product") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("product")?.let {
+
+                ClientProductDetailScreen(navHostController = navController, productParam = it )
+            }
+        }
+
 
     }
 }

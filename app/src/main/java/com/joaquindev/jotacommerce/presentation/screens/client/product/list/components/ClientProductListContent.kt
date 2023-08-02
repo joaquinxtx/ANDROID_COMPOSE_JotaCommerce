@@ -5,14 +5,18 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.domain.model.Product
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components.AdminProductListItem
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 
@@ -22,10 +26,11 @@ fun ClientProductListContent(
     navController: NavHostController,
     products: List<Product>
 ) {
+
     Column(Modifier.fillMaxWidth()) {
-        IconButton(onClick = { navController.popBackStack() }) {
+        IconButton(modifier = Modifier.align(Alignment.End), onClick = { navController.navigate(route = ShoppingBagScreen.ShoppingBag.route) }) {
             Icon(
-                imageVector = Icons.Default.ArrowBack,
+                imageVector = Icons.Default.ShoppingCart,
                 contentDescription = "",
                 tint = Cafe_blue,
                 modifier = Modifier

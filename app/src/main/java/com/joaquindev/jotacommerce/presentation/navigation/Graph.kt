@@ -10,5 +10,7 @@ object Graph {
     const val CLIENT_CATEGORY ="client_category_graph"
     const val CLIENT_PRODUCT ="client_product_graph"
     const val PROFILE ="profile_graph"
+    const val SHOPPING_BAG = "shopping_bag_graph"
+
 
 }

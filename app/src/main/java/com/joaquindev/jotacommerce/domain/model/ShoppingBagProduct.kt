@@ -12,7 +12,7 @@ data class ShoppingBagProduct(
     @SerializedName("id_category") val idCategory:String,
     @SerializedName("image1") val image1:String,
     @SerializedName("price") val price:Double,
-    @SerializedName("quantity") val quantity:Int
+    @SerializedName("quantity") var quantity:Int
 
 
 ): Serializable{

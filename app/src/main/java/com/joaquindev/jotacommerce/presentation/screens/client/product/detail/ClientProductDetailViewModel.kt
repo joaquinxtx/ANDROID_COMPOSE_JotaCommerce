@@ -1,17 +1,14 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.product.detail
 
-import android.util.Log
-import androidx.compose.runtime.*
 
+import androidx.compose.runtime.*
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.domain.model.ShoppingBagProduct
-import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.FindAllShoppingBagUseCase
 import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.ShoppingBagUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

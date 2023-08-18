@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
+import com.joaquindev.jotacommerce.presentation.screens.client.shopping_bag.components.ClientShoppingBagBottomBar
 import com.joaquindev.jotacommerce.presentation.screens.client.shopping_bag.components.ClientShoppingBagContent
 
 @Composable
@@ -21,25 +23,11 @@ fun ClientShoppingBagScreen(
     navController: NavHostController,
     vm: ClientShoppingBagViewModel = hiltViewModel()
 ) {
+
+    vm.getShoppingBag()
     Scaffold(
         bottomBar = {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.Gray),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(vertical = 15.dp)) {
-                    Text(text = "TOTAL", fontWeight = FontWeight.Bold, fontSize = 17.sp)
-                    Text(text = vm.total.toString() + "$", fontSize = 17.sp)
-                }
-
-                DefaultButton(
-                    modifier = Modifier.padding(vertical = 15.dp),
-                    text = "confirmar orden",
-                    onClick = { /*TODO*/ })
-            }
+            ClientShoppingBagBottomBar(navController = navController)
         }
 
     ) {

@@ -4,10 +4,7 @@ import com.joaquindev.jotacommerce.data.dataSource.local.AuthLocalDataSource
 import com.joaquindev.jotacommerce.data.dataSource.local.CategoriesLocalDataSource
 import com.joaquindev.jotacommerce.data.dataSource.local.ProductsLocalDataSource
 import com.joaquindev.jotacommerce.data.dataSource.local.ShoppingBagLocalDataSource
-import com.joaquindev.jotacommerce.data.dataSource.remote.AuthRemoteDataSource
-import com.joaquindev.jotacommerce.data.dataSource.remote.CategoriesRemoteDataSource
-import com.joaquindev.jotacommerce.data.dataSource.remote.ProductRemoteDataSource
-import com.joaquindev.jotacommerce.data.dataSource.remote.UsersRemoteDataSource
+import com.joaquindev.jotacommerce.data.dataSource.remote.*
 import com.joaquindev.jotacommerce.data.repository.*
 import com.joaquindev.jotacommerce.domain.repository.*
 import dagger.Module
@@ -51,5 +48,10 @@ object RepositoryModule {
     fun provideShoppingBagRepository(
      shoppingBagLocalDataSource: ShoppingBagLocalDataSource
     ): ShoppingBagRepository = ShoppingBagRepositoryImpl(shoppingBagLocalDataSource)
+
+    @Provides
+    fun provideAddressRepository(
+     addressRemoteDataSource: AddressRemoteDataSource
+    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource)
 
 }

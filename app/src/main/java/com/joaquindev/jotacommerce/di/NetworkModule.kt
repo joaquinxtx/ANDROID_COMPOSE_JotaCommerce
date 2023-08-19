@@ -3,10 +3,7 @@ package com.joaquindev.jotacommerce.di
 
 import com.joaquindev.jotacommerce.core.Config
 import com.joaquindev.jotacommerce.data.dataSource.local.datastore.AuthDataStore
-import com.joaquindev.jotacommerce.data.dataSource.remote.service.AuthService
-import com.joaquindev.jotacommerce.data.dataSource.remote.service.CategoryService
-import com.joaquindev.jotacommerce.data.dataSource.remote.service.ProductService
-import com.joaquindev.jotacommerce.data.dataSource.remote.service.UsersService
+import com.joaquindev.jotacommerce.data.dataSource.remote.service.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -68,6 +65,12 @@ object NetworkModule {
     @Singleton
     fun provideProductService(retrofit: Retrofit): ProductService {
         return retrofit.create(ProductService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddressService(retrofit: Retrofit): AddressService {
+        return retrofit.create(AddressService::class.java)
     }
 
 }

@@ -27,8 +27,11 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 @Composable
-fun ClientAddressCreateContent(paddingValues: PaddingValues , vm :ClientAddressCreateViewModel = hiltViewModel()){
-   val state = vm.state
+fun ClientAddressCreateContent(
+    paddingValues: PaddingValues,
+    vm: ClientAddressCreateViewModel = hiltViewModel()
+) {
+    val state = vm.state
 
     Column(
         modifier = Modifier
@@ -38,7 +41,7 @@ fun ClientAddressCreateContent(paddingValues: PaddingValues , vm :ClientAddressC
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         IconButton(
-            onClick = {  },
+            onClick = { },
             modifier = Modifier.align(Alignment.Start)
         ) {
             Icon(
@@ -50,15 +53,15 @@ fun ClientAddressCreateContent(paddingValues: PaddingValues , vm :ClientAddressC
             )
         }
         Spacer(modifier = Modifier.height(40.dp))
-            Image(
-                modifier = Modifier
-                    .size(150.dp)
-                    .clip(CircleShape)
-                    .align(Alignment.CenterHorizontally),
-                painter = painterResource(id = R.drawable.subir),
-                contentDescription = "",
-                contentScale = ContentScale.Crop
-            )
+        Image(
+            modifier = Modifier
+                .size(150.dp)
+                .clip(CircleShape)
+                .align(Alignment.CenterHorizontally),
+            painter = painterResource(id = R.drawable.subir),
+            contentDescription = "",
+            contentScale = ContentScale.Crop
+        )
         Spacer(modifier = Modifier.weight(1f))
         Card(
             modifier = Modifier
@@ -104,7 +107,7 @@ fun ClientAddressCreateContent(paddingValues: PaddingValues , vm :ClientAddressC
                     .fillMaxWidth()
                     .height(50.dp), text = "CREAR DIRECCION",
                     onClick = {
-
+                        vm.createAddress()
                     })
 
             }

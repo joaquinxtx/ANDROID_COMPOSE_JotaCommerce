@@ -1,6 +1,9 @@
 package com.joaquindev.jotacommerce.di
 
 import com.joaquindev.jotacommerce.domain.repository.*
+import com.joaquindev.jotacommerce.domain.useCase.address.AddressUseCase
+import com.joaquindev.jotacommerce.domain.useCase.address.CreateAddressUseCase
+import com.joaquindev.jotacommerce.domain.useCase.address.FindByUserAddressUseCase
 import com.joaquindev.jotacommerce.domain.useCase.auth.*
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.*
 import com.joaquindev.jotacommerce.domain.useCase.product.*
@@ -64,5 +67,12 @@ object UseCaseModule {
                 shoppingBagRepository
             ),
             findById = FindByIdShoppingBagUseCase(shoppingBagRepository)
+        )
+
+    @Provides
+    fun provideAddressUseCase(addressRepository: AddressRepository) =
+        AddressUseCase(
+            createAddress = CreateAddressUseCase(addressRepository),
+            findByUserAddress = FindByUserAddressUseCase(addressRepository)
         )
 }

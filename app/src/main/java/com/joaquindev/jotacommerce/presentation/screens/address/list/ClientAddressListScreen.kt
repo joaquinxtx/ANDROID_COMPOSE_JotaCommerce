@@ -12,19 +12,23 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.address.create.components.ClientAddressCreateContent
 import com.joaquindev.jotacommerce.presentation.screens.address.list.components.ClientAddressListContent
+import com.joaquindev.jotacommerce.presentation.screens.address.list.components.GetAddress
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ClientAddressListScreen(navController:NavHostController){
+fun ClientAddressListScreen(navController:NavHostController , vm:ClientAddressListViewModel = hiltViewModel()){
+
+    vm.getSessionData()
     Scaffold(floatingActionButton = {
         FloatingActionButton(
             onClick = { navController.navigate(route = ShoppingBagScreen.AddressCreate.route) },
@@ -36,6 +40,6 @@ fun ClientAddressListScreen(navController:NavHostController){
             Icon(imageVector = Icons.Default.Add, contentDescription = "")
         }
     }) {
-        ClientAddressListContent(paddingValues = it)
+        GetAddress(paddingValues = it , navController = navController)
     }
 }

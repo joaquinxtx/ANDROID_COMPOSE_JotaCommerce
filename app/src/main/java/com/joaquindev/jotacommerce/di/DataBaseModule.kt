@@ -2,6 +2,7 @@ package com.joaquindev.jotacommerce.di
 
 import android.app.Application
 import androidx.room.Room
+import com.joaquindev.jotacommerce.data.dataSource.local.dao.AddressDao
 import com.joaquindev.jotacommerce.data.dataSource.local.dao.CategoriesDao
 import com.joaquindev.jotacommerce.data.dataSource.local.dao.ProductsDao
 import com.joaquindev.jotacommerce.data.dataSource.local.dao.ShoppingBagDao
@@ -33,4 +34,7 @@ object DataBaseModule {
     @Provides
     @Singleton
     fun providesShoppingBagDao(db:EcommerceDB):ShoppingBagDao = db.ShoppingBagDao()
+    @Provides
+    @Singleton
+    fun providesAddressDao(db:EcommerceDB):AddressDao = db.AddressDao()
 }

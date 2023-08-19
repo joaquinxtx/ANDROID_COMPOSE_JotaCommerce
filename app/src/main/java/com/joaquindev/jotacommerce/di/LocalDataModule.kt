@@ -1,6 +1,7 @@
 package com.joaquindev.jotacommerce.di
 
 import com.joaquindev.jotacommerce.data.dataSource.local.*
+import com.joaquindev.jotacommerce.data.dataSource.local.dao.AddressDao
 import com.joaquindev.jotacommerce.data.dataSource.local.datastore.AuthDataStore
 
 import com.joaquindev.jotacommerce.data.dataSource.local.dao.CategoriesDao
@@ -30,4 +31,7 @@ object LocalDataModule {
     @Provides
     fun providesShoppingBagLocalDataSource(shoppingBagDao: ShoppingBagDao): ShoppingBagLocalDataSource =
         ShoppingBagLocalDataSourceImpl(shoppingBagDao)
+ @Provides
+    fun providesAddressLocalDataSource(addressDao: AddressDao): AddressLocalDataSource =
+        AddressLocalDataSourceImpl(addressDao)
 }

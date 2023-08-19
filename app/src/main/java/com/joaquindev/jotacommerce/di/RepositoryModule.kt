@@ -1,9 +1,6 @@
 package com.joaquindev.jotacommerce.di
 
-import com.joaquindev.jotacommerce.data.dataSource.local.AuthLocalDataSource
-import com.joaquindev.jotacommerce.data.dataSource.local.CategoriesLocalDataSource
-import com.joaquindev.jotacommerce.data.dataSource.local.ProductsLocalDataSource
-import com.joaquindev.jotacommerce.data.dataSource.local.ShoppingBagLocalDataSource
+import com.joaquindev.jotacommerce.data.dataSource.local.*
 import com.joaquindev.jotacommerce.data.dataSource.remote.*
 import com.joaquindev.jotacommerce.data.repository.*
 import com.joaquindev.jotacommerce.domain.repository.*
@@ -51,7 +48,8 @@ object RepositoryModule {
 
     @Provides
     fun provideAddressRepository(
-     addressRemoteDataSource: AddressRemoteDataSource
-    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource)
+     addressRemoteDataSource: AddressRemoteDataSource,
+     addressLocalDataSource: AddressLocalDataSource,
+    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource , addressLocalDataSource)
 
 }

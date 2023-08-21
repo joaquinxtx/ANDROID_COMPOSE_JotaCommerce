@@ -29,7 +29,7 @@ fun RolesContent(
     val data = vm.authResponse.user
     Box(Modifier.fillMaxSize()){
         Image(
-            painter = painterResource(id = R.drawable.gatofondo),
+            painter = painterResource(id = R.drawable.fondocofferol),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,

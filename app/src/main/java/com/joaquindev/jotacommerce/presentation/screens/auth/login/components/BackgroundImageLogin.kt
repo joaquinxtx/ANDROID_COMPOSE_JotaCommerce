@@ -14,7 +14,7 @@ import com.joaquindev.jotacommerce.R
 fun BackgroundImageLogin(){
 
     Image(
-        painter = painterResource(id = R.drawable.banner),
+        painter = painterResource(id = R.drawable.perfiluser),
         contentDescription = "",
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop,

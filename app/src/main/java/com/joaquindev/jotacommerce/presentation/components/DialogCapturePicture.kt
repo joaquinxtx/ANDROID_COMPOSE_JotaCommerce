@@ -37,7 +37,7 @@ fun DialogCapturePicture(
                             .padding(top = 16.dp)
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.picture),
+                            painter = painterResource(id = R.drawable.camara),
                             contentDescription = " ",
                             Modifier
                                 .size(39.dp),

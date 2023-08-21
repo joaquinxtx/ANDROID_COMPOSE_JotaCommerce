@@ -13,7 +13,7 @@ import com.joaquindev.jotacommerce.R
 @Composable
 fun BackgroundImageProfile(){
     Image(
-        painter = painterResource(id = R.drawable.coffe3),
+        painter = painterResource(id = R.drawable.coferegister),
         contentDescription = "",
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop,

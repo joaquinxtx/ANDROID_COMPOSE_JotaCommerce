@@ -47,6 +47,22 @@ fun AdminCategoryCreateContent(
     val stateDialog = remember {
         mutableStateOf(false)
     }
+    Box(Modifier.fillMaxSize()){
+        Image(
+            painter = painterResource(id = R.drawable.detailproduct),
+            contentDescription = "",
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+            colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
+                setToScale(
+                    0.4f,
+                    0.4f,
+                    0.4f,
+                    1f
+                )
+
+            })
+        )
 
     DialogCapturePicture(
         state = stateDialog,
@@ -149,4 +165,4 @@ fun AdminCategoryCreateContent(
             }
         }
     }
-}
+}}

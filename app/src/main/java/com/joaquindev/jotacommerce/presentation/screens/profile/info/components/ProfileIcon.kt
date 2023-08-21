@@ -75,7 +75,7 @@ fun ProfileIcon(vm: ProfileViewModel) {
                     .size(150.dp)
                     .clip(CircleShape)
                     .align(Alignment.CenterHorizontally),
-                painter = painterResource(id = R.drawable.camara),
+                painter = painterResource(id = R.drawable.perfil),
                 contentDescription = "",
 
                 )

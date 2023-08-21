@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,12 +32,18 @@ fun SliderView(state: PagerState, images: List<String>) {
     HorizontalPager(
         state = state,
         count = images.size, modifier = Modifier
-            .height(325.dp)
+            .height(245.dp)
             .fillMaxWidth()
-            .background(Color.Gray)
+            .padding(15.dp)
     ) { page ->
         imageUrl.value = images[page]
 
+        Card(
+            shape = RoundedCornerShape(
+                30.dp
+
+            )
+        ) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Top,
@@ -51,11 +58,13 @@ fun SliderView(state: PagerState, images: List<String>) {
                             scale(Scale.FILL)
                         }).build()
                 )
-                Image(
-                    modifier = Modifier.fillMaxSize(),
-                    painter = painter,
-                    contentDescription = "",
-                )
+                    Image(
+                        modifier = Modifier.fillMaxSize(),
+                        painter = painter,
+                        contentDescription = "",
+                    )
+
+                }
             }
         }
     }

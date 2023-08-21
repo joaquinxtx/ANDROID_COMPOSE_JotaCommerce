@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.product.detail.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 
@@ -13,12 +14,17 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DotsIndicator
 import com.joaquindev.jotacommerce.presentation.components.SliderView
@@ -33,6 +39,22 @@ fun ClientProductDetailContent(
     vm: ClientProductDetailViewModel = hiltViewModel()
 ) {
     val state = rememberPagerState()
+    Box(Modifier.fillMaxSize()){
+        Image(
+            painter = painterResource(id = R.drawable.detailproduct),
+            contentDescription = "",
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+            colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
+                setToScale(
+                    0.4f,
+                    0.4f,
+                    0.4f,
+                    1f
+                )
+
+            })
+        )
 
     Box() {
         Column(Modifier.padding(paddingValues)) {
@@ -140,4 +162,4 @@ fun ClientProductDetailContent(
 
         state.animateScrollToPage(newPosition)
     }
-}
+}}

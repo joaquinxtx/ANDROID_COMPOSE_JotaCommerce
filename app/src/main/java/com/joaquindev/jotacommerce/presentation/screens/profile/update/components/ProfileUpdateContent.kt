@@ -85,7 +85,7 @@ fun ProfileUpdateContent(
                             .clip(CircleShape)
                             .align(Alignment.CenterHorizontally)
                             .clickable { stateDialog.value = true },
-                        painter = painterResource(id = R.drawable.camara),
+                        painter = painterResource(id = R.drawable.perfil),
                         contentDescription = "",
 
                         )

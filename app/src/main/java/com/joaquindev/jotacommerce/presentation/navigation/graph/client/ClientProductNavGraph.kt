@@ -33,7 +33,7 @@ fun NavGraphBuilder.ClientProductNavGraph(navController: NavHostController) {
         ) {
             it.arguments?.getString("product")?.let {
 
-                ClientProductDetailScreen(navHostController = navController, productParam = it )
+                ClientProductDetailScreen(navController = navController, productParam = it )
             }
         }
 

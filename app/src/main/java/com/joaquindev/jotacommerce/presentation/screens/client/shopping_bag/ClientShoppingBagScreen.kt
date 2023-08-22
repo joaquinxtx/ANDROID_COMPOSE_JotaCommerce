@@ -31,7 +31,7 @@ fun ClientShoppingBagScreen(
         }
 
     ) {
-        ClientShoppingBagContent(paddingValues = it, vm.shoppingBag)
+        ClientShoppingBagContent(paddingValues = it, vm.shoppingBag , navController)
 
     }
 }

@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.model.Product
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components.AdminProductListItem
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
@@ -40,9 +41,9 @@ fun ClientProductListContent(
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
-                    0.4f,
-                    0.4f,
-                    0.4f,
+                    0.6f,
+                    0.6f,
+                    0.6f,
                     1f
                 )
 
@@ -50,15 +51,7 @@ fun ClientProductListContent(
         )
 
     Column(Modifier.fillMaxWidth()) {
-        IconButton(modifier = Modifier.align(Alignment.End), onClick = { navController.navigate(route = ShoppingBagScreen.ShoppingBag.route) }) {
-            Icon(
-                imageVector = Icons.Default.ShoppingCart,
-                contentDescription = "",
-                tint = Cafe_blue,
-                modifier = Modifier
-                    .size(34.dp)
-            )
-        }
+        TopBar(navController = navController , title = "Productos" ,showCart = true)
         LazyColumn(
             modifier = Modifier
                 .padding(PaddingValues())

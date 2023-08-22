@@ -30,6 +30,7 @@ import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.AdminProductCreateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
@@ -61,18 +62,7 @@ fun AdminProductCreateContent(
 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        IconButton(
-            onClick = { navController.popBackStack() },
-            modifier = Modifier.align(Alignment.Start)
-        ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "",
-                tint = Cafe_blue,
-                modifier = Modifier
-                    .size(34.dp)
-            )
-        }
+        TopBar(navController = navController , title = "Crear producto" , arrowBack = true)
         Spacer(modifier = Modifier.height(40.dp))
 
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
@@ -83,7 +73,8 @@ fun AdminProductCreateContent(
                         .clip(CircleShape)
                         .clickable {
                             stateDialogImageNumber.value = 1
-                            stateDialog.value = true },
+                            stateDialog.value = true
+                        },
                     model = state.image1,
                     contentDescription = "",
                     contentScale = ContentScale.Crop
@@ -115,7 +106,7 @@ fun AdminProductCreateContent(
                         .clickable {
                             stateDialogImageNumber.value = 2
                             stateDialog.value = true
-                                   },
+                        },
                     model = state.image2,
                     contentDescription = "",
                     contentScale = ContentScale.Crop

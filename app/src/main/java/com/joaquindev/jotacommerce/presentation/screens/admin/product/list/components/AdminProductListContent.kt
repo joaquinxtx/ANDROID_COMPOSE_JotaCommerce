@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.model.Product
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.AdminProductListViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
@@ -32,30 +33,22 @@ fun AdminProductListContent(
 ) {
     Box(Modifier.fillMaxSize()){
         Image(
-            painter = painterResource(id = R.drawable.fondocofferol),
+            painter = painterResource(id = R.drawable.fondoproductos),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
-                    0.4f,
-                    0.4f,
-                    0.4f,
+                    0.6f,
+                    0.6f,
+                    0.6f,
                     1f
                 )
 
             })
         )
     Column(Modifier.fillMaxWidth()) {
-        IconButton(onClick = { navController.popBackStack() }) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "",
-                tint = Cafe_blue,
-                modifier = Modifier
-                    .size(34.dp)
-            )
-        }
+        TopBar(navController = navController, title = "Productos")
         LazyColumn(
             modifier = Modifier
                 .padding(PaddingValues())

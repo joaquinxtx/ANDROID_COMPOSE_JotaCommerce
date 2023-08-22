@@ -13,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.model.Category
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 
 
 @Composable
@@ -29,25 +30,29 @@ fun AdminCategoryListContent(
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
-                    0.4f,
-                    0.4f,
-                    0.4f,
+                    0.6f,
+                    0.6f,
+                    0.6f,
                     1f
                 )
 
             })
         )
-
-        LazyColumn(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-        ) {
-            items(
-                items = categories
+        Column() {
+            TopBar(navController = navController, title = "Categorias")
+            LazyColumn(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
             ) {
-                AdminCategoryListItem(category = it, navController = navController)
+                items(
+                    items = categories
+                ) {
+                    AdminCategoryListItem(category = it, navController = navController)
+                }
             }
         }
+
     }
+
 }

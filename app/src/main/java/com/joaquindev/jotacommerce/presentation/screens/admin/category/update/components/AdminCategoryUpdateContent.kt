@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
@@ -30,6 +31,7 @@ import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.AdminCategoryCreateViewModel
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.AdminCategoryUpdateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
@@ -48,15 +50,15 @@ fun AdminCategoryUpdateContent(
     }
     Box(Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.detailproduct),
+            painter = painterResource(id = R.drawable.perfiluser),
             contentDescription = "",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
-                    0.4f,
-                    0.4f,
-                    0.4f,
+                    0.6f,
+                    0.6f,
+                    0.6f,
                     1f
                 )
 
@@ -74,18 +76,7 @@ fun AdminCategoryUpdateContent(
 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            IconButton(
-                onClick = { navController.popBackStack() },
-                modifier = Modifier.align(Alignment.Start)
-            ) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "",
-                    tint = Cafe_blue,
-                    modifier = Modifier
-                        .size(34.dp)
-                )
-            }
+           TopBar(navController = navController , title = "Actualizar categotia" , arrowBack = true )
             Spacer(modifier = Modifier.height(40.dp))
             if (state.image != "") {
                 AsyncImage(

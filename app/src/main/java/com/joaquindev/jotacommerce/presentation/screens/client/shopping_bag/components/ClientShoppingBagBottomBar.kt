@@ -21,7 +21,7 @@ fun ClientShoppingBagBottomBar(vm: ClientShoppingBagViewModel = hiltViewModel() 
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.Gray),
+            .background(Color.White),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {

@@ -22,12 +22,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DotsIndicator
 import com.joaquindev.jotacommerce.presentation.components.SliderView
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.client.product.detail.ClientProductDetailViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import kotlinx.coroutines.delay
@@ -35,11 +37,15 @@ import kotlinx.coroutines.delay
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun ClientProductDetailContent(
+    navController: NavHostController,
     paddingValues: PaddingValues,
     vm: ClientProductDetailViewModel = hiltViewModel()
 ) {
     val state = rememberPagerState()
-    Box(Modifier.fillMaxSize()){
+
+
+
+    Box(Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.detailproduct),
             contentDescription = "",
@@ -47,17 +53,16 @@ fun ClientProductDetailContent(
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale(
-                    0.4f,
-                    0.4f,
-                    0.4f,
+                    0.6f,
+                    0.6f,
+                    0.6f,
                     1f
                 )
 
             })
         )
-
-    Box() {
         Column(Modifier.padding(paddingValues)) {
+            TopBar(navController = navController, arrowBack = true, title = "Detalle del producto")
             SliderView(state = state, images = vm.productImages)
             Spacer(modifier = Modifier.height(4.dp))
             DotsIndicator(totalDots = vm.productImages.size, selectedIndex = state.currentPage)
@@ -143,7 +148,7 @@ fun ClientProductDetailContent(
                     DefaultButton(
                         modifier = Modifier.width(200.dp),
                         text = "Agregar al carrito",
-                        onClick = { vm.saveItem()})
+                        onClick = { vm.saveItem() })
 
 
                 }
@@ -162,4 +167,4 @@ fun ClientProductDetailContent(
 
         state.animateScrollToPage(newPosition)
     }
-}}
+}

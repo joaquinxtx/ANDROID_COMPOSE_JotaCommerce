@@ -8,11 +8,11 @@ import com.joaquindev.jotacommerce.presentation.screens.client.product.detail.co
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ClientProductDetailScreen(navHostController: NavHostController , productParam:String){
+fun ClientProductDetailScreen(navController: NavHostController , productParam:String){
 
     
     Scaffold() {
-       ClientProductDetailContent(paddingValues = it)
+       ClientProductDetailContent(paddingValues = it , navController =navController )
     }
     
 }

@@ -32,9 +32,9 @@ fun SliderView(state: PagerState, images: List<String>) {
     HorizontalPager(
         state = state,
         count = images.size, modifier = Modifier
-            .height(245.dp)
-            .fillMaxWidth()
-            .padding(15.dp)
+            .height(200.dp)
+            .fillMaxWidth().padding(horizontal = 20.dp)
+
     ) { page ->
         imageUrl.value = images[page]
 

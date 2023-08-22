@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.model.Product
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 
 @Composable
@@ -43,15 +44,7 @@ fun ClientProductByCategoryListContent(
             })
         )
     Column(Modifier.fillMaxWidth()) {
-        IconButton(onClick = { navController.popBackStack() }) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "",
-                tint = Cafe_blue,
-                modifier = Modifier
-                    .size(34.dp)
-            )
-        }
+       TopBar(navController = navController , title = "Productos de la categoria" , arrowBack = true)
         LazyColumn(
             modifier = Modifier
                 .padding(PaddingValues())

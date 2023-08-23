@@ -15,6 +15,7 @@ data class User(
     @SerializedName("image") var image: String? = null,
     @SerializedName("notification_token") var notificationToken: String? = null,
     @SerializedName("roles") val roles: List<Rol>? = null,
+    @SerializedName("address") var address: Address? = null,
 ) {
     fun toJson(): String = Gson().toJson(
         User(
@@ -28,7 +29,8 @@ data class User(
             notificationToken,
             roles?.map{ rol -> Rol.fromJson(rol.toJson())
 
-            }
+            },
+            address
         )
     )
 

@@ -25,9 +25,11 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 @Composable
 fun TopBar(
     navController: NavHostController,
-    arrowBack:Boolean= false,
+    arrowBack: Boolean = false,
     title: String? = null,
-    showCart: Boolean = false
+    showCart: Boolean = false,
+    iconTint: Color = Color.White, // Color por defecto para los iconos
+    titleColor: Color = Color.White // Color por defecto para el título
 ) {
     Row(
         modifier = Modifier
@@ -36,15 +38,15 @@ fun TopBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (arrowBack) {
-        IconButton(onClick = { navController.popBackStack() }) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "",
-                tint = Cafe_white,
-                modifier = Modifier
-                    .size(34.dp)
-            )
-        }
+            IconButton(onClick = { navController.popBackStack() }) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "",
+                    tint = iconTint, // Usa el color pasado como argumento
+                    modifier = Modifier
+                        .size(34.dp)
+                )
+            }
         }
 
         Text(
@@ -52,7 +54,7 @@ fun TopBar(
             modifier = Modifier
                 .weight(1f)
                 .padding(horizontal = 16.dp),
-            color=Color.White ,
+            color = titleColor, // Usa el color pasado como argumento
             style = TextStyle(
                 fontWeight = FontWeight.Bold,
                 fontSize = 23.sp
@@ -67,12 +69,12 @@ fun TopBar(
                 Icon(
                     imageVector = Icons.Default.ShoppingCart,
                     contentDescription = "Shopping Cart",
-                    tint = Color.White,
+                    tint = iconTint, // Usa el color pasado como argumento
                     modifier = Modifier
                         .size(34.dp)
                 )
             }
-        }else{
+        } else {
             Box(modifier = Modifier.size(34.dp))
         }
     }

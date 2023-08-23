@@ -14,21 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.domain.model.Address
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 
 
 @Composable
 fun ClientAddressListContent(paddingValues: PaddingValues, addressList: List<Address> , navController:NavHostController) {
-    Column(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
-        IconButton(onClick = { navController.popBackStack() }) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "",
-                tint = Cafe_blue,
-                modifier = Modifier
-                    .size(34.dp)
-            )
-        }
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(paddingValues)) {
+        TopBar(navController = navController , title = "Direcciones" , arrowBack = true , iconTint = Cafe_blue , titleColor = Cafe_blue )
         LazyColumn() {
             items(
                 items = addressList

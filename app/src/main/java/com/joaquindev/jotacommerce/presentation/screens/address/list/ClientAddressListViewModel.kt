@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.Address
+import com.joaquindev.jotacommerce.domain.model.User
 import com.joaquindev.jotacommerce.domain.useCase.address.AddressUseCase
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,10 +22,17 @@ class ClientAddressListViewModel @Inject constructor(
     ) : ViewModel() {
 
     var addressResponse by mutableStateOf<Resource<List<Address>>?>(null)
+    private set
 
+    var selectedAddress by mutableStateOf("")
+    private set
+    var user:User? = null
     fun getSessionData() = viewModelScope.launch {
-        val user = authUseCase.getSessionData().first().user
+         user = authUseCase.getSessionData().first().user
         getAddress(user?.id ?: "")
+        if (user?.address != null){
+            selectedAddress = user?.address?.id ?:""
+        }
     }
 
     fun getAddress( idUser:String)= viewModelScope.launch{
@@ -33,5 +41,11 @@ class ClientAddressListViewModel @Inject constructor(
             Log.d("ClientAddressListViewModel", "data ${it}")
             addressResponse = it
         }
+    }
+
+    fun onSelectedAddressInput(address: Address)= viewModelScope.launch{
+        selectedAddress = address.id ?:""
+        user?.address =address
+        if(user != null) authUseCase.updateSession(user!!)
     }
 }

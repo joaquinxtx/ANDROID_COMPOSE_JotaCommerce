@@ -1,12 +1,11 @@
 package com.joaquindev.jotacommerce.presentation.navigation.graph.client
 
-import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.*
 import androidx.compose.animation.core.EaseIn
 import androidx.compose.animation.core.EaseOut
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
+import androidx.compose.ui.Alignment
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
@@ -33,27 +32,21 @@ fun NavGraphBuilder.ClientProductNavGraph(navController: NavHostController) {
     ) {
 
         composable(
-            route = ClientProductScreen.ProductDetail.route,
+            route = ClientProductScreen.ProductDetail.route
 
-            enterTransition = {
-                fadeIn(
+            , enterTransition = {
+                scaleIn(
                     animationSpec = tween(
                         300, easing = LinearEasing
                     )
-                ) + slideIntoContainer(
-                    animationSpec = tween(300, easing = EaseIn),
-                    towards = AnimatedContentTransitionScope.SlideDirection.Start
-                )
+                ) +  expandIn(expandFrom = Alignment.TopStart)
             },
             exitTransition = {
-                fadeOut(
+                scaleOut(
                     animationSpec = tween(
                         300, easing = LinearEasing
                     )
-                ) + slideOutOfContainer(
-                    animationSpec = tween(300, easing = EaseOut),
-                    towards = AnimatedContentTransitionScope.SlideDirection.End
-                )
+                ) + shrinkOut(shrinkTowards = Alignment.TopStart)
             },
             arguments = listOf(navArgument("product") {
                 type = NavType.StringType

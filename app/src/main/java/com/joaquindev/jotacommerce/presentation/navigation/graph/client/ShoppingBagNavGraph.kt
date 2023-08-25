@@ -50,7 +50,26 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController) {
         }
         composable(
             route = ShoppingBagScreen.AddressList.route,
-
+            exitTransition = {
+                fadeOut(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + slideOutOfContainer(
+                    animationSpec = tween(300, easing = EaseOut),
+                    towards = AnimatedContentTransitionScope.SlideDirection.End
+                )
+            },
+            enterTransition = {
+                fadeIn(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + slideIntoContainer(
+                    animationSpec = tween(300, easing = EaseIn),
+                    towards = AnimatedContentTransitionScope.SlideDirection.Start
+                )
+            }
 
         ) {
             ClientAddressListScreen(navController)
@@ -61,7 +80,7 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController) {
                     animationSpec = tween(
                         300, easing = LinearEasing
                     )
-                ) + expandVertically(expandFrom = Alignment.CenterVertically)
+                ) +  expandIn(expandFrom = Alignment.TopStart)
             },
             exitTransition = {
                 scaleOut(

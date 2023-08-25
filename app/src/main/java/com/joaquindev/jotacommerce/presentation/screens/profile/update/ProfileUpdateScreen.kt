@@ -12,7 +12,7 @@ import com.joaquindev.jotacommerce.presentation.screens.profile.update.component
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileUpdateScreen(navController: NavHostController , userParam:String){
-    Log.d("profileUpdateScren", "data $userParam")
+
     Scaffold(
 
     ) {

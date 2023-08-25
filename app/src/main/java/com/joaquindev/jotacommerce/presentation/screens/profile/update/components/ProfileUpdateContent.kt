@@ -27,6 +27,7 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.profile.update.ProfileUpdateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
@@ -57,15 +58,8 @@ fun ProfileUpdateContent(
 
         Column {
             Column(Modifier.fillMaxWidth()) {
-                IconButton(onClick = { navController.popBackStack() }) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "",
-                        tint = Cafe_white,
-                        modifier = Modifier
-                            .size(34.dp)
-                    )
-                }
+
+        TopBar(navController = navController , arrowBack = true , title = "Actualizar perfil" )
 
                 if (state.image != "") {
                     AsyncImage(
@@ -100,7 +94,7 @@ fun ProfileUpdateContent(
                     fontWeight = FontWeight.Bold
                 )
             }
-            Spacer(modifier = Modifier.weight(0.5f))
+            Spacer(modifier = Modifier.weight(0.3f))
             ProfileUpdateUserData(vm = vm, state = state)
         }
 

@@ -28,20 +28,17 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 @Composable
 fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
     Card(
-        modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(
-            topStart = 40.dp,
-            topEnd = 40.dp
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(
+            topEnd = 40.dp,
+            topStart = 40.dp
         ),
-        colors = CardDefaults.cardColors(Cafe_white.copy(alpha = 0.8f))
+        colors = CardDefaults.cardColors(Cafe_white)
     ) {
-        Column(modifier = Modifier.padding(20.dp)) {
-            Text(
-                text = "Perfil",
-                fontWeight = FontWeight.Bold,
-                fontSize = 15.sp,
-                color = Cafe_blue,
-                modifier = Modifier.padding(bottom = 10.dp)
-            )
+
+        Column(
+            modifier = Modifier.padding(horizontal = 30.dp, vertical = 20.dp)
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -51,19 +48,16 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
                 Icon(
                     imageVector = Icons.Default.Person,
                     contentDescription = "",
-                    tint = Cafe_orange,
-                    modifier = Modifier.padding(end = 10.dp).size(20.dp)
+                    tint = Cafe_orange
                 )
-                Column(modifier = Modifier.padding(horizontal = 5.dp)) {
-                    Text(text = "${vm.user?.name} ${vm.user?.lastname}", fontWeight = FontWeight.Medium)
+                Column(modifier = Modifier.padding(horizontal = 10.dp)) {
+                    Text(text = "${vm.user?.name} ${vm.user?.lastname}" )
                     Text(
-                        text = "Nombre de Usuario",
+                        text = "Nombre de usuario",
                         fontSize = 12.sp,
                         color = Color.Gray
                     )
-
                 }
-
             }
             Row(
                 modifier = Modifier
@@ -74,48 +68,44 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
                 Icon(
                     imageVector = Icons.Default.Email,
                     contentDescription = "",
-                    tint = Cafe_orange,
-                    modifier = Modifier.padding(end = 10.dp).size(20.dp)
+                    tint = Cafe_orange
                 )
-                Column(modifier = Modifier.padding(horizontal = 5.dp)) {
-                    Text(text = vm.user?.email.toString(), fontWeight = FontWeight.Medium)
+                Column(modifier = Modifier.padding(horizontal = 10.dp)) {
+                    Text(text = vm.user?.email ?: "")
                     Text(
-                        text = "email",
+                        text = "Correo electronico",
                         fontSize = 12.sp,
                         color = Color.Gray
                     )
-
                 }
-
             }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 15.dp),
+                    .padding(vertical = 15.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
                     imageVector = Icons.Default.Phone,
                     contentDescription = "",
-                    tint = Cafe_orange,
-                    modifier = Modifier.size(29.dp)
+                    tint = Cafe_orange
                 )
-                Column(modifier = Modifier.padding(horizontal = 5.dp)) {
-                    Text(text = vm.user?.phone.toString() , fontWeight = FontWeight.Medium)
+                Column(modifier = Modifier.padding(horizontal = 10.dp)) {
+                    Text(text = vm.user?.phone ?: "")
                     Text(
-                        text = "Phone",
+                        text = "Telefono",
                         fontSize = 12.sp,
                         color = Color.Gray
                     )
-
                 }
-
             }
-            Spacer(modifier = Modifier.height(30.dp))
+
+            Spacer(modifier = Modifier.weight(1f))
             DefaultButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Actualizar informacion",
-                onClick = { navController.navigate(route= "${Graph.PROFILE}/${vm.user?.toJson()}") })
+                text = "Confirmar",
+                onClick = {navController.navigate(route= "${Graph.PROFILE}/${vm.user?.toJson()}") })
+
         }
     }
 }

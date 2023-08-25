@@ -35,7 +35,7 @@ fun ProfileUpdateUserData(vm: ProfileUpdateViewModel, state : ProfileUpdateState
             topStart = 40.dp,
             topEnd = 40.dp
         ),
-        colors = CardDefaults.cardColors(Cafe_white.copy(alpha = 0.8f))
+        colors = CardDefaults.cardColors(Cafe_white)
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
             Text(
@@ -69,13 +69,15 @@ fun ProfileUpdateUserData(vm: ProfileUpdateViewModel, state : ProfileUpdateState
                 icon = Icons.Default.Phone
             )
 
+            Spacer(modifier = Modifier.height(10.dp))
+            DefaultButton(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 20.dp),
+                text = "Confirmar",
+                onClick = { vm.onUpdate() })
         }
 
-        Spacer(modifier = Modifier.height(10.dp))
-        DefaultButton(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp),
-            text = "Confirmar",
-            onClick = {vm.onUpdate() })
     }
 
 

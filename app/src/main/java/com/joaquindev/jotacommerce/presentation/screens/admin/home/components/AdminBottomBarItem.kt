@@ -18,15 +18,23 @@ fun RowScope.AdminBottomBarItem(
     currentDestination: NavDestination,
     navController: NavHostController
 ) {
-    NavigationBarItem(selected = currentDestination.hierarchy.any {
-        it.route == screen.route
-    }, onClick = {
-        navController.navigate(route = screen.route) {
-            popUpTo(navController.graph.findStartDestination().id)
-        }
-    }, label = {
-        Text(text = screen.title)
-    }, icon = {
+    val isSelected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
+
+    NavigationBarItem(
+        selected = isSelected,
+        onClick = {
+            if (!isSelected) {
+                navController.navigate(route = screen.route) {
+                    // Limpia la pila de navegación hasta el inicio cuando navegas a una nueva pantalla
+                    popUpTo(navController.graph.findStartDestination().id)
+                }
+            }
+        },
+        label = {
+            Text(text = screen.title)
+        },
+        icon = {
             Icon(imageVector = screen.icon, contentDescription = "")
-        })
+        }
+    )
 }

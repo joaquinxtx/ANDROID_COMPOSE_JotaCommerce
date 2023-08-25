@@ -1,6 +1,12 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.product.list
 
 import android.content.Intent
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.Box
 
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,8 +31,7 @@ import com.joaquindev.jotacommerce.presentation.screens.client.product.list.comp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClientProductListScreen(navController: NavHostController) {
-    Scaffold(
-    ) {
+    Scaffold() {
         GetProducts(navController = navController, paddingValues = it)
     }
 }

@@ -1,5 +1,11 @@
 package com.joaquindev.jotacommerce.presentation.navigation.graph.client
 
+import androidx.compose.animation.*
+import androidx.compose.animation.core.EaseIn
+import androidx.compose.animation.core.EaseOut
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.ui.Alignment
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
@@ -17,22 +23,56 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController) {
     ) {
 
         composable(
-            route = ShoppingBagScreen.ShoppingBag.route
+            route = ShoppingBagScreen.ShoppingBag.route,
+            enterTransition = {
+                fadeIn(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + slideIntoContainer(
+                    animationSpec = tween(300, easing = EaseIn),
+                    towards = AnimatedContentTransitionScope.SlideDirection.Start
+                )
+            },
+            exitTransition = {
+                fadeOut(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + slideOutOfContainer(
+                    animationSpec = tween(300, easing = EaseOut),
+                    towards = AnimatedContentTransitionScope.SlideDirection.End
+                )
+            }
 
         ) {
-         ClientShoppingBagScreen(navController)
+            ClientShoppingBagScreen(navController)
         }
         composable(
-            route = ShoppingBagScreen.AddressList.route
+            route = ShoppingBagScreen.AddressList.route,
+
 
         ) {
-         ClientAddressListScreen(navController)
+            ClientAddressListScreen(navController)
         }
         composable(
-            route = ShoppingBagScreen.AddressCreate.route
+            route = ShoppingBagScreen.AddressCreate.route, enterTransition = {
+                scaleIn(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + expandVertically(expandFrom = Alignment.CenterVertically)
+            },
+            exitTransition = {
+                scaleOut(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + shrinkOut(shrinkTowards = Alignment.TopStart)
+            }
 
         ) {
-         ClientAddressCreateScreen(navController = navController)
+            ClientAddressCreateScreen(navController = navController)
         }
 
 

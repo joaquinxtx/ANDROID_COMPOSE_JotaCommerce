@@ -18,7 +18,7 @@ fun RowScope.AdminBottomBarItem(
     currentDestination: NavDestination,
     navController: NavHostController
 ) {
-    val isSelected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
+    val isSelected = currentDestination.hierarchy.any { it.route == screen.route }
 
     NavigationBarItem(
         selected = isSelected,

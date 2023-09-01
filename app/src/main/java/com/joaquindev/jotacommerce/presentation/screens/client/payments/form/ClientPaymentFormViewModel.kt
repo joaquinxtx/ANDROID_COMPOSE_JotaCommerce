@@ -17,23 +17,40 @@ import javax.inject.Inject
 class ClientPaymentFormViewModel @Inject constructor(private val mercadoPagoUseCase: MercadoPagoUseCase) :
     ViewModel() {
 
+    var state by mutableStateOf(ClientPaymentsFormState())
+        private set
+
     var identificationTypesResponse by mutableStateOf<Resource<List<IdentificationType>>?>(null)
         private set
-    var installmentsResponse by mutableStateOf<Resource<Installment>?>(null)
-        private set
+
 
     fun getIdentificationTypes() = viewModelScope.launch {
         identificationTypesResponse = Resource.Loading
         val result = mercadoPagoUseCase.getIdentificationType().first()
         identificationTypesResponse = result
-        Log.d("ClientPaymentFormViewModel" , "DATA:${identificationTypesResponse}")
+        Log.d("ClientPaymentsFormViewModel", "Data: ${identificationTypesResponse}")
     }
 
-    fun getInstallments(firstSixDigits:Int,amount:Double) = viewModelScope.launch {
-        installmentsResponse = Resource.Loading
-        val result = mercadoPagoUseCase.getInstallments(firstSixDigits, amount).first()
-        installmentsResponse = result
-        Log.d("ClientPaymentFormViewModel" , "DATA:${installmentsResponse}")
+
+
+
+    fun onCardNumberInput(input:String){
+        state = state.copy(cardNumber = input)
+    }
+    fun onYearExpirationInput(input:String){
+        state = state.copy(expirationYear = input)
+    }
+    fun onMonthInput(input:String){
+        state = state.copy(expirationMonth = input)
+    }
+    fun onSecurityCodeInput(input:String){
+        state = state.copy(securityCode = input)
+    }
+    fun onNameInput(input:String){
+        state = state.copy(cardNumber = input)
+    }
+    fun onIdentificationNumberInput(input:String){
+        state = state.copy(number = input)
     }
 
 }

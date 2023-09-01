@@ -6,14 +6,15 @@ import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.components.ClientPaymentFormContent
+import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.components.GetIdentificationTypes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClientPaymentFormScreen(navController: NavHostController , vm : ClientPaymentFormViewModel = hiltViewModel()) {
 
     vm.getIdentificationTypes()
-    vm.getInstallments(525413,10000.0)
+
     Scaffold() {
-        ClientPaymentFormContent(paddingValues = it)
+        GetIdentificationTypes(paddingValues = it)
     }
 }

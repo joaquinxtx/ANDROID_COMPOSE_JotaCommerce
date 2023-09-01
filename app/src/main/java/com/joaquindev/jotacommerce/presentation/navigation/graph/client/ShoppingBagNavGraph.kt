@@ -13,6 +13,7 @@ import com.joaquindev.jotacommerce.presentation.navigation.screen.client.Shoppin
 import com.joaquindev.jotacommerce.presentation.screens.address.create.ClientAddressCreateScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.address.list.ClientAddressListScreen
+import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.ClientPaymentFormScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.client.shopping_bag.ClientShoppingBagScreen
 
@@ -92,6 +93,33 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController) {
 
         ) {
             ClientAddressCreateScreen(navController = navController)
+        }
+
+        composable(
+            route = ShoppingBagScreen.PaymentsForm.route,
+            exitTransition = {
+                fadeOut(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + slideOutOfContainer(
+                    animationSpec = tween(300, easing = EaseOut),
+                    towards = AnimatedContentTransitionScope.SlideDirection.End
+                )
+            },
+            enterTransition = {
+                fadeIn(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + slideIntoContainer(
+                    animationSpec = tween(300, easing = EaseIn),
+                    towards = AnimatedContentTransitionScope.SlideDirection.Start
+                )
+            }
+
+        ) {
+            ClientPaymentFormScreen(navController = navController )
         }
 
 

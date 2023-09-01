@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 
 import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.address.create.components.ClientAddressCreateContent
@@ -26,7 +27,10 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ClientAddressListScreen(navController:NavHostController , vm:ClientAddressListViewModel = hiltViewModel()){
+fun ClientAddressListScreen(
+    navController: NavHostController,
+    vm: ClientAddressListViewModel = hiltViewModel()
+) {
 
     vm.getSessionData()
     Scaffold(floatingActionButton = {
@@ -39,7 +43,13 @@ fun ClientAddressListScreen(navController:NavHostController , vm:ClientAddressLi
         ) {
             Icon(imageVector = Icons.Default.Add, contentDescription = "")
         }
-    }) {
-        GetAddress(paddingValues = it , navController = navController)
+    },
+        bottomBar = {
+            DefaultButton(
+                modifier = Modifier.padding(20.dp),
+                text = "Continuar",
+                onClick = { navController.navigate(route = ShoppingBagScreen.PaymentsForm.route) })
+        }) {
+        GetAddress(paddingValues = it, navController = navController)
     }
 }

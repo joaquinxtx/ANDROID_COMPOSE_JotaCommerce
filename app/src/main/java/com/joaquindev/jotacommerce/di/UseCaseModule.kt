@@ -6,6 +6,9 @@ import com.joaquindev.jotacommerce.domain.useCase.address.CreateAddressUseCase
 import com.joaquindev.jotacommerce.domain.useCase.address.FindByUserAddressUseCase
 import com.joaquindev.jotacommerce.domain.useCase.auth.*
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.*
+import com.joaquindev.jotacommerce.domain.useCase.mercado_pago.GetIdentificationTypeUseCase
+import com.joaquindev.jotacommerce.domain.useCase.mercado_pago.GetInstallmentsUseCase
+import com.joaquindev.jotacommerce.domain.useCase.mercado_pago.MercadoPagoUseCase
 import com.joaquindev.jotacommerce.domain.useCase.product.*
 import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.*
 import com.joaquindev.jotacommerce.domain.useCase.users.UpdateUserUseCase
@@ -75,4 +78,10 @@ object UseCaseModule {
             createAddress = CreateAddressUseCase(addressRepository),
             findByUserAddress = FindByUserAddressUseCase(addressRepository)
         )
+    @Provides
+    fun provideMercadoPagoUseCase(mercadoPagoRepository: MercadoPagoRepository) =
+       MercadoPagoUseCase(
+           getIdentificationType = GetIdentificationTypeUseCase(mercadoPagoRepository),
+           getInstallments = GetInstallmentsUseCase(mercadoPagoRepository)
+       )
 }

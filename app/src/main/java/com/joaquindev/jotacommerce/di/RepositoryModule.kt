@@ -51,5 +51,10 @@ object RepositoryModule {
      addressRemoteDataSource: AddressRemoteDataSource,
      addressLocalDataSource: AddressLocalDataSource,
     ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource , addressLocalDataSource)
+@Provides
+    fun provideMercadoPagoRepository(
+     mercadoPagoRemoteDataSource: MercadoPagoRemoteDataSource,
+
+    ): MercadoPagoRepository = MercadoPagoRepositoryImpl(mercadoPagoRemoteDataSource)
 
 }

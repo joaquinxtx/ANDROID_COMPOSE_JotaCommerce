@@ -26,8 +26,6 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 @Composable
 fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewModel(), navController: NavHostController) {
 
-
-
     Box(
         modifier = Modifier
             .padding(paddingValues)
@@ -36,20 +34,21 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
         BackgroundImageProfile()
 
         Column {
-            ProfileIcon(vm = vm)
-            Text(
-                modifier = Modifier
-                    .padding(vertical = 25.dp)
-                    .align(Alignment.CenterHorizontally),
-                text = "${vm.user?.name?.uppercase()} ",
-                color = Cafe_white,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.weight(0.5f))
-            ProfileUserData(vm = vm , navController = navController )
+            Column(Modifier.fillMaxWidth()) {
+                ProfileIcon(vm = vm)
+                Text(
+                    modifier = Modifier
+                        .padding(vertical = 25.dp)
+                        .align(Alignment.CenterHorizontally),
+                    text = "${vm.user?.name?.uppercase()} ",
+                    color = Cafe_white,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+                Spacer(modifier = Modifier.weight(1f))
+                ProfileUserData(vm = vm, navController = navController)
+
         }
-
     }
-
 }

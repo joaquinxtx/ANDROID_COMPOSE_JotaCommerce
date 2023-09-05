@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.payments.form.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 
 
@@ -18,27 +19,29 @@ import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.domain.model.IdentificationType
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
+import com.joaquindev.jotacommerce.presentation.components.TopBar
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.ClientPaymentFormViewModel
+import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.mapper.toCardTokenBody
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClientPaymentFormContent(
     paddingValues: PaddingValues,
-    identificationType: List<String>,
-    vm: ClientPaymentFormViewModel = hiltViewModel()
+    identificationTypes: List<String>,
+    vm: ClientPaymentFormViewModel = hiltViewModel(),
+    navController: NavHostController
 ) {
-    var selectedItem by remember {
-        mutableStateOf(identificationType[0])
-    }
     val state = vm.state
-    var expanded by remember {
-        mutableStateOf(false)
-    }
+    var selectedItem by remember { mutableStateOf(identificationTypes[0]) }
+    vm.onIdentificationTypeInput(selectedItem)
+    var expanded by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .padding(paddingValues)
             .padding(20.dp)
     ) {
+        TopBar(navController = navController, title = "Formulario de pago", arrowBack = true)
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -48,22 +51,22 @@ fun ClientPaymentFormContent(
             icon = Icons.Default.Settings
         )
 
-            DefaultTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = state.expirationYear,
-                onValueChange = { vm.onYearExpirationInput(it) },
-                label = "Año de expiracion YYYY",
-                icon = Icons.Default.DateRange,
-                keyboardType = KeyboardType.Number
-            )
-            DefaultTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = state.expirationMonth,
-                onValueChange = { vm.onMonthInput(it) },
-                label = "Mes de expiracion MM",
-                icon = Icons.Default.DateRange,
-                keyboardType = KeyboardType.Number
-            )
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = state.expirationYear,
+            onValueChange = { vm.onYearExpirationInput(it) },
+            label = "Año de expiracion YYYY",
+            icon = Icons.Default.DateRange,
+            keyboardType = KeyboardType.Number
+        )
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = state.expirationMonth,
+            onValueChange = { vm.onMonthInput(it) },
+            label = "Mes de expiracion MM",
+            icon = Icons.Default.DateRange,
+            keyboardType = KeyboardType.Number
+        )
 
 
         DefaultTextField(
@@ -82,12 +85,14 @@ fun ClientPaymentFormContent(
             icon = Icons.Default.Lock,
 
             )
-
-        ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = {
-            expanded = !expanded
-        }) {
-
-            TextField(
+        Spacer(modifier = Modifier.height(10.dp))
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = {
+                expanded = !expanded
+            }
+        ) {
+            OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = selectedItem,
                 onValueChange = {},
@@ -96,32 +101,50 @@ fun ClientPaymentFormContent(
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                 },
-                colors = ExposedDropdownMenuDefaults.textFieldColors(containerColor = Color.White)
+                colors = TextFieldDefaults.textFieldColors(
+                   Color.White
+                )
+
             )
-            ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-                identificationType.forEachIndexed { index, identification ->
-                    androidx.compose.material.DropdownMenuItem(onClick = {
-                        selectedItem = identification
-                        expanded = false
-                    }) {
-                        Text(text = identification)
-                    }
+
+            ExposedDropdownMenu(
+                modifier = Modifier.background(Color.White),
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                identificationTypes.forEachIndexed { index, identification ->
+                    DropdownMenuItem(
+                        onClick = {
+                            selectedItem = identification
+                            vm.onIdentificationTypeInput(selectedItem)
+                            expanded = false
+                        },
+                        text = { Text(text = identification) }
+                    )
                 }
-
             }
-
         }
+        Spacer(modifier = Modifier.height(5.dp))
+
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
             value = state.number,
-            onValueChange = { vm.onIdentificationNumberInput(it) },
+            onValueChange = { vm.onIdentificationNumberInput(it)},
             label = "Numero de identification",
             icon = Icons.Default.List,
             keyboardType = KeyboardType.Number
 
         )
         Spacer(modifier = Modifier.weight(1f))
-        DefaultButton(modifier = Modifier.fillMaxWidth(), text = "Continuar", onClick = {})
+        DefaultButton(
+            modifier = Modifier.fillMaxWidth(),
+            text = "Continuar",
+            onClick = {
+                navController.navigate(
+                    route = ShoppingBagScreen.PaymentsInstallments.passPaymentForm(
+                        state.toCardTokenBody().toJson())
+                )
+            })
 
     }
 }

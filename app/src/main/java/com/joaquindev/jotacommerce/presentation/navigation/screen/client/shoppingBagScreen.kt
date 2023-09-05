@@ -8,6 +8,9 @@ open class ShoppingBagScreen(val route: String) {
     object AddressList: ShoppingBagScreen("client/address/list")
     object AddressCreate: ShoppingBagScreen("client/address/create")
     object PaymentsForm: ShoppingBagScreen("client/payments/form")
+    object PaymentsInstallments: ShoppingBagScreen("client/payments/installments/{payment_form}") {
+        fun passPaymentForm(paymentForm: String) = "client/payments/installments/$paymentForm"
+    }
 
 
 

@@ -1,4 +1,4 @@
-package com.joaquindev.jotacommerce.presentation.screens.client.payments.form.components
+package com.joaquindev.jotacommerce.presentation.screens.client.payments.installments.components
 
 
 import android.widget.Toast
@@ -12,23 +12,24 @@ import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
 
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.ClientPaymentFormViewModel
+import com.joaquindev.jotacommerce.presentation.screens.client.payments.installments.ClientPaymentsInstallmentsViewModel
 
 @Composable
-fun GetIdentificationTypes(
+fun GetInstallments(
 navController: NavHostController,
-    vm: ClientPaymentFormViewModel = hiltViewModel(),
+    vm: ClientPaymentsInstallmentsViewModel= hiltViewModel(),
     paddingValues: PaddingValues
 ) {
-    when (val response = vm.identificationTypesResponse) {
+    when (val response = vm.installmentsResponse) {
         Resource.Loading -> {
 
             ProgressBar()
         }
 
         is Resource.Success -> {
-            ClientPaymentFormContent(
+            ClientPaymentInstallmentsContent(
                 paddingValues = paddingValues,
-                identificationTypes = response.data.map{identificationType -> identificationType.id  },
+                installments =response.data.payerCosts,
                 navController = navController
             )
 

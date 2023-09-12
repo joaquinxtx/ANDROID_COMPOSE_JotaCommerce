@@ -16,8 +16,8 @@ import com.joaquindev.jotacommerce.presentation.screens.client.payments.installm
 
 @Composable
 fun GetInstallments(
-navController: NavHostController,
-    vm: ClientPaymentsInstallmentsViewModel= hiltViewModel(),
+    navController: NavHostController,
+    vm: ClientPaymentsInstallmentsViewModel = hiltViewModel(),
     paddingValues: PaddingValues
 ) {
     when (val response = vm.installmentsResponse) {
@@ -27,9 +27,9 @@ navController: NavHostController,
         }
 
         is Resource.Success -> {
-            ClientPaymentInstallmentsContent(
-                paddingValues = paddingValues,
-                installments =response.data.payerCosts,
+            ClientPaymentsInstallmentsContent(
+                paddingValues=paddingValues,
+                installments = response.data.payerCosts,
                 navController = navController
             )
 

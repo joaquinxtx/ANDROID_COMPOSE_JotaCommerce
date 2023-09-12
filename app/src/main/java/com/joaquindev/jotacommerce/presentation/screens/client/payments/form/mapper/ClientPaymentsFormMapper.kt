@@ -5,7 +5,7 @@ import com.joaquindev.jotacommerce.domain.model.Cardholder
 import com.joaquindev.jotacommerce.domain.model.Identification
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.ClientPaymentsFormState
 
-fun ClientPaymentsFormState.toCardTokenBody():CardTokenBody{
+fun ClientPaymentsFormState.toCardTokenBody(): CardTokenBody {
     return CardTokenBody(
         cardNumber = cardNumber,
         expirationMonth = expirationMonth.toInt(),
@@ -15,7 +15,7 @@ fun ClientPaymentsFormState.toCardTokenBody():CardTokenBody{
             name = name,
             identification = Identification(
                 type = type,
-                number=number
+                number = number
             )
         )
     )

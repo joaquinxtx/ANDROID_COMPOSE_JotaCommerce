@@ -45,7 +45,7 @@ data class PayerCost (
     val installments: Int,
 
     @SerializedName("installment_rate")
-    val installmentRate: Long,
+    val installmentRate: Double,
 
     @SerializedName("discount_rate")
     val discountRate: Long,

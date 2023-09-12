@@ -11,9 +11,9 @@ import com.joaquindev.jotacommerce.presentation.screens.client.payments.installm
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClientPaymentsInstallmentsScreen(navController: NavHostController , paymentFormParam:String , vm:ClientPaymentsInstallmentsViewModel = hiltViewModel()) {
-Log.d("ClientPaymentsInstallmentsScreen", "Param:${vm.cardTokenBody} ")
+    Log.d("ClientPaymentsInstallmentsScreen", "Param: ${vm.cardTokenBody}")
+    vm.getInstallments(vm.cardTokenBody.cardNumber.substring(0, 6).toInt(), 100000.0)
 
-    vm.getInstallments(vm.cardTokenBody.cardNumber.substring(0,6).toInt(),10000.0)
     Scaffold() {
         GetInstallments(navController = navController, paddingValues = it )
     }

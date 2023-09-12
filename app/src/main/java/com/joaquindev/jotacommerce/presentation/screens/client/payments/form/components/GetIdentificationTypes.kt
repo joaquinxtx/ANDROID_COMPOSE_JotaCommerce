@@ -28,8 +28,8 @@ navController: NavHostController,
         is Resource.Success -> {
             ClientPaymentFormContent(
                 paddingValues = paddingValues,
-                identificationTypes = response.data.map{identificationType -> identificationType.id  },
-                navController = navController
+                navController = navController,
+                identificationTypes = response.data.map { identificationType -> identificationType.id }
             )
 
         }

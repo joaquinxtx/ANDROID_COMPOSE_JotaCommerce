@@ -16,6 +16,7 @@ import com.joaquindev.jotacommerce.presentation.screens.address.create.ClientAdd
 import com.joaquindev.jotacommerce.presentation.screens.address.list.ClientAddressListScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.ClientPaymentFormScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.installments.ClientPaymentsInstallmentsScreen
+import com.joaquindev.jotacommerce.presentation.screens.client.payments.status.ClientPaymentsStatusScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory.ClientProductByCategoryListScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.client.shopping_bag.ClientShoppingBagScreen
@@ -151,10 +152,21 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController) {
             })
         ) {
             it.arguments?.getString("payment_form")?.let {
-
-               ClientPaymentsInstallmentsScreen(navController = navController,it)
+                ClientPaymentsInstallmentsScreen(navController, it)
             }
         }
+        composable(
+            route = ShoppingBagScreen.PaymentsStatus.route,
+            arguments = listOf(navArgument("payment_response") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("payment_response")?.let {
+                ClientPaymentsStatusScreen(navController, it)
+            }
+        }
+
+
 
     }
 }

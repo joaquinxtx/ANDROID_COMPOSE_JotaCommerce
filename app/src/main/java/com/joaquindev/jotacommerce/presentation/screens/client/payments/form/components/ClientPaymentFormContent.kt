@@ -140,11 +140,12 @@ fun ClientPaymentFormContent(
             modifier = Modifier.fillMaxWidth(),
             text = "Continuar",
             onClick = {
-                navController.navigate(
-                    route = ShoppingBagScreen.PaymentsInstallments.passPaymentForm(
-                        state.toCardTokenBody().toJson())
-                )
-            })
+                navController.navigate(route = ShoppingBagScreen.PaymentsInstallments.passPaymentForm(state.toCardTokenBody().toJson())) {
+                    popUpTo(ShoppingBagScreen.PaymentsForm.route) { inclusive = true }
+                }
+            }
+        )
+
 
     }
 }

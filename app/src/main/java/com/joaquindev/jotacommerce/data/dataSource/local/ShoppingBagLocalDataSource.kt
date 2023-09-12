@@ -11,4 +11,5 @@ interface ShoppingBagLocalDataSource {
     fun findById(id:String): ShoppingBagProductEntity
     suspend fun update(id:String ,  quantity:Int)
     suspend fun delete(id:String )
+    suspend fun getTotal(): Double
 }

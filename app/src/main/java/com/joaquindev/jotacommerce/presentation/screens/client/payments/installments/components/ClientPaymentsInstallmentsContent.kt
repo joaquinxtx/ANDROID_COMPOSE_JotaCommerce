@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.payments.installments.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +16,7 @@ import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.domain.model.PayerCost
 import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.installments.ClientPaymentsInstallmentsViewModel
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -31,8 +33,15 @@ fun ClientPaymentsInstallmentsContent(
     Column(
         modifier = Modifier
             .padding(paddingValues)
-            .padding(20.dp)
+            .padding(bottom = 20.dp, end = 20.dp, start = 20.dp)
     ) {
+        TopBar(
+            navController = navController,
+            title = "Numero de cuotas ",
+            arrowBack = true,
+            titleColor = Cafe_blue,
+            iconTint = Cafe_blue
+        )
         ExposedDropdownMenuBox(
             expanded = expanded,
             onExpandedChange = {
@@ -53,7 +62,9 @@ fun ClientPaymentsInstallmentsContent(
 
                 colors = ExposedDropdownMenuDefaults.textFieldColors(containerColor = Color.White)
             )
-            ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            ExposedDropdownMenu(modifier = Modifier.background(Color.White),
+                expanded = expanded,
+                onDismissRequest = { expanded = false }) {
                 installments.forEachIndexed { index, installment ->
                     DropdownMenuItem(onClick = {
                         vm.selectedInstallment = installment

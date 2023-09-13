@@ -4,25 +4,33 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 
 
+
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
+
 import androidx.compose.ui.Modifier
+
 import androidx.compose.ui.graphics.Color
+
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.joaquindev.jotacommerce.domain.model.IdentificationType
+
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.ClientPaymentFormViewModel
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.mapper.toCardTokenBody
+import com.joaquindev.jotacommerce.presentation.ui.theme.CafeTransparent
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,6 +40,7 @@ fun ClientPaymentFormContent(
     vm: ClientPaymentFormViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
+
     val state = vm.state
     var selectedItem by remember { mutableStateOf(identificationTypes[0]) }
     vm.onIdentificationTypeInput(selectedItem)
@@ -39,9 +48,9 @@ fun ClientPaymentFormContent(
     Column(
         modifier = Modifier
             .padding(paddingValues)
-            .padding(20.dp)
+            .padding(bottom = 20.dp , end =20.dp, start = 20.dp)
     ) {
-        TopBar(navController = navController, title = "Formulario de pago", arrowBack = true)
+        TopBar(navController = navController, title = "Formulario de pago", arrowBack = true , titleColor = Cafe_blue, iconTint = Cafe_blue)
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -101,14 +110,18 @@ fun ClientPaymentFormContent(
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                 },
-                colors = TextFieldDefaults.textFieldColors(
-                   Color.White
-                )
+
+
+
+
+                colors = ExposedDropdownMenuDefaults.textFieldColors(containerColor = CafeTransparent)
+
 
             )
+            Spacer(modifier = Modifier.height(10.dp))
 
             ExposedDropdownMenu(
-                modifier = Modifier.background(Color.White),
+                modifier = Modifier.background(Color.White).fillMaxWidth(),
                 expanded = expanded,
                 onDismissRequest = { expanded = false }
             ) {

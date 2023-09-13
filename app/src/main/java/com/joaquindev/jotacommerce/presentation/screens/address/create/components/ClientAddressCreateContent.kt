@@ -18,10 +18,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.address.create.ClientAddressCreateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
@@ -29,7 +31,8 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 @Composable
 fun ClientAddressCreateContent(
     paddingValues: PaddingValues,
-    vm: ClientAddressCreateViewModel = hiltViewModel()
+    vm: ClientAddressCreateViewModel = hiltViewModel(),
+    navController: NavHostController
 ) {
     val state = vm.state
 
@@ -40,23 +43,12 @@ fun ClientAddressCreateContent(
 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        IconButton(
-            onClick = { },
-            modifier = Modifier.align(Alignment.Start)
-        ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "",
-                tint = Cafe_blue,
-                modifier = Modifier
-                    .size(34.dp)
-            )
-        }
+       TopBar(navController = navController , arrowBack = true, titleColor = Cafe_blue , iconTint = Cafe_blue , title = "Nueva direccion")
         Spacer(modifier = Modifier.height(40.dp))
         Image(
             modifier = Modifier
                 .size(150.dp)
-                .clip(CircleShape)
+
                 .align(Alignment.CenterHorizontally),
             painter = painterResource(id = R.drawable.subir),
             contentDescription = "",

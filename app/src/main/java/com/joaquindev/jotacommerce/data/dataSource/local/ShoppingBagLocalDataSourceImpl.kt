@@ -16,5 +16,5 @@ class ShoppingBagLocalDataSourceImpl(private val shoppingBagDao: ShoppingBagDao)
 
 
     override suspend fun delete(id: String) = shoppingBagDao.delete(id)
-
+    override suspend fun getTotal(): Double = shoppingBagDao.getTotal()
 }

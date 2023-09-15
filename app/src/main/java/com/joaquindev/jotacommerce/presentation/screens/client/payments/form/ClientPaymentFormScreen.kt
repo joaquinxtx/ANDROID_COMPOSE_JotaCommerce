@@ -15,6 +15,6 @@ fun ClientPaymentFormScreen(navController: NavHostController , vm : ClientPaymen
     vm.getIdentificationTypes()
 
     Scaffold() {
-        GetIdentificationTypes(paddingValues = it)
+        GetIdentificationTypes(paddingValues = it , navController = navController)
     }
 }

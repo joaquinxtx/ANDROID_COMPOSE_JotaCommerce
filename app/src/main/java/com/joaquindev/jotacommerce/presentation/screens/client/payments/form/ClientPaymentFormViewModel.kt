@@ -47,10 +47,13 @@ class ClientPaymentFormViewModel @Inject constructor(private val mercadoPagoUseC
         state = state.copy(securityCode = input)
     }
     fun onNameInput(input:String){
-        state = state.copy(cardNumber = input)
+        state = state.copy(name = input)
     }
     fun onIdentificationNumberInput(input:String){
         state = state.copy(number = input)
+    }
+    fun onIdentificationTypeInput(input: String) {
+        state = state.copy(type = input)
     }
 
 }

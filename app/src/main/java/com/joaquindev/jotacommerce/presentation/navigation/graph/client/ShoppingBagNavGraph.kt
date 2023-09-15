@@ -9,11 +9,15 @@ import androidx.compose.ui.Alignment
 import androidx.navigation.*
 import androidx.navigation.compose.composable
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
+import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientCategoryScreen
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 import com.joaquindev.jotacommerce.presentation.screens.address.create.ClientAddressCreateScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.address.list.ClientAddressListScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.ClientPaymentFormScreen
+import com.joaquindev.jotacommerce.presentation.screens.client.payments.installments.ClientPaymentsInstallmentsScreen
+import com.joaquindev.jotacommerce.presentation.screens.client.payments.status.ClientPaymentsStatusScreen
+import com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory.ClientProductByCategoryListScreen
 
 import com.joaquindev.jotacommerce.presentation.screens.client.shopping_bag.ClientShoppingBagScreen
 
@@ -121,6 +125,47 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController) {
         ) {
             ClientPaymentFormScreen(navController = navController )
         }
+        composable(
+            route = ShoppingBagScreen.PaymentsInstallments.route,
+            enterTransition = {
+                fadeIn(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + slideIntoContainer(
+                    animationSpec = tween(300, easing = EaseIn),
+                    towards = AnimatedContentTransitionScope.SlideDirection.Start
+                )
+            },
+            exitTransition = {
+                fadeOut(
+                    animationSpec = tween(
+                        300, easing = LinearEasing
+                    )
+                ) + slideOutOfContainer(
+                    animationSpec = tween(300, easing = EaseOut),
+                    towards = AnimatedContentTransitionScope.SlideDirection.End
+                )
+            },
+            arguments = listOf(navArgument("payment_form") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("payment_form")?.let {
+                ClientPaymentsInstallmentsScreen(navController, it)
+            }
+        }
+        composable(
+            route = ShoppingBagScreen.PaymentsStatus.route,
+            arguments = listOf(navArgument("payment_response") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("payment_response")?.let {
+                ClientPaymentsStatusScreen(navController, it)
+            }
+        }
+
 
 
     }

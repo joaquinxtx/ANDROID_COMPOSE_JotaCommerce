@@ -1,6 +1,7 @@
 package com.joaquindev.jotacommerce.presentation.screens.address.list
 
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -36,7 +37,7 @@ fun ClientAddressListScreen(
     Scaffold(floatingActionButton = {
         FloatingActionButton(
             onClick = { navController.navigate(route = ShoppingBagScreen.AddressCreate.route) },
-            modifier = Modifier.padding(bottom = 20.dp),
+            modifier = Modifier.padding(bottom = 10.dp),
             containerColor = Cafe_orange,
             contentColor = Cafe_white
 
@@ -46,7 +47,7 @@ fun ClientAddressListScreen(
     },
         bottomBar = {
             DefaultButton(
-                modifier = Modifier.padding(20.dp),
+                modifier = Modifier.padding(20.dp).fillMaxWidth(),
                 text = "Continuar",
                 onClick = { navController.navigate(route = ShoppingBagScreen.PaymentsForm.route) })
         }) {

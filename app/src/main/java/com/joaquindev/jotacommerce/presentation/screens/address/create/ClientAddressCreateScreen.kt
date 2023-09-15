@@ -17,7 +17,7 @@ fun ClientAddressCreateScreen(
 ) {
     vm.getSessionData()
     Scaffold() {
-        ClientAddressCreateContent(paddingValues = it)
+        ClientAddressCreateContent(paddingValues = it, navController=navController)
     }
     CreateAddress()
 }

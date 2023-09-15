@@ -1,5 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 
 import androidx.compose.material.icons.Icons
@@ -34,7 +35,7 @@ fun TopBar(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp),
+            .background(Cafe_blue),
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (arrowBack) {

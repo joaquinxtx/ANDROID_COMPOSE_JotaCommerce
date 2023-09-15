@@ -28,7 +28,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 @Composable
 fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(start = 10.dp , end = 10.dp),
         shape = RoundedCornerShape(
             topEnd = 40.dp,
             topStart = 40.dp

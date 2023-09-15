@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.MainActivity
+import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.product.list.components.GetProducts
 

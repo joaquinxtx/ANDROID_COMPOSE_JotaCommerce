@@ -39,6 +39,7 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
         Column(
             modifier = Modifier.padding(horizontal = 30.dp, vertical = 20.dp)
         ) {
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

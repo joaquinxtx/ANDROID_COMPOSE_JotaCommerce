@@ -1,14 +1,12 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.product.detail.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -32,6 +30,7 @@ import com.joaquindev.jotacommerce.presentation.components.SliderView
 import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.client.product.detail.ClientProductDetailViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalPagerApi::class)
@@ -45,111 +44,111 @@ fun ClientProductDetailContent(
 
 
 
-    Box(Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.detailproduct),
-            contentDescription = "",
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop,
-            colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
-                setToScale(
-                    0.6f,
-                    0.6f,
-                    0.6f,
-                    1f
-                )
 
-            })
-        )
-        Column(Modifier.padding(paddingValues)) {
-            TopBar(navController = navController, arrowBack = true, title = "Detalle del producto")
-            SliderView(state = state, images = vm.productImages)
-            Spacer(modifier = Modifier.height(4.dp))
-            DotsIndicator(totalDots = vm.productImages.size, selectedIndex = state.currentPage)
 
-        }
+    Column(Modifier.padding(paddingValues)) {
+        TopBar(navController = navController, arrowBack = true, title = "Detalle del producto")
         Card(
-            modifier = Modifier.padding(top = 300.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Cafe_blue)
+                .padding(top = 10.dp),
             shape = RoundedCornerShape(
-                topEnd = 40.dp,
-                topStart = 40.dp
-
+                topEnd = 30.dp,
+                topStart = 30.dp
             )
         ) {
+            Column(modifier =Modifier.padding(vertical = 30.dp) ){
+                SliderView(state = state, images = vm.productImages)
+                Spacer(modifier = Modifier.height(4.dp))
+                DotsIndicator(totalDots = vm.productImages.size, selectedIndex = state.currentPage)
 
-            Column(modifier = Modifier.padding(20.dp)) {
-                Text(text = vm.product.name, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
-                Text(
-                    text = "Descripcion",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(bottom = 7.dp)
-                )
-                Text(text = vm.product.description, fontSize = 15.sp)
-                Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
-                Text(
-                    text = "Precio",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(bottom = 7.dp)
-                )
-                Text(text = vm.product.price.toString(), fontSize = 15.sp)
-                Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
-                Text(
-                    text = "Tu Orden",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(bottom = 7.dp)
-                )
-                Text(text = "Cantidad: ${vm.quantity}", fontSize = 15.sp)
-                Text(text = "Precio C/U: ${vm.price}", fontSize = 15.sp)
+            }
+            Card(
+                modifier = Modifier.padding(horizontal = 10.dp),
+                shape = RoundedCornerShape(
+                    topEnd = 40.dp,
+                    topStart = 40.dp
 
-                Spacer(modifier = Modifier.weight(1f))
+                ),
+                colors = CardDefaults.cardColors(containerColor = Cafe_white)
+            ) {
+
+                Column(modifier = Modifier.padding(20.dp)) {
+                    Text(text = vm.product.name, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+                    Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
+                    Text(
+                        text = "Descripcion",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp,
+                        modifier = Modifier.padding(bottom = 7.dp)
+                    )
+                    Text(text = vm.product.description, fontSize = 15.sp)
+                    Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
+                    Text(
+                        text = "Precio",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp,
+                        modifier = Modifier.padding(bottom = 7.dp)
+                    )
+                    Text(text = vm.product.price.toString(), fontSize = 15.sp)
+                    Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
+                    Text(
+                        text = "Tu Orden",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp,
+                        modifier = Modifier.padding(bottom = 7.dp)
+                    )
+                    Text(text = "Cantidad: ${vm.quantity}", fontSize = 15.sp)
+                    Text(text = "Precio C/U: ${vm.price}", fontSize = 15.sp)
+
+                    Spacer(modifier = Modifier.weight(1f))
 
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Card(
-                        shape = RoundedCornerShape(20.dp),
-
-                        colors = CardDefaults.cardColors(containerColor = Cafe_blue),
-                        modifier = Modifier
-                            .width(100.dp)
-                            .height(35.dp)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Row(
+                        Card(
+                            shape = RoundedCornerShape(20.dp),
 
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceEvenly,
-                            modifier = Modifier.fillMaxWidth()
+                            colors = CardDefaults.cardColors(containerColor = Cafe_blue),
+                            modifier = Modifier
+                                .width(100.dp)
+                                .height(35.dp)
                         ) {
-                            Text(
-                                text = "-", fontSize = 18.sp,
+                            Row(
 
-                                color = Color.White,
-                                modifier = Modifier.clickable { vm.remove() }
-                            )
-                            Text(
-                                text = vm.quantity.toString(), fontSize = 20.sp,
-                                color = Color.White
-                            )
-                            Text(
-                                text = "+", fontSize = 18.sp,
-                                color = Color.White,
-                                modifier = Modifier.clickable { vm.add() }
-                            )
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceEvenly,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Text(
+                                    text = "-", fontSize = 18.sp,
+
+                                    color = Color.White,
+                                    modifier = Modifier.clickable { vm.remove() }
+                                )
+                                Text(
+                                    text = vm.quantity.toString(), fontSize = 20.sp,
+                                    color = Color.White
+                                )
+                                Text(
+                                    text = "+", fontSize = 18.sp,
+                                    color = Color.White,
+                                    modifier = Modifier.clickable { vm.add() }
+                                )
+                            }
                         }
+
+                        DefaultButton(
+                            modifier = Modifier.width(200.dp),
+                            text = "Agregar al carrito",
+                            onClick = { vm.saveItem() })
+
+
                     }
-
-                    DefaultButton(
-                        modifier = Modifier.width(200.dp),
-                        text = "Agregar al carrito",
-                        onClick = { vm.saveItem() })
-
 
                 }
 

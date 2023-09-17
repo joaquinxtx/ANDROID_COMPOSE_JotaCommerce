@@ -45,8 +45,8 @@ fun ClientProductListContent(
                 .background(Cafe_blue).padding(top = 10.dp)
                 ,
             shape = RoundedCornerShape(
-                topEnd = 40.dp,
-                topStart = 40.dp
+                topEnd = 30.dp,
+                topStart = 30.dp
             )
         ) {
             Column(Modifier.fillMaxWidth()) {

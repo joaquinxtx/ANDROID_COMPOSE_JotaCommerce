@@ -2,11 +2,14 @@ package com.joaquindev.jotacommerce.presentation.screens.profile.update.componen
 
 import android.app.Activity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -29,6 +32,7 @@ import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
 import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.screens.profile.update.ProfileUpdateViewModel
+import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 
@@ -50,21 +54,29 @@ fun ProfileUpdateContent(
     DialogCapturePicture(state = stateDialog, takePhoto = { vm.takePhoto() }, pickImage = {
         vm.pickImage()
     })
-    Box(
+    Column(
         modifier = Modifier
             .padding(paddingValues)
     ) {
-        BackgroundImageUpdateProfile()
+        TopBar(navController = navController , arrowBack = true , title = "Actualizar perfil" )
 
-        Column {
+
+        Card(   modifier = Modifier
+
+            .fillMaxSize()
+            .background(Cafe_blue)
+            .padding(top = 10.dp)
+            ,
+            shape = RoundedCornerShape(
+                topEnd = 30.dp,
+                topStart = 30.dp)) {
             Column(Modifier.fillMaxWidth()) {
 
-        TopBar(navController = navController , arrowBack = true , title = "Actualizar perfil" )
 
                 if (state.image != "") {
                     AsyncImage(
                         modifier = Modifier
-                            .size(150.dp)
+                            .size(150.dp).padding(top = 20.dp)
                             .clip(CircleShape)
                             .align(Alignment.CenterHorizontally)
                             .clickable { stateDialog.value = true },
@@ -74,7 +86,7 @@ fun ProfileUpdateContent(
                     )
                 } else {
                     Image(
-                        modifier = Modifier
+                        modifier = Modifier.padding(top = 20.dp)
                             .size(150.dp)
                             .clip(CircleShape)
                             .align(Alignment.CenterHorizontally)

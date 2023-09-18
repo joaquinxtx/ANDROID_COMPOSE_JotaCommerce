@@ -22,7 +22,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 fun AdminProductListScreen(navController: NavHostController, categoryParam: String , vm:AdminProductListViewModel = hiltViewModel()) {
     val categoryParse = Category.fromJson(categoryParam).toJson()
     Scaffold(
-        topBar = { TopBar(navController = navController , photoUrl = vm.user?.image, profilePhoto = true , )},
+        topBar = { TopBar(arrowBack = true, navController = navController , photoUrl = vm.user?.image, profilePhoto = true , )},
 
         floatingActionButton = {
             FloatingActionButton(

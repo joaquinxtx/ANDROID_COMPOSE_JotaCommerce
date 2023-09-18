@@ -119,7 +119,7 @@ fun AdminCategoryListContent(
 
             LazyColumn(
                 modifier = Modifier
-                    .padding(paddingValues)
+                    .padding(top = 10.dp)
                     .fillMaxSize()
             ) {
                 items(

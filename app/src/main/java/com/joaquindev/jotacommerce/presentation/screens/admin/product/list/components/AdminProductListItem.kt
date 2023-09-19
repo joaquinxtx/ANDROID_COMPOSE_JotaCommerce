@@ -159,7 +159,7 @@ fun RedBackground(degrees: Float) {
     ) {
         Box(contentAlignment = Alignment.CenterEnd, modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 24.dp)) {
+            .padding(horizontal = 14.dp)) {
             Icon(
                 modifier = Modifier.rotate(degrees = degrees),
                 imageVector = Icons.Filled.Delete,

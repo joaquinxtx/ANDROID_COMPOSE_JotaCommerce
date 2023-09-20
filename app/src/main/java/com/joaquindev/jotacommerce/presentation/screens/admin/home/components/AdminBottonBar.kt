@@ -12,9 +12,8 @@ import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminScr
 fun AdminBottomBar(navController: NavHostController) {
 
     val screen = listOf(
-//        AdminScreen.ProductList,
-        AdminScreen.Profile,
         AdminScreen.CategoryList,
+        AdminScreen.Profile,
     )
     val navBackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackEntry?.destination
@@ -25,7 +24,7 @@ fun AdminBottomBar(navController: NavHostController) {
 
 
         ) {
-            screen.forEach { screen->
+            screen.forEach { screen ->
                 if (currentDestination != null) {
                     AdminBottomBarItem(
                         screen = screen,

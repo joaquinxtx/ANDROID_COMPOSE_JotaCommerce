@@ -80,7 +80,13 @@ fun AdminCategoryListItem(
                         colors = CardDefaults.cardColors(containerColor = CafeGrayTransparent)
                     ) {
                         IconButton(
-                            onClick = { },modifier = Modifier.fillMaxSize()
+                            onClick = {
+                                navController.navigate(
+                                    route = AdminCategoryScreen.CategoryUpdate.passCategory(
+                                        category.toJson()
+                                    )
+                                )
+                            }, modifier = Modifier.fillMaxSize()
 
                         ) {
                             Icon(
@@ -99,7 +105,8 @@ fun AdminCategoryListItem(
                         colors = CardDefaults.cardColors(containerColor = CafeGrayTransparent)
                     ) {
                         IconButton(
-                            onClick = { },modifier = Modifier.fillMaxSize()
+                            onClick = { vm.deleteCategory(category.id ?: "") },
+                            modifier = Modifier.fillMaxSize()
                         ) {
                             Icon(
                                 imageVector = Icons.Outlined.Delete,

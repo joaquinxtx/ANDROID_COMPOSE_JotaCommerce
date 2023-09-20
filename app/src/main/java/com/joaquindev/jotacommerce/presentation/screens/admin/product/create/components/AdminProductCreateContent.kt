@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.*
@@ -24,13 +24,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
-import com.joaquindev.jotacommerce.presentation.components.TopBar
+
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.AdminProductCreateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
@@ -40,7 +39,6 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 fun AdminProductCreateContent(
     paddingValues: PaddingValues,
     vm: AdminProductCreateViewModel = hiltViewModel(),
-    navController: NavHostController
 ) {
     val state = vm.state
     vm.resultingActivityHandler.handle()
@@ -56,15 +54,12 @@ fun AdminProductCreateContent(
         takePhoto = { vm.takePhoto(stateDialogImageNumber.value) },
         pickImage = { vm.pickImage(stateDialogImageNumber.value) })
     Column(
-        modifier = androidx.compose.ui.Modifier
+        modifier = Modifier
             .padding(paddingValues)
             .fillMaxWidth(),
 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TopBar(navController = navController , title = "Crear producto" , arrowBack = true)
-        Spacer(modifier = Modifier.height(40.dp))
-
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             if (state.image1 != "") {
                 AsyncImage(
@@ -142,7 +137,7 @@ fun AdminProductCreateContent(
         ) {
             Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
                 Text(
-                    text = vm.category.name,
+                    text = "Crear un nuevo producto",
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Cafe_blue,

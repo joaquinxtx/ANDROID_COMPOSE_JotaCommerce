@@ -29,10 +29,11 @@ fun ClientCategoryListContent(
     navController: NavHostController,
     categories: List<Category>
 ) {
+    Column(
+        modifier = Modifier
+            .padding(paddingValues)
+    ) {
 
-
-    Column() {
-        TopBar(navController = navController, title = "Categorias")
         Card(
             modifier = Modifier
 
@@ -48,7 +49,7 @@ fun ClientCategoryListContent(
 
                 LazyColumn(
                     modifier = Modifier
-                        .padding(paddingValues)
+
                         .padding(start = 20.dp, end = 20.dp, bottom = 55.dp)
                 ) {
                     items(

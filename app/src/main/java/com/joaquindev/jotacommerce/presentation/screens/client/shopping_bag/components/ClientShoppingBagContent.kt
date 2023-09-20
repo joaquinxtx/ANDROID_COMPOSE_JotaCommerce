@@ -30,7 +30,6 @@ fun ClientShoppingBagContent(
 
 
         Column() {
-            TopBar(navController = navController , title = "Productos del carrito" , arrowBack = true)
             Card( modifier = Modifier
 
                 .fillMaxSize()

@@ -29,8 +29,7 @@ fun GetInstallments(
         is Resource.Success -> {
             ClientPaymentsInstallmentsContent(
                 paddingValues=paddingValues,
-                installments = response.data.payerCosts,
-                navController = navController
+                installments = response.data.payerCosts
             )
 
         }

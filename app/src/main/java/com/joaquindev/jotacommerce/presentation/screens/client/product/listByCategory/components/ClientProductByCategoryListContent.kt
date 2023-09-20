@@ -32,11 +32,11 @@ fun ClientProductByCategoryListContent(
 ) {
 
     Column(Modifier.fillMaxWidth()) {
-        TopBar(navController = navController, title = "Productos de la categoria", arrowBack = true)
+
         Card(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Cafe_blue)
+                .background(Cafe_blue).padding(paddingValues)
                 .padding(top = 10.dp),
             shape = RoundedCornerShape(
                 topEnd = 30.dp,

@@ -36,8 +36,7 @@ fun ClientProductListContent(
     navController: NavHostController,
     products: List<Product>
 ) {
-    Column( ){
-        TopBar(navController = navController, title = "Productos", showCart = true)
+    Column( modifier = Modifier.padding(paddingValues)){
         Card(
             modifier = Modifier
 

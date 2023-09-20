@@ -3,9 +3,7 @@ package com.joaquindev.jotacommerce.presentation.screens.profile.info.components
 import android.app.Activity
 import android.content.Intent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -30,35 +28,7 @@ import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileView
 
 @Composable
 fun ProfileIcon(vm: ProfileViewModel) {
-    val activity: Activity? = LocalContext.current as? Activity
-
-    Column(Modifier.fillMaxWidth()) {
-
-        IconButton(modifier = Modifier.align(Alignment.End), onClick = {
-            vm.logout()
-            activity?.finish()
-            activity?.startActivity(Intent(activity, MainActivity::class.java))
-        }) {
-            Icon(
-                modifier = Modifier.size(35.dp),
-                imageVector = Icons.Default.ExitToApp,
-                contentDescription = "",
-                tint = Color.White
-            )
-
-        }
-        IconButton(modifier = Modifier.align(Alignment.End), onClick = {
-            activity?.finish()
-            activity?.startActivity(Intent(activity, MainActivity::class.java))
-        }) {
-            Icon(
-                modifier = Modifier.size(35.dp),
-                imageVector = Icons.Default.Close,
-                contentDescription = "",
-                tint = Color.White
-            )
-
-        }
+    Column(Modifier.fillMaxWidth().padding(top = 50.dp)) {
         if (!vm.user?.image.isNullOrBlank()) {
             AsyncImage(
                 modifier = Modifier
@@ -79,9 +49,6 @@ fun ProfileIcon(vm: ProfileViewModel) {
                 contentDescription = "",
 
                 )
-
         }
-
-
     }
 }

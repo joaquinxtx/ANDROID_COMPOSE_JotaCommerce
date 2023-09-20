@@ -50,13 +50,7 @@ fun ClientPaymentFormContent(
             .padding(paddingValues)
 
     ) {
-        TopBar(
-            navController = navController,
-            title = "Formulario de pago",
-            arrowBack = true,
-            titleColor = Cafe_white,
-            iconTint = Cafe_white
-        )
+
         Card(
             modifier = Modifier
 

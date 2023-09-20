@@ -39,11 +39,17 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
         Column(
             modifier = Modifier.padding(horizontal = 30.dp, vertical = 20.dp)
         ) {
+            Text(
+                text = "Perfil",
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                color = Cafe_blue,
+                modifier = Modifier.padding(bottom = 20.dp)
+            )
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 15.dp),
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
@@ -51,7 +57,7 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
                     contentDescription = "",
                     tint = Cafe_orange
                 )
-                Column(modifier = Modifier.padding(horizontal = 10.dp)) {
+                Column() {
                     Text(text = "${vm.user?.name} ${vm.user?.lastname}" )
                     Text(
                         text = "Nombre de usuario",
@@ -104,7 +110,7 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
             Spacer(modifier = Modifier.weight(1f))
             DefaultButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Confirmar",
+                text = "Actualizar perfil",
                 onClick = {navController.navigate(route= "${Graph.PROFILE}/${vm.user?.toJson()}") })
 
         }

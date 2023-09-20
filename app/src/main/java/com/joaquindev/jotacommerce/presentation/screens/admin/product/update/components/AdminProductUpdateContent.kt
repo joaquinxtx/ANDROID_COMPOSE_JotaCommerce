@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.*
@@ -32,8 +32,6 @@ import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
-import com.joaquindev.jotacommerce.presentation.components.TopBar
-import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.AdminProductCreateViewModel
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.update.AdminProductUpdateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
@@ -43,7 +41,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 fun AdminProductUpdateContent(
     paddingValues: PaddingValues,
     vm: AdminProductUpdateViewModel = hiltViewModel(),
-    navController: NavHostController
+
 ) {
     val state = vm.state
     vm.resultingActivityHandler.handle()
@@ -82,8 +80,7 @@ fun AdminProductUpdateContent(
 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-       TopBar(navController = navController , title = "Crear producto" , arrowBack = true)
-        Spacer(modifier = Modifier.height(40.dp))
+
 
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             if (state.image1 != "") {
@@ -162,7 +159,7 @@ fun AdminProductUpdateContent(
         ) {
             Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
                 Text(
-                    text = vm.product.name,
+                    text = "Actualizar producto",
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Cafe_blue,

@@ -24,15 +24,11 @@ sealed class AdminMenu  (
         title = "Perfil",
         icon = Icons.Default.Person
     )
-    object Roles: AdminMenu(
-        route = "roles",
-        title = "Cambiar rol",
-        icon = Icons.Default.ArrowBack
+    object CreateCategory: AdminMenu(
+        route = "admin/category/create",
+        title = "Crear Categoria",
+        icon = Icons.Default.Add
     )
-    object Logout: AdminMenu(
-        route = "login",
-        title = "Cerrar sesion",
-        icon = Icons.Default.Close
-    )
+
 
 }

@@ -25,7 +25,6 @@ fun RowScope.AdminBottomBarItem(
         onClick = {
             if (!isSelected) {
                 navController.navigate(route = screen.route) {
-                    // Limpia la pila de navegación hasta el inicio cuando navegas a una nueva pantalla
                     popUpTo(navController.graph.findStartDestination().id)
                 }
             }

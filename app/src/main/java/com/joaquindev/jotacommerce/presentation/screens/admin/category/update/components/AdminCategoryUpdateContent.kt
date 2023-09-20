@@ -76,8 +76,8 @@ fun AdminCategoryUpdateContent(
 
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-           TopBar(navController = navController , title = "Actualizar categotia" , arrowBack = true )
-            Spacer(modifier = Modifier.height(40.dp))
+
+
             if (state.image != "") {
                 AsyncImage(
                     modifier = Modifier

@@ -9,9 +9,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.TopBar
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.components.DeleteCategory
@@ -22,8 +24,17 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AdminCategoryListScreen(navController: NavHostController ,vm:AdminCategoryListViewModel = hiltViewModel()) {
-    Scaffold(topBar = { TopBar(navController = navController , photoUrl = vm.user?.image, profilePhoto = true , ) }, floatingActionButton = {
+fun AdminCategoryListScreen(
+    navController: NavHostController,
+    vm: AdminCategoryListViewModel = hiltViewModel()
+) {
+    Scaffold(topBar = {
+        TopBar(
+            navController = navController,
+            photoUrl = vm.user?.image,
+            profilePhoto = true,
+        )
+    }, floatingActionButton = {
 
         FloatingActionButton(
             onClick = { navController.navigate(route = Graph.ADMIN_CATEGORY) },
@@ -32,7 +43,10 @@ fun AdminCategoryListScreen(navController: NavHostController ,vm:AdminCategoryLi
             contentColor = Cafe_white
 
         ) {
-            Icon(imageVector = Icons.Default.Add, contentDescription = "")
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = stringResource(id = R.string.icon_add)
+            )
         }
     }) {
         GetCategory(paddingValues = it, navController = navController)

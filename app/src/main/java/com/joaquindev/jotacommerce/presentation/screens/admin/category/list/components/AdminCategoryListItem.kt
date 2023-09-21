@@ -17,12 +17,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.AdminCategoryListViewModel
@@ -51,28 +53,25 @@ fun AdminCategoryListItem(
                     .fillMaxSize()
                     .height(170.dp),
                 model = category.image,
-                contentDescription = "",
+                contentDescription = stringResource(id = R.string.image),
                 contentScale = ContentScale.Crop,
                 colorFilter = ColorFilter.colorMatrix(
                     ColorMatrix().apply {
                         setToScale(0.5f, 0.5f, 0.5f, 1f)
                     }
                 ))
-
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-
-
                 Text(
                     modifier = Modifier.padding(10.dp), text = category.name,
                     fontWeight = FontWeight.Medium,
                     color = Color.White,
                     fontSize = 34.sp
                 )
-                Row() {
+                Row {
                     Card(
                         modifier = Modifier.size(48.dp),
                         elevation = CardDefaults.cardElevation(8.dp),
@@ -91,7 +90,7 @@ fun AdminCategoryListItem(
                         ) {
                             Icon(
                                 imageVector = Icons.Outlined.Edit,
-                                contentDescription = "",
+                                contentDescription = stringResource(id = R.string.icon_edit),
                                 tint = Color.Green,
                                 modifier = Modifier.size(24.dp)
                             )
@@ -110,7 +109,7 @@ fun AdminCategoryListItem(
                         ) {
                             Icon(
                                 imageVector = Icons.Outlined.Delete,
-                                contentDescription = "",
+                                contentDescription = stringResource(id = R.string.icon_delete),
                                 tint = Color.Red,
                                 modifier = Modifier.size(24.dp)
                             )
@@ -118,8 +117,6 @@ fun AdminCategoryListItem(
 
                     }
                 }
-
-
             }
         }
     }

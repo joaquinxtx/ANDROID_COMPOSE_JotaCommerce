@@ -10,9 +10,7 @@ import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.domain.model.User
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.CategoriesUseCase
-
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,7 +31,7 @@ class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCa
         getSessionData()
     }
     fun getSessionData()= viewModelScope.launch {
-        authUseCase.getSessionData().collect(){ data ->
+        authUseCase.getSessionData().collect{ data ->
             user = data.user
         }
     }
@@ -41,7 +39,7 @@ class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCa
 
     fun getCategories() = viewModelScope.launch {
         categoriesResponse = Resource.Loading
-        categoriesUseCase.getCategories().collect() {
+        categoriesUseCase.getCategories().collect {
             Log.d("getCategories", "data : $it")
             categoriesResponse = it
         }

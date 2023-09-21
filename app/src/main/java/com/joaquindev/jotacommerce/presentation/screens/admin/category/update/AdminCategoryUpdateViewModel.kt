@@ -22,14 +22,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AdminCategoryUpdateViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val categoryUseCase: CategoriesUseCase,
     @ApplicationContext val context:Context
 ) : ViewModel() {
 
     var state by mutableStateOf(AdminCategoryUpdateState())
     private set
-//images
+
+    //images
     var file: File? =null
     val resultingActivityHandler = ResultingActivityHandler()
 
@@ -60,8 +61,6 @@ class AdminCategoryUpdateViewModel @Inject constructor(
         categoryResponse = Resource.Loading
         val result = categoryUseCase.updateCategory( id = category.id ?: "",state.toCategory())
             categoryResponse =result
-
-
     }
 
     private fun updateCategoryWidthImage() = viewModelScope.launch {

@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,10 +49,10 @@ fun AdminCategoryCreateContent(
     val stateDialog = remember {
         mutableStateOf(false)
     }
-    Box(Modifier.fillMaxSize()){
+    Box(Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.detailproduct),
-            contentDescription = "",
+            contentDescription = stringResource(id = R.string.banner),
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
@@ -65,94 +66,95 @@ fun AdminCategoryCreateContent(
             })
         )
 
-    DialogCapturePicture(
-        state = stateDialog,
-        takePhoto = { vm.takePhoto() },
-        pickImage = { vm.pickImage() })
-    Column(
-        modifier = Modifier
-            .padding(top = 40.dp)
-            .fillMaxWidth(),
-
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        Spacer(modifier = Modifier.height(40.dp))
-        if (state.image != "") {
-            AsyncImage(
-                modifier = Modifier
-                    .size(150.dp)
-                    .clip(CircleShape)
-                    .align(Alignment.CenterHorizontally)
-                    .clickable { stateDialog.value = true },
-                model = state.image,
-                contentDescription = "",
-                contentScale = ContentScale.Crop
-            )
-        } else {
-            Image(
-                modifier = Modifier
-                    .size(150.dp)
-
-                    .align(Alignment.CenterHorizontally)
-                    .clickable { stateDialog.value = true },
-                painter = painterResource(id = R.drawable.subir),
-                contentDescription = "",
-                contentScale = ContentScale.Crop
-
-
-                )
-        }
-
-        Spacer(modifier = Modifier.weight(1f))
-        Card(
+        DialogCapturePicture(
+            state = stateDialog,
+            takePhoto = { vm.takePhoto() },
+            pickImage = { vm.pickImage() })
+        Column(
             modifier = Modifier
-                .height(320.dp)
+                .padding(top = 40.dp)
                 .fillMaxWidth(),
-            shape = RoundedCornerShape(
-                topEnd = 40.dp,
-                topStart = 40.dp
-            ), colors = CardDefaults.cardColors(Cafe_white),
-            elevation = CardDefaults.cardElevation(18.dp)
+
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
-                Text(
-                    text = "Nueva Categoria",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    color = Cafe_blue,
-                    modifier = Modifier.padding(bottom = 20.dp)
-                )
-                DefaultTextField(
-                    modifier = Modifier,
-                    value = state.name,
-                    onValueChange = {
-                        vm.onNameInput(it)
-                    },
-                    label = "Nombre de la categoria",
-                    icon = Icons.Default.List,
 
+            Spacer(modifier = Modifier.height(40.dp))
+            if (state.image != "") {
+                AsyncImage(
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(CircleShape)
+                        .align(Alignment.CenterHorizontally)
+                        .clickable { stateDialog.value = true },
+                    model = state.image,
+                    contentDescription = stringResource(id = R.string.image),
+                    contentScale = ContentScale.Crop
+                )
+            } else {
+                Image(
+                    modifier = Modifier
+                        .size(150.dp)
+
+                        .align(Alignment.CenterHorizontally)
+                        .clickable { stateDialog.value = true },
+                    painter = painterResource(id = R.drawable.subir),
+                    contentDescription =stringResource(id = R.string.upload_image),
+                    contentScale = ContentScale.Crop
+
+
+                )
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+            Card(
+                modifier = Modifier
+                    .height(320.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(
+                    topEnd = 40.dp,
+                    topStart = 40.dp
+                ), colors = CardDefaults.cardColors(Cafe_white),
+                elevation = CardDefaults.cardElevation(18.dp)
+            ) {
+                Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
+                    Text(
+                        text = stringResource(id = R.string.create_category),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Cafe_blue,
+                        modifier = Modifier.padding(bottom = 20.dp)
                     )
-                DefaultTextField(
-                    modifier = Modifier,
-                    value = state.description,
-                    onValueChange = {
-                        vm.onDescriptionInput(it)
-                    },
-                    label = "Descripcion",
-                    icon = Icons.Default.Info,
+                    DefaultTextField(
+                        modifier = Modifier,
+                        value = state.name,
+                        onValueChange = {
+                            vm.onNameInput(it)
+                        },
+                        label = stringResource(id = R.string.category_name),
+                        icon = Icons.Default.List,
+
+                        )
+                    DefaultTextField(
+                        modifier = Modifier,
+                        value = state.description,
+                        onValueChange = {
+                            vm.onDescriptionInput(it)
+                        },
+                        label = stringResource(id = R.string.description),
+                        icon = Icons.Default.Info,
 
 
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                DefaultButton(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp), text = "CREAR CATEGORIA",
-                    onClick = {
-                    vm.createCategory()
-                })
+                        )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    DefaultButton(modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp), text = stringResource(id = R.string.create_category),
+                        onClick = {
+                            vm.createCategory()
+                        })
 
+                }
             }
         }
     }
-}}
+}

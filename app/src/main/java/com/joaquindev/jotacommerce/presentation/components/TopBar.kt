@@ -30,12 +30,14 @@ import coil.compose.AsyncImage
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.MainActivity
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminMenu
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
+import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 
@@ -57,7 +59,7 @@ fun TopBar(
         color = Cafe_white.copy(alpha = 0f),
         tonalElevation = 4.dp,
 
-    ) {
+        ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -201,6 +203,7 @@ fun AnimatedDropdownMenu(
     isMenuOpen: Boolean,
     onDismissRequest: () -> Unit,
     navController: NavHostController,
+    vm: ProfileViewModel = hiltViewModel()
 ) {
     val activity: Activity? = LocalContext.current as? Activity
     val navigationMenu = listOf(
@@ -286,13 +289,9 @@ fun AnimatedDropdownMenu(
                             .height(56.dp)
                             .padding(6.dp)
                             .clickable {
+                                vm.logout()
                                 activity?.finish()
-                                activity?.startActivity(
-                                    Intent(
-                                        activity,
-                                        MainActivity::class.java
-                                    )
-                                )
+                                activity?.startActivity(Intent(activity, MainActivity::class.java))
                             }
                     ) {
                         Icon(

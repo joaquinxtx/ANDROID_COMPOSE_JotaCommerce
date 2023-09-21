@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">JotaCommerce</string>
+    <string name="banner">Banner</string>
+    <string name="image">Image</string>
+    <string name="upload_image">Upload image</string>
+    <string name="create_category">create category</string>
+    <string name="category_name">Category name</string>
+    <string name="description">Description</string>
+    <string name="the_data_was_updated">The data was updated</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="presentation_of_the_category_screen">What category do you want to modify or add?</string>
+    <string name="icon_search">icon search</string>
+    <string name="icon_clear">icon clear</string>
+    <string name="icon_edit">icon edit</string>
+    <string name="icon_add">icon add</string>
+    <string name="icon_delete">icon delete</string>
+    <string name="category_correctly_deleted">Category correctly deleted</string>
+    <string name="update_category">Update category</string>
+    <string name="hello">Hello</string>
+
+
 </resources>

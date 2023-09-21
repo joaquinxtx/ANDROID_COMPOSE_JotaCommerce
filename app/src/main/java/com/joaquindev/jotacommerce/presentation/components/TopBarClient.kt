@@ -27,12 +27,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.MainActivity
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientMenu
+import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 @Composable
@@ -99,11 +101,13 @@ fun TopBarClient(
             onDismissRequest = { isMenuOpen = false })
     }
 }
+
 @Composable
 fun AnimatedDropdownMenuClient(
     isMenuOpen: Boolean,
     onDismissRequest: () -> Unit,
     navController: NavHostController,
+    vm: ProfileViewModel = hiltViewModel()
 ) {
     val activity: Activity? = LocalContext.current as? Activity
     val navigationMenuClient = listOf(
@@ -190,13 +194,9 @@ fun AnimatedDropdownMenuClient(
                             .height(56.dp)
                             .padding(6.dp)
                             .clickable {
+                                vm.logout()
                                 activity?.finish()
-                                activity?.startActivity(
-                                    Intent(
-                                        activity,
-                                        MainActivity::class.java
-                                    )
-                                )
+                                activity?.startActivity(Intent(activity, MainActivity::class.java))
                             }
                     ) {
                         Icon(

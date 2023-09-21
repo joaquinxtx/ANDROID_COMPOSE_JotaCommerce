@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.components.TopBar
-import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.components.CreateCategory
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.components.AdminCategoryUpdateContent
 import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.components.UpdateCategory
 
@@ -14,7 +13,7 @@ import com.joaquindev.jotacommerce.presentation.screens.admin.category.update.co
 @Composable
 fun AdminCategoryUpdateScreen(navController: NavHostController, categoryParam:String) {
     Scaffold(topBar = { TopBar(navController = navController , arrowBack = true , iconTint = Color.White ) }) {
-        AdminCategoryUpdateContent(paddingValues = it , navController)
+        AdminCategoryUpdateContent(paddingValues = it )
     }
     UpdateCategory()
 }

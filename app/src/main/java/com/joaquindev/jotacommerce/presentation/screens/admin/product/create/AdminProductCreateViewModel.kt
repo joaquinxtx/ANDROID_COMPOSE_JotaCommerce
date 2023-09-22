@@ -99,7 +99,7 @@ class AdminProductCreateViewModel @Inject constructor(
         try {
             val parsedPrice = price.toDouble()
             state = state.copy(price = parsedPrice)
-        } catch (e: NumberFormatException) {
+        } catch (_: NumberFormatException) {
 
         }
     }

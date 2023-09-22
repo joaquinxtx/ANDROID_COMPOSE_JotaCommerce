@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -71,7 +72,7 @@ fun AdminProductCreateContent(
                             stateDialog.value = true
                         },
                     model = state.image1,
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.image),
                     contentScale = ContentScale.Crop
                 )
             } else {
@@ -85,7 +86,7 @@ fun AdminProductCreateContent(
                             stateDialogImageNumber.value = 1
                         },
                     painter = painterResource(id = R.drawable.subir),
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.upload_image),
                     contentScale = ContentScale.Crop
 
 
@@ -103,7 +104,7 @@ fun AdminProductCreateContent(
                             stateDialog.value = true
                         },
                     model = state.image2,
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.image),
                     contentScale = ContentScale.Crop
                 )
             } else {
@@ -117,7 +118,7 @@ fun AdminProductCreateContent(
                             stateDialogImageNumber.value = 2
                         },
                     painter = painterResource(id = R.drawable.subir),
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.upload_image),
                     contentScale = ContentScale.Crop
 
 
@@ -137,7 +138,7 @@ fun AdminProductCreateContent(
         ) {
             Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
                 Text(
-                    text = "Crear un nuevo producto",
+                    text = stringResource(id = R.string.create_product),
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Cafe_blue,
@@ -149,7 +150,7 @@ fun AdminProductCreateContent(
                     onValueChange = {
                         vm.onNameInput(it)
                     },
-                    label = "Nombre del producto",
+                    label = stringResource(id = R.string.product_name),
                     icon = Icons.Default.List,
 
                     )
@@ -159,7 +160,7 @@ fun AdminProductCreateContent(
                     onValueChange = {
                         vm.onDescriptionInput(it)
                     },
-                    label = "Descripcion",
+                    label = stringResource(id = R.string.description),
                     icon = Icons.Default.Info,
 
 
@@ -170,7 +171,7 @@ fun AdminProductCreateContent(
                     onValueChange = {
                         vm.onPriceInput(it)
                     },
-                    label = "Precio",
+                    label = stringResource(id = R.string.price),
                     icon = Icons.Default.Info,
                     keyboardType = KeyboardType.Number
 
@@ -178,7 +179,7 @@ fun AdminProductCreateContent(
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 DefaultButton(modifier = Modifier
-                    .fillMaxWidth(), text = "CREAR PRODUCTO",
+                    .fillMaxWidth(), text = stringResource(id = R.string.create_product),
                     onClick = {
                         vm.createProduct()
                     })

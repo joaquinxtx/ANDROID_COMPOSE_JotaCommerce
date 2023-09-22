@@ -1,16 +1,14 @@
 package com.joaquindev.jotacommerce.presentation.screens.admin.product.create.components
 
-
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
-import com.joaquindev.jotacommerce.presentation.screens.admin.category.create.AdminCategoryCreateViewModel
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.AdminProductCreateViewModel
-import com.joaquindev.jotacommerce.presentation.screens.profile.update.ProfileUpdateViewModel
 
 @Composable
 fun CreateProduct(vm: AdminProductCreateViewModel = hiltViewModel()) {
@@ -21,7 +19,7 @@ fun CreateProduct(vm: AdminProductCreateViewModel = hiltViewModel()) {
         }
 
         is Resource.Success -> {
-            Toast.makeText(LocalContext.current, "Los datos fueron creados correctamente", Toast.LENGTH_LONG)
+            Toast.makeText(LocalContext.current, stringResource(id = R.string.i_believe_the_product_correctly), Toast.LENGTH_LONG)
                 .show()
             vm.clearForm()
 
@@ -33,7 +31,7 @@ fun CreateProduct(vm: AdminProductCreateViewModel = hiltViewModel()) {
         }
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Error Desconocido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(LocalContext.current, stringResource(id = R.string.unknown_error), Toast.LENGTH_SHORT).show()
 
             }
         }

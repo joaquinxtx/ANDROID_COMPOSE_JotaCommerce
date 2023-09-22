@@ -9,14 +9,30 @@
     <string name="the_data_was_updated">The data was updated</string>
     <string name="unknown_error">Unknown error</string>
     <string name="presentation_of_the_category_screen">What category do you want to modify or add?</string>
+    <string name="presentation_of_the_product_screen">What product do you want to modify or add?</string>
     <string name="icon_search">icon search</string>
     <string name="icon_clear">icon clear</string>
+    <string name="icon">icon</string>
     <string name="icon_edit">icon edit</string>
     <string name="icon_add">icon add</string>
     <string name="icon_delete">icon delete</string>
     <string name="category_correctly_deleted">Category correctly deleted</string>
     <string name="update_category">Update category</string>
     <string name="hello">Hello</string>
-
+    <string name="price">Price</string>
+    <string name="create_product">Create product</string>
+    <string name="product_name">Product name</string>
+    <string name="i_believe_the_product_correctly">I believe the product correctly</string>
+    <string name="the_product_was_disposed_of_correctly">The product was disposed of correctly</string>
+    <string name="update_product">Update product</string>
+    <string name="camera">Camera</string>
+    <string name="picture">Picture</string>
+    <string name="gallery">Gallery</string>
+    <string name="shopping_cart">Shopping cart</string>
+    <string name="icon_menu">Icon menu</string>
+    <string name="icon_arrow_back">Icon menu</string>
+    <string name="icon_user">Icon user</string>
+    <string name="change_role">Change role</string>
+    <string name="sign_off">Sign off</string>
 
 </resources>

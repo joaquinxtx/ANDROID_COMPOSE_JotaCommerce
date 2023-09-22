@@ -7,12 +7,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_black
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_green
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
 
 
@@ -44,7 +45,7 @@ fun DefaultTextField(
         leadingIcon = {
             Icon(
                 imageVector = icon,
-                contentDescription = "",
+                contentDescription = stringResource(id = R.string.icon),
                 tint = Cafe_orange
             )
         },

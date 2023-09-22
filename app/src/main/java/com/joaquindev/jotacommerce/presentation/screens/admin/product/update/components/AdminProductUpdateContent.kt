@@ -21,12 +21,12 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
@@ -41,8 +41,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 fun AdminProductUpdateContent(
     paddingValues: PaddingValues,
     vm: AdminProductUpdateViewModel = hiltViewModel(),
-
-) {
+    ) {
     val state = vm.state
     vm.resultingActivityHandler.handle()
     val stateDialog = remember {
@@ -51,10 +50,10 @@ fun AdminProductUpdateContent(
     val stateDialogImageNumber = remember {
         mutableStateOf(1)
     }
-    Box(Modifier.fillMaxSize()){
+    Box(Modifier.fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.perfiluser),
-            contentDescription = "",
+            contentDescription = stringResource(id = R.string.banner),
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
@@ -64,148 +63,131 @@ fun AdminProductUpdateContent(
                     0.6f,
                     1f
                 )
-
             })
         )
+        DialogCapturePicture(
+            state = stateDialog,
+            takePhoto = { vm.takePhoto(stateDialogImageNumber.value) },
+            pickImage = { vm.pickImage(stateDialogImageNumber.value) })
 
-    DialogCapturePicture(
-        state = stateDialog,
-        takePhoto = { vm.takePhoto(stateDialogImageNumber.value) },
-        pickImage = { vm.pickImage(stateDialogImageNumber.value) })
-
-    Column(
-        modifier = androidx.compose.ui.Modifier
-            .padding(paddingValues)
-            .fillMaxWidth(),
-
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            if (state.image1 != "") {
-                AsyncImage(
-                    modifier = Modifier
-                        .size(120.dp)
-                        .clip(CircleShape)
-                        .clickable {
-                            stateDialogImageNumber.value = 1
-                            stateDialog.value = true
-                        },
-                    model = state.image1,
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop
-                )
-            } else {
-                Image(
-                    modifier = Modifier
-                        .size(120.dp)
-
-
-                        .clickable {
-                            stateDialog.value = true
-                            stateDialogImageNumber.value = 1
-                        },
-                    painter = painterResource(id = R.drawable.subir),
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop
-
-
-                )
-            }
-            Spacer(modifier = Modifier.width(20.dp))
-            if (state.image2 != "") {
-                AsyncImage(
-                    modifier = Modifier
-                        .size(120.dp)
-                        .clip(CircleShape)
-
-                        .clickable {
-                            stateDialogImageNumber.value = 2
-                            stateDialog.value = true
-                        },
-                    model = state.image2,
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop
-                )
-            } else {
-                Image(
-                    modifier = Modifier
-                        .size(120.dp)
-
-
-                        .clickable {
-                            stateDialog.value = true
-                            stateDialogImageNumber.value = 2
-                        },
-                    painter = painterResource(id = R.drawable.subir),
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop
-
-
-                )
-            }
-        }
-        Spacer(modifier = Modifier.weight(1f))
-        Card(
+        Column(
             modifier = Modifier
-                .height(350.dp)
+                .padding(paddingValues)
                 .fillMaxWidth(),
-            shape = RoundedCornerShape(
-                topEnd = 40.dp,
-                topStart = 40.dp
-            ), colors = CardDefaults.cardColors(Cafe_white),
-            elevation = CardDefaults.cardElevation(18.dp)
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
-                Text(
-                    text = "Actualizar producto",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    color = Cafe_blue,
-                    modifier = Modifier.padding(bottom = 20.dp)
-                )
-                DefaultTextField(
-                    modifier = Modifier,
-                    value = state.name,
-                    onValueChange = {
-                        vm.onNameInput(it)
-                    },
-                    label = "Nombre del producto",
-                    icon = Icons.Default.List,
 
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                if (state.image1 != "") {
+                    AsyncImage(
+                        modifier = Modifier
+                            .size(120.dp)
+                            .clip(CircleShape)
+                            .clickable {
+                                stateDialogImageNumber.value = 1
+                                stateDialog.value = true
+                            },
+                        model = state.image1,
+                        contentDescription = stringResource(id = R.string.image),
+                        contentScale = ContentScale.Crop
                     )
-                DefaultTextField(
-                    modifier = Modifier,
-                    value = state.description,
-                    onValueChange = {
-                        vm.onDescriptionInput(it)
-                    },
-                    label = "Descripcion",
-                    icon = Icons.Default.Info,
-
-
+                } else {
+                    Image(
+                        modifier = Modifier
+                            .size(120.dp)
+                            .clickable {
+                                stateDialog.value = true
+                                stateDialogImageNumber.value = 1
+                            },
+                        painter = painterResource(id = R.drawable.subir),
+                        contentDescription = stringResource(id = R.string.upload_image),
+                        contentScale = ContentScale.Crop
                     )
-                DefaultTextField(
-                    modifier = Modifier,
-                    value = state.price.toString(),
-                    onValueChange = {
-                        vm.onPriceInput(it)
-                    },
-                    label = "Precio",
-                    icon = Icons.Default.Info,
-                    keyboardType = KeyboardType.Number
+                }
+                Spacer(modifier = Modifier.width(20.dp))
+                if (state.image2 != "") {
+                    AsyncImage(
+                        modifier = Modifier
+                            .size(120.dp)
+                            .clip(CircleShape)
+
+                            .clickable {
+                                stateDialogImageNumber.value = 2
+                                stateDialog.value = true
+                            },
+                        model = state.image2,
+                        contentDescription = stringResource(id = R.string.image),
+                        contentScale = ContentScale.Crop
+                    )
+                } else {
+                    Image(
+                        modifier = Modifier
+                            .size(120.dp)
 
 
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                DefaultButton(modifier = Modifier
-                    .fillMaxWidth(), text = "ACTUALIZAR PRODUCTO",
-                    onClick = {
-                        vm.updateProduct()
-                    })
-
+                            .clickable {
+                                stateDialog.value = true
+                                stateDialogImageNumber.value = 2
+                            },
+                        painter = painterResource(id = R.drawable.subir),
+                        contentDescription = stringResource(id = R.string.upload_image),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.weight(1f))
+            Card(
+                modifier = Modifier
+                    .height(350.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(
+                    topEnd = 40.dp,
+                    topStart = 40.dp
+                ), colors = CardDefaults.cardColors(Cafe_white),
+                elevation = CardDefaults.cardElevation(18.dp)
+            ) {
+                Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
+                    Text(
+                        text = stringResource(id = R.string.update_product),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Cafe_blue,
+                        modifier = Modifier.padding(bottom = 20.dp)
+                    )
+                    DefaultTextField(
+                        modifier = Modifier,
+                        value = state.name,
+                        onValueChange = {
+                            vm.onNameInput(it)
+                        },
+                        label = stringResource(id = R.string.product_name),
+                        icon = Icons.Default.List)
+                    DefaultTextField(
+                        modifier = Modifier,
+                        value = state.description,
+                        onValueChange = {
+                            vm.onDescriptionInput(it)
+                        },
+                        label = stringResource(id = R.string.description),
+                        icon = Icons.Default.Info)
+                    DefaultTextField(
+                        modifier = Modifier,
+                        value = state.price.toString(),
+                        onValueChange = {
+                            vm.onPriceInput(it)
+                        },
+                        label = stringResource(id = R.string.price),
+                        icon = Icons.Default.Info,
+                        keyboardType = KeyboardType.Number
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    DefaultButton(modifier = Modifier
+                        .fillMaxWidth(), text = stringResource(id = R.string.update_product),
+                        onClick = {
+                            vm.updateProduct()
+                        })
+                }
             }
         }
     }
-}}
+}

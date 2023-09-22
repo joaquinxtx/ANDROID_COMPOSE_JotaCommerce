@@ -1,7 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.screens.admin.product.list.components
 
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.R
 
 import com.joaquindev.jotacommerce.domain.model.Product
 
@@ -53,12 +54,12 @@ fun AdminProductListContent(
 
         Column(Modifier.padding(20.dp)) {
             Text(
-                text = "!Hola ${vm.user?.name}¡",
+                text = "!${stringResource(id = R.string.hello)} ${vm.user?.name}¡",
                 fontSize = 27.sp,
                 fontWeight = FontWeight.SemiBold
             )
             Text(
-                text = "que producto quieres modificar o agregar?",
+                text = stringResource(id = R.string.presentation_of_the_product_screen),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Normal,
                 color = Color.Gray
@@ -81,7 +82,7 @@ fun AdminProductListContent(
 
                 Icon(
                     imageVector = Icons.Default.Search,
-                    contentDescription = "Search",
+                    contentDescription = stringResource(id = R.string.icon_search),
                     modifier = Modifier.size(24.dp)
                 )
 
@@ -114,7 +115,7 @@ fun AdminProductListContent(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Clear,
-                            contentDescription = "Clear",
+                            contentDescription = stringResource(id = R.string.icon_clear),
                             modifier = Modifier.size(24.dp)
                         )
                     }

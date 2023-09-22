@@ -5,14 +5,11 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.background
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.*
 import androidx.compose.material3.Icon
@@ -21,17 +18,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.material.FractionalThreshold
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.AdminProductListViewModel
@@ -102,7 +100,7 @@ fun AdminProductListItem(
                 ) {
                     Row() {
                         AsyncImage(
-                            model = product.image1, contentDescription = "", modifier = Modifier
+                            model = product.image1, contentDescription = stringResource(id = R.string.image), modifier = Modifier
                                 .size(90.dp)
                                ,
                             contentScale = ContentScale.Crop
@@ -133,7 +131,7 @@ fun AdminProductListItem(
                         }) {
                             Icon(
                                 imageVector = Icons.Outlined.Edit,
-                                contentDescription = "",
+                                contentDescription = stringResource(id = R.string.icon_edit),
                                 tint = Color.Green
                             )
 
@@ -163,7 +161,7 @@ fun RedBackground(degrees: Float) {
             Icon(
                 modifier = Modifier.rotate(degrees = degrees),
                 imageVector = Icons.Filled.Delete,
-                contentDescription = "",
+                contentDescription = stringResource(id = R.string.icon_delete),
                 tint = Color.White
             )
 

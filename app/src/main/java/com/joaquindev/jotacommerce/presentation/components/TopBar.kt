@@ -30,6 +30,7 @@ import coil.compose.AsyncImage
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -52,7 +53,6 @@ fun TopBar(
     showCart: Boolean = false,
     iconTint: Color = Color.Black,
     titleColor: Color = Color.Black,
-
     ) {
     var isMenuOpen by remember { mutableStateOf(false) }
     Surface(
@@ -74,7 +74,7 @@ fun TopBar(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Menu,
-                        contentDescription = "",
+                        contentDescription = stringResource(id = R.string.icon_menu),
                         tint = iconTint,
                         modifier = Modifier.size(34.dp)
                     )
@@ -93,7 +93,7 @@ fun TopBar(
                 ) {
                     Icon(
                         imageVector = Icons.Default.MoreVert,
-                        contentDescription = "Shopping Cart",
+                        contentDescription = stringResource(id = R.string.shopping_cart),
                         tint = iconTint,
                         modifier = Modifier.size(34.dp)
                     )
@@ -113,7 +113,7 @@ fun BackButton(navController: NavHostController, iconTint: Color) {
     IconButton(onClick = { navController.popBackStack() }) {
         Icon(
             imageVector = Icons.Default.ArrowBack,
-            contentDescription = "",
+            contentDescription = stringResource(id = R.string.icon_arrow_back),
             tint = iconTint,
             modifier = Modifier.size(34.dp)
         )
@@ -143,7 +143,7 @@ fun ShoppingCartButton(navController: NavHostController, iconTint: Color) {
     ) {
         Icon(
             imageVector = Icons.Default.ShoppingCart,
-            contentDescription = "Shopping Cart",
+            contentDescription = stringResource(id = R.string.shopping_cart),
             tint = iconTint,
             modifier = Modifier.size(34.dp)
         )
@@ -160,14 +160,14 @@ fun ProfilePhoto(photoUrl: String?, modifier: Modifier = Modifier) {
                 .size(34.dp)
                 .clip(CircleShape),
             model = photoUrl,
-            contentDescription = "",
+            contentDescription = stringResource(id = R.string.image),
             contentScale = ContentScale.Crop
         )
     } else {
 
         Icon(
             imageVector = Icons.Default.Person,
-            contentDescription = "Icono de usuario",
+            contentDescription = stringResource(id = R.string.icon_user),
             modifier = modifier
         )
     }
@@ -183,7 +183,6 @@ fun CustomDropdownMenu(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-
                 .clickable(onClick = onDismissRequest)
         ) {
             Surface(
@@ -232,7 +231,7 @@ fun AnimatedDropdownMenu(
             Column(modifier = Modifier.padding(bottom = 65.dp)) {
                 Image(
                     painter = painterResource(id = R.drawable.perfiluser),
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.image),
                     modifier = Modifier
                         .height(150.dp)
                         .fillMaxWidth(),
@@ -252,7 +251,7 @@ fun AnimatedDropdownMenu(
                                     .height(56.dp)
                                     .padding(6.dp)
                             ) {
-                                Icon(imageVector = it.icon, contentDescription = "")
+                                Icon(imageVector = it.icon, contentDescription = stringResource(id = R.string.icon))
                                 Spacer(modifier = Modifier.width(12.dp))
                                 Text(text = it.title, modifier = Modifier.fillMaxWidth())
                             }
@@ -277,11 +276,11 @@ fun AnimatedDropdownMenu(
 
                         Icon(
                             imageVector = Icons.Default.Close,
-                            contentDescription = "",
+                            contentDescription = stringResource(id = R.string.icon_clear),
                             tint = Color.Black
                         )
                         Spacer(modifier = Modifier.width(12.dp))
-                        Text(text = "Cambiar rol", modifier = Modifier.fillMaxWidth())
+                        Text(text = stringResource(id = R.string.change_role), modifier = Modifier.fillMaxWidth())
                     }
                     Row(
                         modifier = Modifier
@@ -296,11 +295,11 @@ fun AnimatedDropdownMenu(
                     ) {
                         Icon(
                             imageVector = Icons.Default.ExitToApp,
-                            contentDescription = "",
+                            contentDescription = stringResource(id = R.string.icon_clear),
                             tint = Color.Black
                         )
                         Spacer(modifier = Modifier.width(12.dp))
-                        Text(text = "Cerrar sesion", modifier = Modifier.fillMaxWidth())
+                        Text(text = stringResource(id = R.string.sign_off), modifier = Modifier.fillMaxWidth())
                     }
                 }
             }

@@ -11,10 +11,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_green
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_marron
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_orange
-
 
 @Composable
 fun DefaultButton(

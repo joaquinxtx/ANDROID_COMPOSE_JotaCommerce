@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -137,7 +138,7 @@ fun AnimatedDropdownMenuClient(
             Column(modifier = Modifier.padding(bottom = 65.dp)) {
                 Image(
                     painter = painterResource(id = R.drawable.perfiluser),
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.image),
                     modifier = Modifier
                         .height(150.dp)
                         .fillMaxWidth(),
@@ -157,7 +158,7 @@ fun AnimatedDropdownMenuClient(
                                     .height(56.dp)
                                     .padding(6.dp)
                             ) {
-                                Icon(imageVector = it.icon, contentDescription = "")
+                                Icon(imageVector = it.icon, contentDescription = stringResource(id = R.string.icon))
                                 Spacer(modifier = Modifier.width(12.dp))
                                 Text(text = it.title, modifier = Modifier.fillMaxWidth())
                             }
@@ -182,11 +183,11 @@ fun AnimatedDropdownMenuClient(
 
                         Icon(
                             imageVector = Icons.Default.Close,
-                            contentDescription = "",
+                            contentDescription = stringResource(id = R.string.icon_clear),
                             tint = Color.Black
                         )
                         Spacer(modifier = Modifier.width(12.dp))
-                        Text(text = "Cambiar rol", modifier = Modifier.fillMaxWidth())
+                        Text(text = stringResource(id = R.string.change_role), modifier = Modifier.fillMaxWidth())
                     }
                     Row(
                         modifier = Modifier
@@ -201,11 +202,11 @@ fun AnimatedDropdownMenuClient(
                     ) {
                         Icon(
                             imageVector = Icons.Default.ExitToApp,
-                            contentDescription = "",
+                            contentDescription = stringResource(id = R.string.icon_clear),
                             tint = Color.Black
                         )
                         Spacer(modifier = Modifier.width(12.dp))
-                        Text(text = "Cerrar sesion", modifier = Modifier.fillMaxWidth())
+                        Text(text = stringResource(id = R.string.sign_off), modifier = Modifier.fillMaxWidth())
                     }
                 }
             }

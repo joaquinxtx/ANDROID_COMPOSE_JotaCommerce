@@ -12,14 +12,14 @@ import com.joaquindev.jotacommerce.domain.model.User
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
 import com.joaquindev.jotacommerce.domain.useCase.product.ProductUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
+
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class AdminProductListViewModel @Inject constructor(
     private val productUseCase: ProductUseCase,
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val authUseCase: AuthUseCase
 ) :
     ViewModel() {
@@ -41,14 +41,14 @@ class AdminProductListViewModel @Inject constructor(
         getSessionData()
     }
     fun getSessionData()= viewModelScope.launch {
-        authUseCase.getSessionData().collect(){ data ->
+        authUseCase.getSessionData().collect{ data ->
             user = data.user
         }
     }
 
     private fun getProducts() = viewModelScope.launch {
         productsResponse = Resource.Loading
-        productUseCase.findByCategory(category.id!!).collect() {
+        productUseCase.findByCategory(category.id!!).collect {
             productsResponse = it
         }
     }

@@ -12,11 +12,9 @@ import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -24,20 +22,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
-import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
-import com.joaquindev.jotacommerce.presentation.components.ProgressBar
-import com.joaquindev.jotacommerce.presentation.navigation.Graph
-
 import com.joaquindev.jotacommerce.presentation.screens.auth.register.RegisterViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 
 @Composable
-fun RegisterForm(navController: NavHostController, vm: RegisterViewModel = hiltViewModel()) {
+fun RegisterForm( vm: RegisterViewModel = hiltViewModel()) {
 
     val state = vm.stateForm
     val context = LocalContext.current

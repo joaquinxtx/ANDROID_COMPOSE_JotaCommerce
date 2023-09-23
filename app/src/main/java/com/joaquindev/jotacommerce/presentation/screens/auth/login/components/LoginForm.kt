@@ -13,20 +13,18 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.joaquindev.jotacommerce.domain.Resource
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
-import com.joaquindev.jotacommerce.presentation.components.ProgressBar
-import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.navigation.screen.auth.AuthScreen
 import com.joaquindev.jotacommerce.presentation.screens.auth.login.LoginViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.*
@@ -58,7 +56,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
     ) {
         Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
             Text(
-                text = "INGRESAR",
+                text = stringResource(id = R.string.get_into),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 color = Cafe_blue,
@@ -70,7 +68,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
                 onValueChange = {
                     vm.onEmailInput(it)
                 },
-                label = "Correo electronico",
+                label = stringResource(id = R.string.email),
                 icon = Icons.Default.Email,
                 keyboardType = KeyboardType.Email
             )
@@ -80,7 +78,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
                 onValueChange = {
                     vm.onPasswordInput(it)
                 },
-                label = "Contraseña",
+                label =stringResource(id = R.string.password),
                 icon = Icons.Default.Lock,
                 keyboardType = KeyboardType.Password,
                 hideText = true
@@ -88,7 +86,7 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
             Spacer(modifier = Modifier.height(10.dp))
             DefaultButton(modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp), text = "LOGIN", onClick = {
+                .height(50.dp), text = stringResource(id = R.string.login), onClick = {
                 vm.login()
             })
             Spacer(modifier = Modifier.height(10.dp))
@@ -96,9 +94,9 @@ fun LoginForm(navController: NavHostController, vm: LoginViewModel = hiltViewMod
                 Modifier
                     .fillMaxWidth(), horizontalArrangement = Arrangement.Center
             ) {
-                Text(text = "No tienes cuenta?", color = Cafe_blue)
+                Text(text = stringResource(id = R.string.you_do_not_have_an_account), color = Cafe_blue)
                 Text(
-                    text = " Registrate",
+                    text = stringResource(id = R.string.sign_up),
                     color = Cafe_orange,
                     modifier = Modifier.clickable { navController.navigate(route = AuthScreen.Register.route) })
             }

@@ -4,8 +4,9 @@ package com.joaquindev.jotacommerce.presentation.screens.address.create.componen
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
 import com.joaquindev.jotacommerce.presentation.screens.address.create.ClientAddressCreateViewModel
@@ -21,7 +22,7 @@ fun CreateAddress(vm: ClientAddressCreateViewModel = hiltViewModel()) {
 
         is Resource.Success -> {
             vm.clearForm()
-            Toast.makeText(LocalContext.current, "Los datos fueron actualizados", Toast.LENGTH_LONG)
+            Toast.makeText(LocalContext.current, stringResource(id = R.string.the_data_was_updated), Toast.LENGTH_LONG)
                 .show()
 
         }
@@ -32,7 +33,7 @@ fun CreateAddress(vm: ClientAddressCreateViewModel = hiltViewModel()) {
         }
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Error Desconocido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(LocalContext.current, stringResource(id = R.string.unknown_error), Toast.LENGTH_SHORT).show()
 
             }
         }

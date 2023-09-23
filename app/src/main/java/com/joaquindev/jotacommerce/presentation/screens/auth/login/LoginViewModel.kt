@@ -8,71 +8,53 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.AuthResponse
-
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-
-
 import kotlinx.coroutines.launch
-
 import javax.inject.Inject
 
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
-
     var state by mutableStateOf(LoginState())
         private set
-
     var errorMessage by mutableStateOf("")
-
-    // LOGIN RESPONSE
     var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
-
     init {
         getSessionData()
     }
-
     fun getSessionData() = viewModelScope.launch {
-        authUseCase.getSessionData().collect() { data ->
+        authUseCase.getSessionData().collect { data ->
             Log.d("LoginViewModel", "Data: ${data.toJson()}")
             if (!data.token.isNullOrBlank()) {
                 loginResponse = Resource.Success(data)
             }
         }
     }
-
     fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
         authUseCase.saveSession(authResponse)
     }
-
     fun login() = viewModelScope.launch {
-
         if (isValidForm()) {
-            loginResponse = Resource.Loading // ESPERANDO
-            val result = authUseCase.login(state.email, state.password) // RETORNA UNA RESPUESTA
-            loginResponse = result // EXITOSA / ERROR
+            loginResponse = Resource.Loading
+            val result = authUseCase.login(state.email, state.password)
+            loginResponse = result
         }
     }
-
     fun onEmailInput(email: String) {
         state = state.copy(email = email)
     }
-
     fun onPasswordInput(password: String) {
         state = state.copy(password = password)
     }
-
-
-    fun isValidForm(): Boolean  {
-
+    private fun isValidForm(): Boolean  {
         if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
-            errorMessage = "El email no es valido"
+            errorMessage = "The email is not valid"
             return false
         }
         else if (state.password.length < 6) {
-            errorMessage = "La contraseña debe tener al menos 6 caracteres"
+            errorMessage = "The password must be at least 6 characters"
             return false
         }
         return true

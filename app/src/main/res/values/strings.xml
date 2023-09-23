@@ -33,6 +33,20 @@
     <string name="icon_arrow_back">Icon menu</string>
     <string name="icon_user">Icon user</string>
     <string name="change_role">Change role</string>
+    <string name="location">Location</string>
+    <string name="address">Address</string>
+    <string name="neighborhood">Neighborhood</string>
     <string name="sign_off">Sign off</string>
+    <string name="sign_up">Sign up</string>
+    <string name="create_address">Create address</string>
+    <string name="new_address">New address</string>
+    <string name="title_coffee">Coffee Plus +</string>
+    <string name="get_into">Get into</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="you_do_not_have_an_account">You do not have an account?</string>
+    <string name="the_email_is_not_valid">The email is not valid</string>
+    <string name="enter_this_information">Enter this information</string>
 
 </resources>

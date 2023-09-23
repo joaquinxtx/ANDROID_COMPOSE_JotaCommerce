@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import com.joaquindev.jotacommerce.R
 
 @Composable
@@ -15,7 +16,7 @@ fun BackgroundImageLogin(){
 
     Image(
         painter = painterResource(id = R.drawable.perfiluser),
-        contentDescription = "",
+        contentDescription = stringResource(id = R.string.banner),
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop,
         colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {

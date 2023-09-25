@@ -25,7 +25,7 @@ fun RegisterBanner(navController:NavHostController , modifier : Modifier){
     IconButton(onClick = { navController.popBackStack() } , modifier=modifier) {
         Icon(
             imageVector = Icons.Default.ArrowBack,
-            contentDescription = "",
+            contentDescription = stringResource(id = R.string.icon_arrow_back),
             tint = Cafe_white,
             modifier = modifier
                 .size(34.dp)
@@ -33,7 +33,7 @@ fun RegisterBanner(navController:NavHostController , modifier : Modifier){
     }
     Image(
         painter = painterResource(id = R.drawable.latte),
-        contentDescription = "",
+        contentDescription = stringResource(id = R.string.image),
         modifier = Modifier.size(150.dp)
     )
     Text(

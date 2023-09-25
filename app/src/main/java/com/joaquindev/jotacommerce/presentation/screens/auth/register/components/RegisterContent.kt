@@ -22,7 +22,7 @@ fun RegisterContent(navController: NavHostController, paddingValues: PaddingValu
     ) {
         RegisterBanner(navController = navController, modifier = Modifier.align(Alignment.Start) )
         Spacer(modifier = Modifier.weight(1f))
-        RegisterForm(navController)
+        RegisterForm(navController = navController)
 
     }
 }

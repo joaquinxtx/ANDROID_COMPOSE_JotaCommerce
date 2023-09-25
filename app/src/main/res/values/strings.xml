@@ -48,5 +48,18 @@
     <string name="you_do_not_have_an_account">You do not have an account?</string>
     <string name="the_email_is_not_valid">The email is not valid</string>
     <string name="enter_this_information">Enter this information</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last name</string>
+    <string name="phone">Phone</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="confirm">Confirm</string>
+    <string name="register">Register</string>
+    <string name="card_number">Card number</string>
+    <string name="expiration_year">Expiration year YYYYr</string>
+    <string name="expiration_month">Expiration month MM</string>
+    <string name="name_of_owner">Name of owner</string>
+    <string name="security_code">Security code</string>
+    <string name="id_type">ID Type</string>
+    <string name="identification_number">Identification number</string>
 
 </resources>

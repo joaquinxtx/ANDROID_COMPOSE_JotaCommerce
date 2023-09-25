@@ -15,7 +15,7 @@ import com.joaquindev.jotacommerce.presentation.screens.auth.register.components
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(navController:NavHostController){
-    Scaffold() {
+    Scaffold {
 
         RegisterContent(navController = navController, paddingValues = it )
     }

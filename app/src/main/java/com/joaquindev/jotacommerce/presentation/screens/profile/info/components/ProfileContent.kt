@@ -24,11 +24,11 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
 
 @Composable
-fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewModel(), navController: NavHostController) {
+fun ProfileContent( vm: ProfileViewModel = hiltViewModel(), navController: NavHostController) {
 
     Box(
         modifier = Modifier
-            .padding(paddingValues)
+
             .padding(bottom = 85.dp)
     ) {
         BackgroundImageProfile()

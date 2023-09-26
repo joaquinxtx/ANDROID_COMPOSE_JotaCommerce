@@ -26,13 +26,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.MainActivity
 import com.joaquindev.jotacommerce.presentation.components.TopBar
+import com.joaquindev.jotacommerce.presentation.components.TopBarClient
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ShoppingBagScreen
 import com.joaquindev.jotacommerce.presentation.screens.client.product.list.components.GetProducts
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClientProductListScreen(navController: NavHostController) {
-    Scaffold() {
+    Scaffold(topBar = { TopBarClient(navController = navController)}) {
         GetProducts(navController = navController, paddingValues = it)
     }
 }

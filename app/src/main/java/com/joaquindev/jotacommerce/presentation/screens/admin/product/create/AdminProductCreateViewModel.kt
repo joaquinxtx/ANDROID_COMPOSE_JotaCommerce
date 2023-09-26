@@ -96,7 +96,12 @@ class AdminProductCreateViewModel @Inject constructor(
     }
 
     fun onPriceInput(price: String) {
-        state = state.copy(price = price.toDouble())
+        try {
+            val parsedPrice = price.toDouble()
+            state = state.copy(price = parsedPrice)
+        } catch (_: NumberFormatException) {
+
+        }
     }
 
     fun clearForm() {

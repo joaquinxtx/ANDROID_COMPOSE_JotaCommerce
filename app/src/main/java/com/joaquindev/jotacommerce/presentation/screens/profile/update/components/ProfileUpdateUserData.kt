@@ -31,7 +31,7 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 fun ProfileUpdateUserData(vm: ProfileUpdateViewModel, state : ProfileUpdateState) {
 
     Card(
-        modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(
+        modifier = Modifier.fillMaxWidth().padding(start = 10.dp , end = 10.dp), shape = RoundedCornerShape(
             topStart = 40.dp,
             topEnd = 40.dp
         ),

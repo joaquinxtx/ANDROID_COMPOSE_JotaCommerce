@@ -8,7 +8,6 @@ import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.domain.useCase.catgeories.CategoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,7 +24,7 @@ class ClientCategoryListViewModel @Inject constructor(private val categoriesUseC
 
     fun getCategories() = viewModelScope.launch {
         categoriesResponse = Resource.Loading
-        categoriesUseCase.getCategories().collect() {
+        categoriesUseCase.getCategories().collect {
             categoriesResponse = it
         }
     }

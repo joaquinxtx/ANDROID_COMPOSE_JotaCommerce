@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.*
@@ -19,18 +19,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DefaultTextField
 import com.joaquindev.jotacommerce.presentation.components.DialogCapturePicture
-import com.joaquindev.jotacommerce.presentation.components.TopBar
+
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.AdminProductCreateViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
@@ -40,7 +40,6 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 fun AdminProductCreateContent(
     paddingValues: PaddingValues,
     vm: AdminProductCreateViewModel = hiltViewModel(),
-    navController: NavHostController
 ) {
     val state = vm.state
     vm.resultingActivityHandler.handle()
@@ -56,15 +55,12 @@ fun AdminProductCreateContent(
         takePhoto = { vm.takePhoto(stateDialogImageNumber.value) },
         pickImage = { vm.pickImage(stateDialogImageNumber.value) })
     Column(
-        modifier = androidx.compose.ui.Modifier
+        modifier = Modifier
             .padding(paddingValues)
             .fillMaxWidth(),
 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TopBar(navController = navController , title = "Crear producto" , arrowBack = true)
-        Spacer(modifier = Modifier.height(40.dp))
-
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
             if (state.image1 != "") {
                 AsyncImage(
@@ -76,7 +72,7 @@ fun AdminProductCreateContent(
                             stateDialog.value = true
                         },
                     model = state.image1,
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.image),
                     contentScale = ContentScale.Crop
                 )
             } else {
@@ -90,7 +86,7 @@ fun AdminProductCreateContent(
                             stateDialogImageNumber.value = 1
                         },
                     painter = painterResource(id = R.drawable.subir),
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.upload_image),
                     contentScale = ContentScale.Crop
 
 
@@ -108,7 +104,7 @@ fun AdminProductCreateContent(
                             stateDialog.value = true
                         },
                     model = state.image2,
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.image),
                     contentScale = ContentScale.Crop
                 )
             } else {
@@ -122,7 +118,7 @@ fun AdminProductCreateContent(
                             stateDialogImageNumber.value = 2
                         },
                     painter = painterResource(id = R.drawable.subir),
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.upload_image),
                     contentScale = ContentScale.Crop
 
 
@@ -142,7 +138,7 @@ fun AdminProductCreateContent(
         ) {
             Column(modifier = Modifier.padding(top = 30.dp, start = 30.dp, end = 30.dp)) {
                 Text(
-                    text = vm.category.name,
+                    text = stringResource(id = R.string.create_product),
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Cafe_blue,
@@ -154,7 +150,7 @@ fun AdminProductCreateContent(
                     onValueChange = {
                         vm.onNameInput(it)
                     },
-                    label = "Nombre del producto",
+                    label = stringResource(id = R.string.product_name),
                     icon = Icons.Default.List,
 
                     )
@@ -164,7 +160,7 @@ fun AdminProductCreateContent(
                     onValueChange = {
                         vm.onDescriptionInput(it)
                     },
-                    label = "Descripcion",
+                    label = stringResource(id = R.string.description),
                     icon = Icons.Default.Info,
 
 
@@ -175,7 +171,7 @@ fun AdminProductCreateContent(
                     onValueChange = {
                         vm.onPriceInput(it)
                     },
-                    label = "Precio",
+                    label = stringResource(id = R.string.price),
                     icon = Icons.Default.Info,
                     keyboardType = KeyboardType.Number
 
@@ -183,7 +179,7 @@ fun AdminProductCreateContent(
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 DefaultButton(modifier = Modifier
-                    .fillMaxWidth(), text = "CREAR PRODUCTO",
+                    .fillMaxWidth(), text = stringResource(id = R.string.create_product),
                     onClick = {
                         vm.createProduct()
                     })

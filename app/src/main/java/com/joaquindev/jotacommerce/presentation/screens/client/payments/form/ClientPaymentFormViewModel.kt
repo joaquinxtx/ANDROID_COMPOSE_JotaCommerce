@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.IdentificationType
-import com.joaquindev.jotacommerce.domain.model.Installment
+
 import com.joaquindev.jotacommerce.domain.useCase.mercado_pago.MercadoPagoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.first
@@ -28,7 +28,7 @@ class ClientPaymentFormViewModel @Inject constructor(private val mercadoPagoUseC
         identificationTypesResponse = Resource.Loading
         val result = mercadoPagoUseCase.getIdentificationType().first()
         identificationTypesResponse = result
-        Log.d("ClientPaymentsFormViewModel", "Data: ${identificationTypesResponse}")
+        Log.d("ClientPaymentsFormViewModel", "Data: $identificationTypesResponse")
     }
 
 

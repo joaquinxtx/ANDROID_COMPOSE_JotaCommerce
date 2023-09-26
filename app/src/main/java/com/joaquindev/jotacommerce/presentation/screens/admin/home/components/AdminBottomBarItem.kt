@@ -5,10 +5,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.navigation.screen.admin.AdminScreen
 
 
@@ -25,7 +27,6 @@ fun RowScope.AdminBottomBarItem(
         onClick = {
             if (!isSelected) {
                 navController.navigate(route = screen.route) {
-                    // Limpia la pila de navegación hasta el inicio cuando navegas a una nueva pantalla
                     popUpTo(navController.graph.findStartDestination().id)
                 }
             }
@@ -34,7 +35,7 @@ fun RowScope.AdminBottomBarItem(
             Text(text = screen.title)
         },
         icon = {
-            Icon(imageVector = screen.icon, contentDescription = "")
+            Icon(imageVector = screen.icon, contentDescription = stringResource(id = R.string.icon))
         }
     )
 }

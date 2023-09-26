@@ -28,7 +28,7 @@ class AdminCategoryCreateViewModel @Inject constructor(
     var state by mutableStateOf(AdminCategoryCreateState())
         private set
 
-    //images
+
     var file: File? = null
     val resultingActivityHandler = ResultingActivityHandler()
 

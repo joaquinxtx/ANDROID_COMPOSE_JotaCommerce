@@ -8,10 +8,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.Resource
-import com.joaquindev.jotacommerce.domain.model.Category
 import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.domain.useCase.product.ProductUseCase
-import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.mapper.toProduct
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.update.mapper.toProduct
 import com.joaquindev.jotacommerce.presentation.utils.ComposeFileProvider
 import com.joaquindev.jotacommerce.presentation.utils.ResultingActivityHandler
@@ -25,7 +23,7 @@ import javax.inject.Inject
 class AdminProductUpdateViewModel @Inject constructor(
     private val productUseCase: ProductUseCase,
     @ApplicationContext val context: Context,
-    private val savedStateHandle: SavedStateHandle
+     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     var state by mutableStateOf(AdminProductUpdateState())

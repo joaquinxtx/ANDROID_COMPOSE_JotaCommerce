@@ -8,12 +8,12 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.joaquindev.jotacommerce.R
-import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_beige
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 
@@ -31,17 +31,14 @@ fun DialogCapturePicture(
                 Column {
                     Box(
                         modifier = Modifier
-                            .align(
-                                Alignment.CenterHorizontally
-                            )
+                            .align(Alignment.CenterHorizontally)
                             .padding(top = 16.dp)
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.camara),
-                            contentDescription = " ",
+                            contentDescription = stringResource(id = R.string.image),
                             Modifier
                                 .size(39.dp),
-
                             )
 
                     }
@@ -53,7 +50,7 @@ fun DialogCapturePicture(
                             .width(560.dp)
                     )
                     Text(
-                        text = "Picture",
+                        text = stringResource(id = R.string.picture),
                         modifier = Modifier
                             .align(
                                 Alignment.CenterHorizontally
@@ -73,13 +70,13 @@ fun DialogCapturePicture(
                             state.value=false
                             takePhoto()
                         }) {
-                            Text(text = "Camare")
+                            Text(text = stringResource(id = R.string.camera))
                         }
                         TextButton(onClick = {
                             state.value=false
                             pickImage()
                         }) {
-                            Text(text = "Galeria")
+                            Text(text = stringResource(id = R.string.gallery))
                         }
 
                     }

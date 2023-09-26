@@ -7,7 +7,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.joaquindev.jotacommerce.presentation.screens.address.create.components.ClientAddressCreateContent
 import com.joaquindev.jotacommerce.presentation.screens.address.create.components.CreateAddress
-import com.joaquindev.jotacommerce.presentation.screens.address.list.components.ClientAddressListContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -16,7 +15,7 @@ fun ClientAddressCreateScreen(
     vm: ClientAddressCreateViewModel = hiltViewModel()
 ) {
     vm.getSessionData()
-    Scaffold() {
+    Scaffold {
         ClientAddressCreateContent(paddingValues = it, navController=navController)
     }
     CreateAddress()

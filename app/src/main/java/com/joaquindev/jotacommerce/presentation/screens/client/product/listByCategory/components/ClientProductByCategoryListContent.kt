@@ -1,11 +1,14 @@
 package com.joaquindev.jotacommerce.presentation.screens.client.product.listByCategory.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -23,37 +26,33 @@ import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
 
 @Composable
 fun ClientProductByCategoryListContent(
-    navController:NavHostController,
+    navController: NavHostController,
     paddingValues: PaddingValues,
-    products:List<Product>
+    products: List<Product>
 ) {
-    Box(Modifier.fillMaxSize()){
-        Image(
-            painter = painterResource(id = R.drawable.fondoproductos),
-            contentDescription = "",
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop,
-            colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
-                setToScale(
-                    0.4f,
-                    0.4f,
-                    0.4f,
-                    1f
-                )
 
-            })
-        )
     Column(Modifier.fillMaxWidth()) {
-       TopBar(navController = navController , title = "Productos de la categoria" , arrowBack = true)
-        LazyColumn(
+
+        Card(
             modifier = Modifier
-                .padding(PaddingValues())
                 .fillMaxSize()
+                .background(Cafe_blue).padding(paddingValues)
+                .padding(top = 10.dp),
+            shape = RoundedCornerShape(
+                topEnd = 30.dp,
+                topStart = 30.dp
+            )
         ) {
-            items(items = products) {
-                ClientProductByCategoryListItem(navController = navController, product = it)
+
+            LazyColumn(
+                modifier = Modifier
+                    .padding(PaddingValues())
+                    .fillMaxSize()
+            ) {
+                items(items = products) {
+                    ClientProductByCategoryListItem(navController = navController, product = it)
+                }
             }
         }
     }
-}
 }

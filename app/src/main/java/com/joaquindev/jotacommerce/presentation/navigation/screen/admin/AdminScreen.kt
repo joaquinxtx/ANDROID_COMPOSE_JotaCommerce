@@ -11,6 +11,11 @@ sealed class AdminScreen (
     val title:String,
     val icon:ImageVector
     ) {
+    object Profile : AdminScreen(
+        route = "admin/profile",
+        title = "Perfil",
+        icon = Icons.Default.Person
+    )
     object CategoryList: AdminScreen(
         route = "admin/category/list",
         title = "categorias",
@@ -21,10 +26,5 @@ sealed class AdminScreen (
 //        title = "productos",
 //        icon = Icons.Default.ThumbUp
 //    )
-    object Profile: AdminScreen(
-        route = "admin/profile",
-        title = "Perfil",
-        icon = Icons.Default.Person
-    )
 
 }

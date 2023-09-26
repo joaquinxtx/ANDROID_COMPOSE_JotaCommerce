@@ -4,11 +4,11 @@ package com.joaquindev.jotacommerce.presentation.screens.admin.product.update.co
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
-import com.joaquindev.jotacommerce.presentation.screens.admin.product.create.AdminProductCreateViewModel
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.update.AdminProductUpdateViewModel
 
 @Composable
@@ -20,19 +20,16 @@ fun UpdateProduct(vm: AdminProductUpdateViewModel = hiltViewModel()) {
         }
 
         is Resource.Success -> {
-            Toast.makeText(LocalContext.current, "Los datos fueron actualizados correctamente", Toast.LENGTH_LONG)
+            Toast.makeText(LocalContext.current, stringResource(id = R.string.the_data_was_updated), Toast.LENGTH_LONG)
                 .show()
-
         }
         is Resource.Failure -> {
-
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_SHORT)
                 .show()
         }
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Error Desconocido", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(LocalContext.current, stringResource(id = R.string.unknown_error), Toast.LENGTH_SHORT).show()
             }
         }
     }

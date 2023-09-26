@@ -6,11 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.AuthResponse
-import com.joaquindev.jotacommerce.domain.model.User
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
 import com.joaquindev.jotacommerce.presentation.screens.auth.register.mapper.toUser
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -67,33 +65,33 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
     }
 
 
-    fun isValidForm():Boolean  {
+    private fun isValidForm():Boolean  {
         if (stateForm.name == "") {
-            errorMessage = "Ingresa el nombre"
+            errorMessage = "Enter the name"
             return false
         } else if (stateForm.lastname == "") {
-            errorMessage = "Ingresa el apellido"
+            errorMessage = "Enter the last name"
             return false
         } else if (stateForm.phone == "") {
-            errorMessage = "Ingresa el telefono"
+            errorMessage = "Enter the phone"
             return false
         } else if (stateForm.email == "") {
-            errorMessage = "Ingresa el email"
+            errorMessage = "Enter the email"
             return false
         } else if (stateForm.password == "") {
-            errorMessage = "Ingresa el password"
+            errorMessage = "Enter the password"
             return false
         } else if (stateForm.confirmPassword == "") {
-            errorMessage = "Ingresa el password de confirmacion"
+            errorMessage = "Enter the confirmation password"
             return false
         } else if (!Patterns.EMAIL_ADDRESS.matcher(stateForm.email).matches()) {
-            errorMessage = "El email no es valido"
+            errorMessage = "The email is not valid"
             return false
         } else if (stateForm.password.length < 6) {
-            errorMessage = "La contraseña debe tener al menos 6 caracterres"
+            errorMessage = "\n" + "Password must be at least 6 characters"
             return false
         } else if (stateForm.password != stateForm.confirmPassword) {
-            errorMessage = "Las contraseñas no coinciden"
+            errorMessage = "Passwords do not match"
             return false
         }
 

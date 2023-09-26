@@ -5,7 +5,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.components.ClientPaymentFormContent
+import com.joaquindev.jotacommerce.presentation.components.TopBarClient
 import com.joaquindev.jotacommerce.presentation.screens.client.payments.form.components.GetIdentificationTypes
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -14,7 +14,13 @@ fun ClientPaymentFormScreen(navController: NavHostController , vm : ClientPaymen
 
     vm.getIdentificationTypes()
 
-    Scaffold() {
+    Scaffold(topBar = {
+        TopBarClient(
+        navController = navController,
+        arrowBack = true,
+
+    )
+    }) {
         GetIdentificationTypes(paddingValues = it , navController = navController)
     }
 }

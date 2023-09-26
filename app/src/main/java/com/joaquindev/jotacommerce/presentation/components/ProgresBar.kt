@@ -1,6 +1,6 @@
 package com.joaquindev.jotacommerce.presentation.components
 
-import android.widget.ProgressBar
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator

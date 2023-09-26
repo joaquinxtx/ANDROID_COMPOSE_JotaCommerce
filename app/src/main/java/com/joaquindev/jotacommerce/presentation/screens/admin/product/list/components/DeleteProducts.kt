@@ -2,14 +2,13 @@ package com.joaquindev.jotacommerce.presentation.screens.admin.product.list.comp
 
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.presentation.components.ProgressBar
-import com.joaquindev.jotacommerce.presentation.screens.admin.category.list.AdminCategoryListViewModel
 import com.joaquindev.jotacommerce.presentation.screens.admin.product.list.AdminProductListViewModel
 
 @Composable
@@ -24,7 +23,7 @@ fun DeleteProduct(
         }
 
         is Resource.Success -> {
-            Toast.makeText(LocalContext.current, "El Producto se elimino correctamante", Toast.LENGTH_SHORT)
+            Toast.makeText(LocalContext.current, stringResource(id = R.string.the_product_was_disposed_of_correctly), Toast.LENGTH_SHORT)
                 .show()
 
         }
@@ -35,7 +34,7 @@ fun DeleteProduct(
         }
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Error Desconocido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(LocalContext.current, stringResource(id = R.string.unknown_error), Toast.LENGTH_SHORT).show()
 
             }
         }

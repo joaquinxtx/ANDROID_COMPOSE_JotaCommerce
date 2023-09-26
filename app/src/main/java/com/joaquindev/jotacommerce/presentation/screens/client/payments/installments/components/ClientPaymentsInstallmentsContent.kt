@@ -24,7 +24,7 @@ fun ClientPaymentsInstallmentsContent(
     paddingValues: PaddingValues,
     installments: List<PayerCost>,
     vm: ClientPaymentsInstallmentsViewModel = hiltViewModel(),
-    navController: NavHostController
+
 ) {
 
 
@@ -35,13 +35,7 @@ fun ClientPaymentsInstallmentsContent(
             .padding(paddingValues)
             .padding(bottom = 20.dp, end = 20.dp, start = 20.dp)
     ) {
-        TopBar(
-            navController = navController,
-            title = "Numero de cuotas ",
-            arrowBack = true,
-            titleColor = Cafe_blue,
-            iconTint = Cafe_blue
-        )
+
         ExposedDropdownMenuBox(
             expanded = expanded,
             onExpandedChange = {

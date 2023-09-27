@@ -16,17 +16,17 @@ object ResponseToRequest {
             } else {
                 val errorResponse: ErrorResponse? =
                     ConvertErrorBody.convertErrorBody(result.errorBody())
-                Resource.Failure(errorResponse?.message ?: "Error desconocido")
+                Resource.Failure(errorResponse?.message ?: "Unknown error")
             }
         } catch (e: HttpException) {
             e.printStackTrace()
-            Resource.Failure(e.message ?: "Error Desconocido en la peticion http")
+            Resource.Failure(e.message ?: "Unknown error in http request")
         } catch (e: IOException) {
             e.printStackTrace()
-            Resource.Failure("Verifica tu conexion")
+            Resource.Failure("Check your connection")
         } catch (e: Exception) {
             e.printStackTrace()
-            Resource.Failure(e.message ?: "Error Desconocido")
+            Resource.Failure(e.message ?: "Unknown Error")
         }
     }
 }

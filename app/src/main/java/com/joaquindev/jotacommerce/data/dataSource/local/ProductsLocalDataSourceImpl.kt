@@ -1,7 +1,6 @@
 package com.joaquindev.jotacommerce.data.dataSource.local
 
 import com.joaquindev.jotacommerce.data.dataSource.local.dao.ProductsDao
-import com.joaquindev.jotacommerce.data.dataSource.local.entity.CategoryEntity
 import com.joaquindev.jotacommerce.data.dataSource.local.entity.ProductsEntity
 import kotlinx.coroutines.flow.Flow
 

@@ -1,6 +1,6 @@
 package com.joaquindev.jotacommerce.data.dataSource.remote
 
-import com.joaquindev.jotacommerce.data.dataSource.remote.AuthRemoteDataSource
+
 import com.joaquindev.jotacommerce.data.dataSource.remote.service.AuthService
 import com.joaquindev.jotacommerce.domain.model.AuthResponse
 import com.joaquindev.jotacommerce.domain.model.User

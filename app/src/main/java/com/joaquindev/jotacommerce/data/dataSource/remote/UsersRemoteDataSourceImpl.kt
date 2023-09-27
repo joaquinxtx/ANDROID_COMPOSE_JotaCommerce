@@ -1,6 +1,6 @@
 package com.joaquindev.jotacommerce.data.dataSource.remote
 
-import com.joaquindev.jotacommerce.data.dataSource.remote.UsersRemoteDataSource
+
 import com.joaquindev.jotacommerce.data.dataSource.remote.service.UsersService
 import com.joaquindev.jotacommerce.domain.model.User
 import kotlinx.coroutines.Dispatchers

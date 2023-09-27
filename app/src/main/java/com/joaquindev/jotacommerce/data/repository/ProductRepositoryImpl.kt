@@ -11,7 +11,6 @@ import com.joaquindev.jotacommerce.domain.util.ResponseToRequest
 import com.joaquindev.jotacommerce.domain.util.isListEqual
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.io.File
@@ -22,7 +21,7 @@ class ProductRepositoryImpl(
 ) :
     ProductRepository {
     override fun findAll(): Flow<Resource<List<Product>>> = flow {
-        localDataSource.findAll().collect() {
+        localDataSource.findAll().collect{
             it.run {
                 val productsLocalMap = this.map { productsEntity -> productsEntity.toProduct() }
 
@@ -52,7 +51,7 @@ class ProductRepositoryImpl(
 
 
     override fun findAllByCategory(idCategory: String): Flow<Resource<List<Product>>> = flow {
-        localDataSource.findByCategory(idCategory).collect() {
+        localDataSource.findByCategory(idCategory).collect {
             it.run {
                 val productsLocalMap = this.map { productsEntity -> productsEntity.toProduct() }
 
@@ -90,7 +89,7 @@ class ProductRepositoryImpl(
                     Resource.Success(this.data)
                 }
                 else -> {
-                    Resource.Failure("Error Desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }
@@ -112,7 +111,7 @@ class ProductRepositoryImpl(
                     Resource.Success(this.data)
                 }
                 else -> {
-                    Resource.Failure("Error Desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }
@@ -138,7 +137,7 @@ class ProductRepositoryImpl(
                     Resource.Success(this.data)
                 }
                 else -> {
-                    Resource.Failure("Error Desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }
@@ -153,7 +152,7 @@ class ProductRepositoryImpl(
                     Resource.Success(Unit)
                 }
                 else -> {
-                    Resource.Failure("Error Desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }

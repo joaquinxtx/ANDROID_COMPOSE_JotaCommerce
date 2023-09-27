@@ -23,10 +23,10 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
 
             val shoppingBag = localDataSource.findById(product.id)
             if (shoppingBag == null) {
-                Log.d("ShoppigImplrmrnt", "creando:")
+                Log.d("ShoppingImpl", "create:")
                 localDataSource.insert(product.toEntity())
             } else {
-                Log.d("ShoppigImplrmrnt", "actualiza:")
+                Log.d("ShoppingImpl", "update:")
                 localDataSource.update(product.id, product.quantity)
             }
         }
@@ -38,7 +38,7 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
     }
 
     override fun findAll(): Flow<List<ShoppingBagProduct>> = flow {
-        localDataSource.findAll().collect() {
+        localDataSource.findAll().collect {
             emit(it.map { entity -> entity.toShoppingBagProduct() })
         }
     }

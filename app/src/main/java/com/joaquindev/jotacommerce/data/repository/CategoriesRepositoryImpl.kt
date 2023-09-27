@@ -29,7 +29,7 @@ class CategoriesRepositoryImpl(
                     Resource.Success(this.data)
                 }
                 else -> {
-                    Resource.Failure("Error Desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }
@@ -38,7 +38,7 @@ class CategoriesRepositoryImpl(
     override fun getCategories(): Flow<Resource<List<Category>>> = flow {
 
 
-        localDataSource.getCategories().collect() {
+        localDataSource.getCategories().collect {
             it.run {
 
                 val categoriesLocalMap =
@@ -85,7 +85,7 @@ class CategoriesRepositoryImpl(
                     Resource.Success(this.data)
                 }
                 else -> {
-                    Resource.Failure("Error Desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }
@@ -109,7 +109,7 @@ class CategoriesRepositoryImpl(
                     Resource.Success(this.data)
                 }
                 else -> {
-                    Resource.Failure("Error Desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }
@@ -124,7 +124,7 @@ class CategoriesRepositoryImpl(
                     Resource.Success(Unit)
                 }
                 else -> {
-                    Resource.Failure("Error Desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }

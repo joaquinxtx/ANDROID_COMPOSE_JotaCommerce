@@ -3,7 +3,7 @@ package com.joaquindev.jotacommerce.domain.useCase.product
 import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.domain.repository.ProductRepository
 import java.io.File
-import java.nio.file.Files
+
 
 class UpdateProductWithImageUseCase(private val repository: ProductRepository) {
 

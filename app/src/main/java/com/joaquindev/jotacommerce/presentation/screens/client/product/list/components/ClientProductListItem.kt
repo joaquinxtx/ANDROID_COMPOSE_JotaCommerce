@@ -11,19 +11,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.joaquindev.jotacommerce.domain.model.Product
 import com.joaquindev.jotacommerce.presentation.navigation.screen.client.ClientCategoryScreen
-import com.joaquindev.jotacommerce.presentation.screens.client.product.list.ClientProductListViewModel
 
 
 @Composable
 fun ClientProductLisItem(
     navController: NavHostController,
     product: Product,
-    vm: ClientProductListViewModel = hiltViewModel()
+
 ) {
     Column(
         Modifier
@@ -39,7 +37,7 @@ fun ClientProductLisItem(
 
     ) {
 
-        Row() {
+        Row {
 
 
             AsyncImage(

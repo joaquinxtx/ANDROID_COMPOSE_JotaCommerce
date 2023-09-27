@@ -14,10 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.navigation.Graph
 import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileViewModel
@@ -40,7 +42,7 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
             modifier = Modifier.padding(horizontal = 30.dp, vertical = 20.dp)
         ) {
             Text(
-                text = "Perfil",
+                text = stringResource(id = R.string.profile),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 color = Cafe_blue,
@@ -54,13 +56,13 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
             ) {
                 Icon(
                     imageVector = Icons.Default.Person,
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.icon),
                     tint = Cafe_orange
                 )
-                Column() {
+                Column {
                     Text(text = "${vm.user?.name} ${vm.user?.lastname}" )
                     Text(
-                        text = "Nombre de usuario",
+                        text = stringResource(id = R.string.user_name),
                         fontSize = 12.sp,
                         color = Color.Gray
                     )
@@ -74,13 +76,13 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
             ) {
                 Icon(
                     imageVector = Icons.Default.Email,
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.icon),
                     tint = Cafe_orange
                 )
                 Column(modifier = Modifier.padding(horizontal = 10.dp)) {
                     Text(text = vm.user?.email ?: "")
                     Text(
-                        text = "Correo electronico",
+                        text = stringResource(id = R.string.email),
                         fontSize = 12.sp,
                         color = Color.Gray
                     )
@@ -94,13 +96,13 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
             ) {
                 Icon(
                     imageVector = Icons.Default.Phone,
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.icon),
                     tint = Cafe_orange
                 )
                 Column(modifier = Modifier.padding(horizontal = 10.dp)) {
                     Text(text = vm.user?.phone ?: "")
                     Text(
-                        text = "Telefono",
+                        text = stringResource(id = R.string.phone),
                         fontSize = 12.sp,
                         color = Color.Gray
                     )
@@ -110,7 +112,7 @@ fun ProfileUserData(vm : ProfileViewModel, navController:NavHostController){
             Spacer(modifier = Modifier.weight(1f))
             DefaultButton(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Actualizar perfil",
+                text = stringResource(id = R.string.upload_profile),
                 onClick = {navController.navigate(route= "${Graph.PROFILE}/${vm.user?.toJson()}") })
 
         }

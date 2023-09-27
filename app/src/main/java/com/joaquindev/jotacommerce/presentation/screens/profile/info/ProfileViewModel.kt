@@ -4,7 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.joaquindev.jotacommerce.domain.model.AuthResponse
+
 import com.joaquindev.jotacommerce.domain.model.User
 import com.joaquindev.jotacommerce.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,7 +23,7 @@ class ProfileViewModel @Inject constructor( private val authUseCase: AuthUseCase
     }
 
     fun getSessionData()= viewModelScope.launch {
-        authUseCase.getSessionData().collect(){ data ->
+        authUseCase.getSessionData().collect{ data ->
             user = data.user
         }
     }

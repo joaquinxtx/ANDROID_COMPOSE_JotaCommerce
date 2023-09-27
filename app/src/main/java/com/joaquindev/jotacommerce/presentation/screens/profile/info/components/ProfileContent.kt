@@ -1,24 +1,15 @@
 package com.joaquindev.jotacommerce.presentation.screens.profile.info.components
 
-import android.app.Activity
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
-
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-
 import androidx.compose.ui.Modifier
-
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-
 import com.joaquindev.jotacommerce.presentation.screens.profile.info.ProfileViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_white
 

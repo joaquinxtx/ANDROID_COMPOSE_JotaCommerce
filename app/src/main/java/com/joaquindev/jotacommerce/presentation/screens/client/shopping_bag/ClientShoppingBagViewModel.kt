@@ -5,10 +5,8 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.joaquindev.jotacommerce.domain.model.ShoppingBagProduct
-import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.FindByIdShoppingBagUseCase
 import com.joaquindev.jotacommerce.domain.useCase.shopping_bag.ShoppingBagUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -34,7 +32,7 @@ class ClientShoppingBagViewModel @Inject constructor(
     }
 
      fun getShoppingBag() = viewModelScope.launch {
-        shoppingBagUseCase.findAll().collect() {
+        shoppingBagUseCase.findAll().collect {
             shoppingBag.clear()
             shoppingBag.addAll(it)
             getTotal()

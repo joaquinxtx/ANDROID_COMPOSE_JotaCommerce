@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -72,7 +73,7 @@ fun ProfileUpdateContent(
                             .align(Alignment.CenterHorizontally)
                             .clickable { stateDialog.value = true },
                         model = state.image,
-                        contentDescription = "",
+                        contentDescription = stringResource(id = R.string.image),
                         contentScale = ContentScale.Crop
                     )
                 } else {
@@ -91,7 +92,7 @@ fun ProfileUpdateContent(
                     modifier = Modifier
                         .padding(vertical = 25.dp)
                         .align(Alignment.CenterHorizontally),
-                    text = "Confirmar",
+                    text = stringResource(id = R.string.confirm),
                     color = Cafe_white,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold

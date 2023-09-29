@@ -19,7 +19,7 @@ interface UsersService {
     @PUT("users/{id}")
     suspend fun update(
         @Path("id") id:String,
-        @Body() user: User,
+        @Body user: User,
     ):Response<User>
 
     @Multipart

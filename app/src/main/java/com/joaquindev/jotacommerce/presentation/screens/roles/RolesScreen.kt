@@ -8,9 +8,7 @@ import com.joaquindev.jotacommerce.presentation.screens.roles.components.RolesCo
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RolesScreen(navController: NavHostController){
-    Scaffold(
-
-    ) {
+    Scaffold{
         RolesContent(it , navController = navController)
 
     }

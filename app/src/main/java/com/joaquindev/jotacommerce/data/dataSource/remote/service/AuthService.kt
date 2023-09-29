@@ -20,7 +20,7 @@ interface AuthService {
 
     @POST("auth/register")
     suspend fun register(
-        @Body() user: User,
+        @Body user: User,
     ):Response<AuthResponse>
 
 

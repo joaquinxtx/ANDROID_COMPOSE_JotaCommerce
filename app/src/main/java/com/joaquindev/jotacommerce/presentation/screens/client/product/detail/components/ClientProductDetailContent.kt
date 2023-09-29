@@ -12,12 +12,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.presentation.components.DefaultButton
 import com.joaquindev.jotacommerce.presentation.components.DotsIndicator
 import com.joaquindev.jotacommerce.presentation.components.SliderView
@@ -61,7 +63,7 @@ fun ClientProductDetailContent(
                     Text(text = vm.product.name, fontWeight = FontWeight.Bold, fontSize = 18.sp)
                     Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
                     Text(
-                        text = "Descripcion",
+                        text = stringResource(id = R.string.description),
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp,
                         modifier = Modifier.padding(bottom = 7.dp)
@@ -69,7 +71,7 @@ fun ClientProductDetailContent(
                     Text(text = vm.product.description, fontSize = 15.sp)
                     Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
                     Text(
-                        text = "Precio",
+                        text = stringResource(id = R.string.price),
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp,
                         modifier = Modifier.padding(bottom = 7.dp)
@@ -77,13 +79,13 @@ fun ClientProductDetailContent(
                     Text(text = vm.product.price.toString(), fontSize = 15.sp)
                     Divider(color = Color.White, modifier = Modifier.padding(vertical = 10.dp))
                     Text(
-                        text = "Tu Orden",
+                        text = stringResource(id = R.string.your_order),
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp,
                         modifier = Modifier.padding(bottom = 7.dp)
                     )
-                    Text(text = "Cantidad: ${vm.quantity}", fontSize = 15.sp)
-                    Text(text = "Precio C/U: ${vm.price}", fontSize = 15.sp)
+                    Text(text = "${stringResource(id = R.string.quantity)} ${vm.quantity}", fontSize = 15.sp)
+                    Text(text = "${stringResource(id = R.string.price)} C/U: ${vm.price}", fontSize = 15.sp)
                     Spacer(modifier = Modifier.weight(1f))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -120,7 +122,7 @@ fun ClientProductDetailContent(
                         }
                         DefaultButton(
                             modifier = Modifier.width(200.dp),
-                            text = "Agregar al carrito",
+                            text = stringResource(id = R.string.price),
                             onClick = { vm.saveItem() })
                     }
                 }

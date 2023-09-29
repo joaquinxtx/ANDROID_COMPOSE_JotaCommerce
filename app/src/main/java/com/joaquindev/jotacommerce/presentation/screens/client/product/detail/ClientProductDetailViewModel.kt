@@ -15,11 +15,11 @@ import javax.inject.Inject
 @HiltViewModel
 class ClientProductDetailViewModel @Inject constructor(
     private val shoppingBagUseCase: ShoppingBagUseCase,
-    private val savedStateHandle: SavedStateHandle
+     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     var data = savedStateHandle.get<String>("product")
     var product = Product.fromJson(data!!)
-    var productImages = listOf<String>(product.image1 ?: "", product.image2 ?: "")
+    var productImages = listOf(product.image1 ?: "", product.image2 ?: "")
 
     var quantity by mutableStateOf(0)
         private set
@@ -41,7 +41,7 @@ class ClientProductDetailViewModel @Inject constructor(
         }
     }
 
-    fun getShoppingBagProduct() = viewModelScope.launch {
+    private fun getShoppingBagProduct() = viewModelScope.launch {
        val result = shoppingBagUseCase.findById(product.id?:"")
         quantity = result?.quantity ?: 0
         price = product.price * quantity

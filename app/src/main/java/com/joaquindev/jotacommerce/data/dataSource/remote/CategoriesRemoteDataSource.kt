@@ -2,7 +2,7 @@ package com.joaquindev.jotacommerce.data.dataSource.remote
 
 import com.joaquindev.jotacommerce.domain.model.Category
 import retrofit2.Response
-import retrofit2.http.Field
+
 import java.io.File
 
 interface CategoriesRemoteDataSource {

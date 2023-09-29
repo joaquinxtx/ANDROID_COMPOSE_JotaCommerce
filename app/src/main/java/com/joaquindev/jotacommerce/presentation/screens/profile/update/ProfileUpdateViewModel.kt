@@ -26,7 +26,7 @@ class ProfileUpdateViewModel @Inject constructor(
 
     private val usersUseCase: UsersUseCase,
     private val authUseCase: AuthUseCase,
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     @ApplicationContext private val context: Context
 ) :
     ViewModel() {
@@ -39,7 +39,7 @@ class ProfileUpdateViewModel @Inject constructor(
     val data = savedStateHandle.get<String>("user")
     var user = User.fromJson(data!!)
 
-    //IMAGENES
+    //IMAGES
     var file: File? = null
     val resultingActivityHandler = ResultingActivityHandler()
 
@@ -62,7 +62,7 @@ class ProfileUpdateViewModel @Inject constructor(
     }
 
     fun onUpdate() {
-        if (file != null) { // SI SELECCIONO UNA IMAGEN
+        if (file != null) {
             updateWithImage()
         }
         else {
@@ -93,7 +93,7 @@ class ProfileUpdateViewModel @Inject constructor(
         val result = resultingActivityHandler.takePicturePreview()
         if (result != null) {
             state = state.copy(image = ComposeFileProvider.getPathFromBitmap(context, result))
-            file = File(state.image)
+            file = state.image?.let { File(it) }
         }
     }
 
@@ -105,13 +105,7 @@ class ProfileUpdateViewModel @Inject constructor(
         state = state.copy(lastname = lastName)
     }
 
-    fun onEmailInput(email: String) {
-        state = state.copy(email = email)
-    }
 
-    fun onImageInput(image: String) {
-        state = state.copy(image = image)
-    }
 
     fun onPhoneInput(phone: String) {
         state = state.copy(phone = phone)

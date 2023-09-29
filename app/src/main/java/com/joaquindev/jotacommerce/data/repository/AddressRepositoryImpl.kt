@@ -4,8 +4,6 @@ import com.joaquindev.jotacommerce.data.dataSource.local.AddressLocalDataSource
 import com.joaquindev.jotacommerce.data.dataSource.remote.AddressRemoteDataSource
 import com.joaquindev.jotacommerce.data.mapper.toAddress
 import com.joaquindev.jotacommerce.data.mapper.toEntity
-import com.joaquindev.jotacommerce.data.mapper.toProduct
-import com.joaquindev.jotacommerce.data.mapper.toProductsEntity
 import com.joaquindev.jotacommerce.domain.Resource
 import com.joaquindev.jotacommerce.domain.model.Address
 import com.joaquindev.jotacommerce.domain.repository.AddressRepository
@@ -28,14 +26,14 @@ class AddressRepositoryImpl(
                     Resource.Success(this.data)
                 }
                 else -> {
-                    Resource.Failure("Error desconocido")
+                    Resource.Failure("Unknown error")
                 }
             }
         }
     }
 
     override fun findByUser(idUser: String): Flow<Resource<List<Address>>> = flow {
-        localDataSource.findByUser(idUser).collect() {
+        localDataSource.findByUser(idUser).collect {
             it.run {
                 val addressLocalMap = this.map { addressEntity -> addressEntity.toAddress() }
 

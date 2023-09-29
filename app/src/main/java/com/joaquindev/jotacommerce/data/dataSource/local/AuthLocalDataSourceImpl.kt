@@ -1,7 +1,6 @@
 package com.joaquindev.jotacommerce.data.dataSource.local
 
 import com.joaquindev.jotacommerce.data.dataSource.local.datastore.AuthDataStore
-import com.joaquindev.jotacommerce.data.dataSource.local.AuthLocalDataSource
 import com.joaquindev.jotacommerce.domain.model.AuthResponse
 import com.joaquindev.jotacommerce.domain.model.User
 import kotlinx.coroutines.flow.Flow

@@ -1,6 +1,6 @@
 package com.joaquindev.jotacommerce.data.dataSource.remote
 
-import com.joaquindev.jotacommerce.data.dataSource.remote.CategoriesRemoteDataSource
+
 import com.joaquindev.jotacommerce.data.dataSource.remote.service.CategoryService
 import com.joaquindev.jotacommerce.domain.model.Category
 import kotlinx.coroutines.Dispatchers

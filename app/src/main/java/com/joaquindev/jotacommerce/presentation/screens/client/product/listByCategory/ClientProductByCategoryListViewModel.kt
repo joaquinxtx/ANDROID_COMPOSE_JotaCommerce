@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ClientProductByCategoryListViewModel @Inject constructor(
     private val productUseCase: ProductUseCase,
-    private val savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
 
@@ -35,16 +35,16 @@ class ClientProductByCategoryListViewModel @Inject constructor(
     private fun getProducts() = viewModelScope.launch {
         productsResponse = Resource.Loading
         productUseCase.findByCategory(category.id!!).collect { resource ->
-            productsResponse = resource // Actualizar productsResponse con el resultado de la llamada
+            productsResponse = resource
             when (resource) {
                 is Resource.Loading -> {
-                    Log.d("ClientProductByCatefory", "Data: Loading")
+                    Log.d("ClientProductByCategory", "Data: Loading")
                 }
                 is Resource.Success -> {
-                    Log.d("ClientProductByCatefory", "Data: ${resource.data}")
+                    Log.d("ClientProductByCategory", "Data: ${resource.data}")
                 }
                 is Resource.Failure-> {
-                    Log.d("ClientProductByCatefory", "Error: ${resource.message}")
+                    Log.d("ClientProductByCategory", "Error: ${resource.message}")
                 }
             }
         }

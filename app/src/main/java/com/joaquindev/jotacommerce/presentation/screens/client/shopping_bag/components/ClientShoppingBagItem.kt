@@ -11,11 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.joaquindev.jotacommerce.R
 import com.joaquindev.jotacommerce.domain.model.ShoppingBagProduct
 import com.joaquindev.jotacommerce.presentation.screens.client.shopping_bag.ClientShoppingBagViewModel
 import com.joaquindev.jotacommerce.presentation.ui.theme.Cafe_blue
@@ -36,10 +38,10 @@ fun ClientShoppingBagItem(
                 .size(60.dp)
                 .clip(RoundedCornerShape(10.dp)),
             model = shoppingBagProduct.image1,
-            contentDescription = ""
+            contentDescription = stringResource(id = R.string.image)
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Column() {
+        Column {
             Text(
                 text = shoppingBagProduct.name,
                 modifier = Modifier.width(150.dp),
@@ -93,7 +95,7 @@ fun ClientShoppingBagItem(
             ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "",
+                    contentDescription = stringResource(id = R.string.icon_delete),
                     modifier = Modifier.size(30.dp)
                 )
 

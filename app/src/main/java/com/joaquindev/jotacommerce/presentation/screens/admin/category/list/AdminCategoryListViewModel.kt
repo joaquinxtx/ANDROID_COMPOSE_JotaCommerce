@@ -15,7 +15,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCase: CategoriesUseCase,private val authUseCase: AuthUseCase) :
+class AdminCategoryListViewModel @Inject constructor(
+    private val categoriesUseCase: CategoriesUseCase,
+    private val authUseCase: AuthUseCase
+) :
     ViewModel() {
     var user by mutableStateOf<User?>(null)
         private set
@@ -30,8 +33,9 @@ class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCa
         getCategories()
         getSessionData()
     }
-    fun getSessionData()= viewModelScope.launch {
-        authUseCase.getSessionData().collect{ data ->
+
+    fun getSessionData() = viewModelScope.launch {
+        authUseCase.getSessionData().collect { data ->
             user = data.user
         }
     }
